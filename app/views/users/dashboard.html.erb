@@ -1,0 +1,16 @@
+<p>
+  <h2>Friend Requests Awaiting Your Approval</h2>
+  <ul>
+    <% @user.pending_friends_for_me.each do |p| -%>
+      <li id="for_approval<%= p.id %>"><%= link_to p.name, { :controller => 'users', :action => 'show', :id => p } %>: approve | reject</li>
+    <% end -%>
+  </ul>
+</p>
+<p>
+  <h2>Your Pending Friend Requests</h2>
+  <ul>
+    <% @user.pending_friends_by_me.each do |p| -%>
+      <li id="pending_request<%= p.id %>><%= link_to p.name, { :controller => 'users', :action => 'show', :id => p } %>: cancel</li>
+    <% end -%>
+  </ul>
+</p>

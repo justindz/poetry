@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Poetry Sharing - <%= controller.controller_name.capitalize %>/<%= controller.action_name.capitalize %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= javascript_include_tag :defaults %>
+  <link rel="shortcut icon" type="image/ico" href="<%= image_path 'favicon.ico' %>">
+</head>
+<body>
+
+<div class="center" id="app_banner">
+  <div id="logo">
+    <%= image_tag "Barcode.png", :alt => "Poetry Sharing Barcode Logo" %>
+  </div>
+  <div id="nav">
+    <ul id="miniflex">
+      <%= miniflex_tab('Recent Poems', 'poems') %>
+      <%= miniflex_tab('Write a Poem', 'poems', 'new') if logged_in? %>
+      <%= miniflex_tab('Explore', 'tags') %>
+      <%= miniflex_tab('Top Series', 'tags') %>
+      <%= miniflex_tab('Top Anthologies', 'tags') %>
+      <%= miniflex_tab('About', 'poems', 'about') %>
+    </ul>
+  </div>
+  <div id="account_links">
+    <p>
+      <%=
+        # stub code, replace with a partial on user
+        if logged_in?
+          link_to(self.current_user.name, {:controller => "users", :action => "show", :id => self.current_user.id}) + '<br />' +
+          link_to('Logout', {:controller => "account", :action => "logout"}) + '<br />' +
+          link_to('Messages', {:controller => 'users', :action => 'dashboard', :id => current_user})
+        else
+          link_to('Login', {:controller => "account", :action => "login"})
+        end
+      %>
+    </p>
+  </div>
+</div>
+
+<div class="center" id="main_container">
+  <hr class="layout_rule" />
+  <p style="color: green"><%= flash[:notice] %></p>
+  <%= yield  %>
+</div>
+
+</body>
+</html>

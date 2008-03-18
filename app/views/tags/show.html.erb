@@ -1,0 +1,10 @@
+<h1>Poems Tagged with "<%= @tag %>"</h1>
+
+<% for poem in @poems %>
+<div style="padding: 1em; margin-bottom: 1em; background-color:<%= cycle("#dfdfdf", "#fff") %>;">
+  <h2><%= link_to(poem.title, {:controller => 'poems', :action => 'show', :id => poem.id }) %></h2>
+  <p><%= truncate poem.body %></p>
+  <p>by <%= link_to(poem.user.name, {:controller => 'users', :action => 'show', :id => poem.user.id}) %> - published <%= poem.created_at.to_s %>, revised <%= poem.updated_at.to_s %></p>
+</div>
+<% end %>
+<%= will_paginate @poems %>

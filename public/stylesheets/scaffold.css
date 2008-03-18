@@ -1,0 +1,233 @@
+/* Overrides */
+
+body { background-color: white; color: black; }
+
+body, p, ol, ul, td {
+  font-family: helvetica, verdana, arial, sans-serif;
+  font-size: 85%;
+}
+
+pre {
+  background-color: #eee;
+  padding: 2em;
+}
+
+a, a:visited, a:active {
+  color: #555;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white; background-color:#555;
+  text-decoration: none;
+}
+
+input {
+  font-size: 85%;
+}
+
+/* General Classes */
+
+.center {
+  margin: 0 auto;
+}
+
+.pagination {
+  padding: 3px;
+  margin: 3px;
+}
+
+.pagination a {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #aaaadd;
+  text-decoration: none;
+  color: #000099;
+}
+
+.pagination a:hover, .pagination a:active {
+  border: 1px solid #000099;
+  color: #000;
+}
+
+.pagination span.current {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #000099;
+  font-weight: bold;
+  background-color: #000099;
+  color: #FFF;
+}
+
+.pagination span.disabled {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #eee;
+  color: #ddd;
+}
+
+hr.layout_rule {
+  border-style: solid;
+  border-color: #777;
+  width: 100%;
+  clear: both;
+  padding: 0;
+  margin: 0;
+}
+
+/* Layout */
+
+div#app_banner {
+  width: 60em;
+  height: 6em;
+}
+
+div#logo {
+  float: left; margin-right: 1em;
+}
+
+div#nav {
+  float: left;
+  width: 30em;
+}
+
+div#account_links {
+  float: left;
+  width: 18em;
+  text-align: right;
+}
+
+div#main_container {
+  width: 50em;
+}
+
+/* Poem */
+
+#favorite, #favorited {
+  font-size: large;
+  padding: .2em;
+}
+
+input.new_poem {
+  height: 50em;
+  width: 40em;
+}
+
+/* Miniflex Nav Link Tabs from SimpleBits.com */
+
+#miniflex {
+  width: 100%;
+  float: left;
+  margin: 0;
+  margin-top: 1em;
+  padding: 0;
+  }
+
+#miniflex li {
+  float: left;
+  margin: 0; 
+  padding-left: .2em;
+  padding-top: .2em;
+  display: inline;
+  list-style: none;
+  }
+  
+#miniflex a:link, #miniflex a:visited {
+  float: left;
+  line-height: 1em;
+  font-weight: bold;
+  margin: 0 .5em 0 .5em;
+  text-decoration: none;
+  color: #555;
+  padding: .3em;
+  padding-bottom: 0;
+  border: .2em solid white;
+  }
+
+#miniflex a.active:link, #miniflex a.active:visited, #miniflex a:hover {
+  color: #555;
+  background-color: white;
+  border: .2em solid #555;
+  }
+  
+/* Diff */
+
+.diffdel, del.diffmod { color: #888; }
+.diffins, ins.diffmod { background: #999; }
+
+/* Tag Cloud */
+
+div#tag_cloud {
+  text-align: center;
+  margin-top: 3em;
+}
+
+.smaller, .small, .medium, .large {
+  margin-left: .5em;
+  margin-right: .5em;
+  margin-top: .5em;
+  margin-top: .5em;
+}
+
+.smaller { font-size: smaller; }
+.small { font-size: small; }
+.medium { font-size: medium; }
+.large { font-size: large; }
+
+/* Scaffolding */
+
+.fieldWithErrors {
+  padding: .3em;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 24em;
+  border: .3em solid red;
+  padding: .6em;
+  padding-bottom: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: .4em .4em .4em 1.2em;
+  font-size: 1em;
+  margin: -.6em;
+  background-color: #c00;
+  color: white;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: .4em;
+}
+
+#errorExplanation ul li {
+  font-size: 1em;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: .4em;
+}
+
+div.progressBar {
+  margin: .4em;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: .2em solid gray;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color: #333;
+  height: 1.4em;
+  width: 0%;
+}
