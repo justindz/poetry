@@ -1,47 +1,38 @@
-<div id="poem" style="float: left; width: 30em; margin-right: 4em;">
-  <p>
-    <% if logged_in? and (@poem.user != current_user) %>
-      <%= link_to_remote(':-)', :url => { :controller => 'users', :action => "favorite", :id => @poem.id }, :html => { :id => 'favorite', :style => current_user.has_favorite?(@poem.id) ? 'display: none;' : 'display: block;' }) %>
-      <%= link_to_remote(':-D', :url => { :controller => 'users', :action => "remove_favorite", :id => @poem.id }, :html => { :id => 'favorited', :style => current_user.has_favorite?(@poem.id) ? 'display: block;' : 'display: none;' }) %>
-    <% end -%>
-  </p>
-  <h1 id="title" style="border-bottom: medium solid #888;"><%= @poem.title %></h1>
-  <p>
-    <%= @poem.body %>
-  </p>
-  <p style="padding-top: 5em; border-top: medium solid #888; font-size: 85%;">
-    by <%= link_to(@poem.user.name, { :controller => 'users', :action => 'show', :id => @poem.user }) %>
-  </p>
-  <p style="font-size: 85%;">
-    Published <%= @poem.created_at.to_s(:long) %>, revised <%= @poem.updated_at.to_s(:long) %>
-  </p>
+<div id="poem_left_column" style="float: left; width: 30em; margin-right: 4em;">
+  <%= render :partial => 'poem', :locals => { :poem => @poem } -%>
+  <%= render :partial => 'edit_poem', :locals => { :poem => @poem } -%>
   <div id="comparison"></div>
-  <h2>Comments</h2>
   <div id="comments">
+    <h2>Comments</h2>
     <% @poem.comments.each do |comment| -%>
       <%= render :partial => "comments/comment", :object => comment %>
     <% end -%>
-  </div>
-  <% if logged_in? -%>
-    <% form_remote_tag(:url => { :controller => 'comments', :action => 'create' }) do -%>
-      <%= text_area :comment, :body %>
-      <%= hidden_field :comment, :user_id, :value => @poem.user.id %>
-      <%= hidden_field :comment, :poem_id, :value => @poem.id %>
-      <%= hidden_field :comment, :is_private, :value => 'false' %>
-      <%= submit_tag 'Add Comment' %>
+    <% if logged_in? -%>
+      <% form_remote_tag(:url => { :controller => 'comments', :action => 'create' }) do -%>
+        <%= text_area :comment, :body %>
+        <%= hidden_field :comment, :user_id, :value => @poem.user.id %>
+        <%= hidden_field :comment, :poem_id, :value => @poem.id %>
+        <%= hidden_field :comment, :is_private, :value => 'false' %>
+        <%= submit_tag 'Add Comment' %>
+      <% end -%>
     <% end -%>
-  <% end -%>
+  </div>
 </div>
-
-<div id="poem_actions" float: left; width: 15em;">
+<div id="poem_actions" style="float: left; width: 15em;">
   <p>
-    <b>Viewed </b> <%= @poem.views %> times <%= "(not counting you)" if current_user == @poem.user %>.
+    <b>Viewed</b> <%= pluralize @poem.views, 'time' %> <%= "(not counting you)" if current_user == @poem.user %>.
   </p>
   <p>
-    <b>Revised</b> <%= @poem.revisions.count %> times.
+    <b>Revised</b> <span id="revision_count"><%= pluralize @poem.revisions.count, 'time' %></span>.
   </p>
   <p>
-    <%= link_to 'Edit', edit_poem_path(@poem) if current_user == @poem.user %>
+    <%= if current_user == @poem.user 
+        link_to_function 'Edit' do |page|
+          page.hide 'poem'
+          page.show 'edit_poem'
+        end
+      end 
+    %>
   </p>
   <% if @poem.has_been_revised? -%>
     <%= render :partial => "poem_history", :object => @poem %>

@@ -1,12 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
-  map.connect 'poems/about', :controller => 'poems', :action => 'about'
-  map.connect 'poems/compare/:poem_id/:revision_id', :controller => 'poems', :action => 'compare'
+  map.connect 'poems/about', :controller => 'poems', :action => 'about' #convert to named route
+  map.connect 'poems/compare/:poem_id/:revision_id', :controller => 'poems', :action => 'compare' #convert to named route
   
   map.resources :tags
 
   map.resources :comments
-
-  map.resources :words
 
   map.resources :poems
 

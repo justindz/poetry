@@ -65,9 +65,23 @@ class PoemsController < ApplicationController
     end
   end
 
-  # GET /poems/1/edit
-  def edit
-    @poem = Poem.find(params[:id])
+  # PUT /poems/1/update
+  def update
+    @poem = Poem.find(params[:poem][:id])
+    @poem.save_revision
+    
+    if @poem.update_attributes(params[:poem])
+      render :update do |page|
+        page.replace 'poem', :partial => 'poem', :object => @poem
+        page.hide 'edit_poem'
+        page.show 'poem'
+        page.visual_effect :highlight, 'poem'
+        page.replace 'poem_history', :partial => 'poem_history', :object => @poem
+        page.visual_effect :highlight, 'poem_history'
+        page.replace_html 'revision_count', pluralize(@poem.revisions.count, 'time')
+        page.visual_effect :highlight, 'revision_count'
+      end
+    end
   end
 
   # POST /poems
@@ -82,24 +96,6 @@ class PoemsController < ApplicationController
         format.xml  { render :xml => @poem, :status => :created, :location => @poem }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @poem.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /poems/1
-  # PUT /poems/1.xml
-  def update
-    @poem = Poem.find(params[:id])
-    @poem.save_revision
-
-    respond_to do |format|
-      if @poem.update_attributes(params[:poem])
-        flash[:notice] = 'Poem was successfully updated.'
-        format.html { redirect_to(@poem) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
         format.xml  { render :xml => @poem.errors, :status => :unprocessable_entity }
       end
     end

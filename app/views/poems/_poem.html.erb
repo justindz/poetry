@@ -1,0 +1,18 @@
+<div id="poem">
+  <p>
+    <% if logged_in? and (@poem.user != current_user) %>
+      <%= link_to_remote(':-)', :url => { :controller => 'users', :action => "favorite", :id => @poem.id }, :html => { :id => 'favorite', :style => current_user.has_favorite?(@poem.id) ? 'display: none;' : 'display: block;' }) %>
+      <%= link_to_remote(':-D', :url => { :controller => 'users', :action => "remove_favorite", :id => @poem.id }, :html => { :id => 'favorited', :style => current_user.has_favorite?(@poem.id) ? 'display: block;' : 'display: none;' }) %>
+    <% end -%>
+  </p>
+  <h1 id="title" style="border-bottom: medium solid #888;"><%= @poem.title %></h1>
+  <p>
+    <%= @poem.body %>
+  </p>
+  <p style="padding-top: 5em; border-top: medium solid #888; font-size: 85%;">
+    by <%= link_to(@poem.user.name, { :controller => 'users', :action => 'show', :id => @poem.user }) %>
+  </p>
+  <p style="font-size: 85%;">
+    Published <%= @poem.created_at.to_s(:long) %>, revised <%= @poem.updated_at.to_s(:long) %>
+  </p>
+</div>

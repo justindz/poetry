@@ -1,0 +1,18 @@
+<div id="edit_poem" style="float: left; width: 30em; margin-right: 4em; display: none;">
+  <h1>Editing poem</h1>
+  <% form_remote_tag(:url => poem_path(@poem), :html => { :method => 'put' }) do -%>
+    <%= hidden_field :poem, :id, :value => @poem.id %>
+    <p>
+      <b>Title</b><br />
+      <%= text_field :poem, :title %>
+    </p>
+    <p>
+      <b>Body</b><br />
+      <%= textile_editor :poem, :body -%>
+      <%= textile_editor_initialize -%>
+    </p>
+    <p>
+      <%= submit_tag "Save" %>
+    </p>
+  <% end -%>
+</div>

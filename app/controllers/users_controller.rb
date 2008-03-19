@@ -74,17 +74,42 @@ class UsersController < ApplicationController
         page.visual_effect :highlight, 'friend_requested'
       end
     end
+  end
+  
+  def approve_friend_request
+    @friend = User.find(params[:id])
     
-    redirect_to @friend
-  end
-  
-  def approve_friend
-  end
-  
-  def reject_friend
+    if current_user.accept_friendship_with(@friend)
+      render :update do |page|
+        page.visual_effect(:BlindUp, "pending_request" + @friend.id.to_s)
+        page.insert_html(:bottom, 'friends', '<li id="friend' + @friend.id.to_s + '" style="display: none;">' + link_to(@friend.name, { :controller => 'users', :action => 'show', :id => @friend }) + '</li>')
+        page.visual_effect(:BlindDown, "friend" + @friend.id.to_s)
+      end
+    end
   end
   
   def cancel_friend_request
+    @friend = User.find(params[:id])
+    
+    if current_user.is_pending_friends_with?(@friend)
+      current_user.delete_friendship_with @friend
+      
+      render :update do |page|
+        page.visual_effect(:SwitchOff, "pending_request" + @friend.id.to_s)
+      end
+    end
+  end
+  
+  def remove_friendship
+    @friend = User.find(params[:id])
+    
+    if current_user.is_friends_with?(@friend)
+      current_user.delete_friendship_with @friend
+      
+      render :update do |page|
+        page.visual_effect(:Squish, "friend" + @friend.id.to_s)
+      end
+    end
   end
  
   # GET /users/1/edit
