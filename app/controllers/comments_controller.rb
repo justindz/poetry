@@ -11,8 +11,6 @@ class CommentsController < ApplicationController
         page.insert_html(:bottom, 'comments', :partial => 'comment', :object => @comment)
         page.visual_effect :highlight, 'comments', :startcolor => '#3399ff', :restorecolor => '#ffffff'
       end
-    else
-      render :action => "new"
     end
   end
 end

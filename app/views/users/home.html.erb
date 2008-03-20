@@ -1,0 +1,11 @@
+<h1>Welcome home, <%= @user.name %>.</h1>
+
+<ul>
+  <li><%= link_to 'Message Dashboard', { :controller => 'users', :action => 'dashboard' } %></li>
+  <li>My Recent Poems</li>
+  <li>My Friends' Recent Poems</li>
+  <li><%= link_to 'All Recent Poems', { :controller => 'poems', :action => 'index' } %></li>
+  <li><%= link_to 'Write a New Poem', new_poem_path() %></li>
+</ul>
+
+<%= link_to 'Edit My Profile', edit_user_path(@user) %>

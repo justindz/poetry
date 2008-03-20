@@ -65,7 +65,7 @@ class PoemsController < ApplicationController
     end
   end
 
-  # PUT /poems/1/update
+  # PUT /poems/1
   def update
     @poem = Poem.find(params[:poem][:id])
     @poem.save_revision
@@ -95,6 +95,7 @@ class PoemsController < ApplicationController
         format.html { redirect_to(@poem) }
         format.xml  { render :xml => @poem, :status => :created, :location => @poem }
       else
+        flash[:error] = "Problem: #{@poem.errors}"
         format.html { render :action => "new" }
         format.xml  { render :xml => @poem.errors, :status => :unprocessable_entity }
       end

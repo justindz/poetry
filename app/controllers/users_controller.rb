@@ -1,20 +1,20 @@
 class UsersController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
-  
-  # GET /users
-  # GET /users.xml
-  def index
-    @users = User.find(:all)
- 
+
+  # GET /users/home
+  # GET /users/home.xml
+  def home
+    @user = current_user
+    @tags = @user.poems.tag_counts
+    
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      format.html # show.html.erb
     end
   end
  
   # GET /users/1
   # GET /users/1.xml
-  def show
+  def show   
     @user = User.find(params[:id])
     @tags = @user.poems.tag_counts
  
@@ -24,19 +24,10 @@ class UsersController < ApplicationController
     end
   end
   
+  # GET /users/dashboard
+  # GET /users/dashboard.xml
   def dashboard
     @user = current_user
-  end
- 
-  # GET /users/new
-  # GET /users/new.xml
-  def new
-    @user = User.new
- 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user }
-    end
   end
    
   def favorite

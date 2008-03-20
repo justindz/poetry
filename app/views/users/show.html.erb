@@ -41,5 +41,3 @@
     <%= link_to tag.name, { :controller => 'tags', :action => 'show', :id => tag.name }, :class => css_class %>
   <% end %>
 </div>
-
-<%= link_to 'Edit', edit_user_path(@user) if @user == current_user %>

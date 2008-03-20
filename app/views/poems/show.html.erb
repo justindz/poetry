@@ -7,16 +7,16 @@
     <% @poem.comments.each do |comment| -%>
       <%= render :partial => "comments/comment", :object => comment %>
     <% end -%>
-    <% if logged_in? -%>
-      <% form_remote_tag(:url => { :controller => 'comments', :action => 'create' }) do -%>
-        <%= text_area :comment, :body %>
-        <%= hidden_field :comment, :user_id, :value => @poem.user.id %>
-        <%= hidden_field :comment, :poem_id, :value => @poem.id %>
-        <%= hidden_field :comment, :is_private, :value => 'false' %>
-        <%= submit_tag 'Add Comment' %>
-      <% end -%>
-    <% end -%>
   </div>
+  <% if logged_in? -%>
+    <% form_remote_tag(:url => { :controller => 'comments', :action => 'create' }) do -%>
+      <%= text_area :comment, :body %>
+      <%= hidden_field :comment, :user_id, :value => current_user.id %>
+      <%= hidden_field :comment, :poem_id, :value => @poem.id %>
+      <%= hidden_field :comment, :is_private, :value => 'false' %>
+      <%= submit_tag 'Add Comment' %>
+    <% end -%>
+  <% end -%>
 </div>
 <div id="poem_actions" style="float: left; width: 15em;">
   <p>

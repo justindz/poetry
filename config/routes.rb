@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.connect 'users/home', :controller => 'users', :action => 'home' #convert to named route
+  map.connect 'users/dashboard', :controller => 'users', :action => 'dashboard' #convert to named route
   map.connect 'poems/about', :controller => 'poems', :action => 'about' #convert to named route
   map.connect 'poems/compare/:poem_id/:revision_id', :controller => 'poems', :action => 'compare' #convert to named route
   
@@ -9,36 +11,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :poems
 
   map.resources :users
-
-  # The priority is based upon order of creation: first created -> highest priority.
-
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
-
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
-
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
   
-  map.root :controller => "users"
+  map.root :controller => "account", :action => "login"
 
   # See how all your routes lay out with "rake routes"
 

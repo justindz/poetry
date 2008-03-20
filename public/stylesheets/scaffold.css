@@ -1,6 +1,8 @@
 /* Overrides */
 
-body { background-color: white; color: black; }
+body {
+  background-color: white; color: black;
+}
 
 body, p, ol, ul, td {
   font-family: helvetica, verdana, arial, sans-serif;
@@ -18,7 +20,8 @@ a, a:visited, a:active {
 }
 
 a:hover {
-  color: white; background-color:#555;
+  color: white;
+  background-color:#555;
   text-decoration: none;
 }
 
@@ -30,6 +33,12 @@ input {
 
 .center {
   margin: 0 auto;
+}
+
+a.link_icon, a:hover.link_icon, a:active.link_icon, a:hover.link_icon {
+  text-decoration: none;
+  background-color: white;
+  color: white;
 }
 
 .pagination {
@@ -69,8 +78,7 @@ input {
 hr.layout_rule {
   border-style: solid;
   border-color: #777;
-  width: 100%;
-  clear: both;
+  width: 50em;
   padding: 0;
   margin: 0;
 }
@@ -79,26 +87,32 @@ hr.layout_rule {
 
 div#app_banner {
   width: 60em;
-  height: 6em;
-}
-
-div#logo {
-  float: left; margin-right: 1em;
 }
 
 div#nav {
-  float: left;
-  width: 30em;
 }
 
-div#account_links {
-  float: left;
-  width: 18em;
-  text-align: right;
+span#logo {
+  position: relative;
+  left: -4em;
+  top: 1.5em;
+}
+
+span#link_list {
+  position: relative;
+  left: -3em;
+  margin-right: 32em;
+}
+
+span#account_links {
 }
 
 div#main_container {
   width: 50em;
+}
+
+div#footer {
+  margin-top: 15em;
 }
 
 /* Poem */
@@ -110,7 +124,7 @@ div#main_container {
 
 input.new_poem {
   height: 50em;
-  width: 40em;
+  width: 60em;
 }
 
 /* Miniflex Nav Link Tabs from SimpleBits.com */

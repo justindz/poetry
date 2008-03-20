@@ -1,13 +1,8 @@
 class AccountController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
-
-  # say something nice, you goof!  something sweet.
-  def index
-    redirect_to(:action => 'signup') unless logged_in? || User.count > 0
-  end
-
   def login
+    if logged_in?
+      redirect_back_or_default(:controller => 'users', :action => 'home')
+    end
     return unless request.post?
     self.current_user = User.authenticate(params[:email], params[:password])
     if logged_in?
@@ -15,10 +10,10 @@ class AccountController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_back_or_default(:controller => '/users', :action => 'show', :id => self.current_user.id)
+      redirect_back_or_default(:controller => 'users', :action => 'home')
       flash[:notice] = "Logged in successfully"
     else
-      flash[:notice] = "Login failed.  Please check your email and password or signup."
+      flash[:error] = "Login failed.  Please check your email and password or signup."
     end
   end
 
@@ -27,7 +22,7 @@ class AccountController < ApplicationController
     return unless request.post?
     @user.save!
     self.current_user = @user
-    redirect_back_or_default(:controller => '/account', :action => 'index')
+    redirect_back_or_default(:controller => 'users', :action => 'home')
     flash[:notice] = "Thanks for signing up!"
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
@@ -38,6 +33,6 @@ class AccountController < ApplicationController
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "You have been logged out."
-    redirect_back_or_default(:controller => '/account', :action => 'index')
+    redirect_back_or_default(:controller => 'account', :action => 'login')
   end
 end
