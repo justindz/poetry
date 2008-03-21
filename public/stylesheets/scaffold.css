@@ -1,7 +1,8 @@
 /* Overrides */
 
 body {
-  background-color: white; color: black;
+  margin: 0;
+  padding: 0;
 }
 
 body, p, ol, ul, td {
@@ -15,13 +16,14 @@ pre {
 }
 
 a, a:visited, a:active {
-  color: #555;
+  color: #336699;
+  background-color: white;
   text-decoration: none;
 }
 
 a:hover {
   color: white;
-  background-color:#555;
+  background-color: #336699;
   text-decoration: none;
 }
 
@@ -29,17 +31,91 @@ input {
   font-size: 85%;
 }
 
-/* General Classes */
+hr {
+  border: thin solid #ddd;
+  margin: 0;
+  padding: 0;
+}
 
-.center {
+h1, h2, h3, h4 {
+  color: #333333;
+}
+
+/* Layout */
+
+div#main_container {
   margin: 0 auto;
+  width: 63em;
 }
 
-a.link_icon, a:hover.link_icon, a:active.link_icon, a:hover.link_icon {
-  text-decoration: none;
-  background-color: white;
-  color: white;
+div#left_container {
+  float: left;
+  width: 12em;
+  background-color: #6699CC;
 }
+
+div#content_container {
+  float: left;
+  width: 50em;
+  border: thin solid #6699CC;
+  border-top: none;
+}
+
+div#nav {
+  background-color: #6699CC;
+}
+
+div#body_container {
+  padding: 2em;
+}
+
+div#footer {
+  padding-top: .2em;
+  background-color: #6699CC;
+  clear: both;
+}
+
+/* Poem */
+
+div#poem_left_column {
+  float: left;
+  width: 30em;
+  margin-right: 2em;
+}
+
+div#poem_actions {
+  float: left;
+  width: 10em;
+}
+
+#favorite, #favorited {
+  font-size: large;
+  padding: .2em;
+}
+
+input.new_poem {
+  height: 50em;
+  width: 60em;
+}
+
+#revisions_list, #tags_list {
+  margin: 0;
+  padding: 0;
+}
+
+#revisions_list li {
+  list-style: none;
+  margin-left: 0px;
+  padding-bottom: .2em;
+}
+
+#tags_list li {
+  list-style: none;
+  margin-left: 0px;
+  padding-bottom: .2em;
+}
+
+/* Pagination */
 
 .pagination {
   padding: 3px;
@@ -75,66 +151,14 @@ a.link_icon, a:hover.link_icon, a:active.link_icon, a:hover.link_icon {
   color: #ddd;
 }
 
-hr.layout_rule {
-  border-style: solid;
-  border-color: #777;
-  width: 50em;
-  padding: 0;
-  margin: 0;
-}
-
-/* Layout */
-
-div#app_banner {
-  width: 60em;
-}
-
-div#nav {
-}
-
-span#logo {
-  position: relative;
-  left: -4em;
-  top: 1.5em;
-}
-
-span#link_list {
-  position: relative;
-  left: -3em;
-  margin-right: 32em;
-}
-
-span#account_links {
-}
-
-div#main_container {
-  width: 50em;
-}
-
-div#footer {
-  margin-top: 15em;
-}
-
-/* Poem */
-
-#favorite, #favorited {
-  font-size: large;
-  padding: .2em;
-}
-
-input.new_poem {
-  height: 50em;
-  width: 60em;
-}
-
 /* Miniflex Nav Link Tabs from SimpleBits.com */
 
 #miniflex {
   width: 100%;
   float: left;
-  margin: 0;
-  margin-top: 1em;
   padding: 0;
+  margin: 0;
+  background-color: #6699CC;
   }
 
 #miniflex li {
@@ -152,22 +176,21 @@ input.new_poem {
   font-weight: bold;
   margin: 0 .5em 0 .5em;
   text-decoration: none;
-  color: #555;
+  color: white;
+  background-color: #6699CC;
   padding: .3em;
   padding-bottom: 0;
-  border: .2em solid white;
   }
 
 #miniflex a.active:link, #miniflex a.active:visited, #miniflex a:hover {
-  color: #555;
+  color: #6699CC;
   background-color: white;
-  border: .2em solid #555;
   }
   
 /* Diff */
 
-.diffdel, del.diffmod { color: #888; }
-.diffins, ins.diffmod { background: #999; }
+.diffdel, del.diffmod { color: red; }
+.diffins, ins.diffmod { background: #33FF33; }
 
 /* Tag Cloud */
 

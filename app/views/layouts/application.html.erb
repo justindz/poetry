@@ -10,36 +10,34 @@
   <link rel="shortcut icon" type="image/ico" href="<%= image_path 'favicon.ico' %>">
 </head>
 <body>
-
-<div class="center" id="app_banner">
-  <div id="nav">
-    <span id="logo"><%= link_icon('barcode.png', 'poems', 'about') %></span>
-    <span id="link_list">
-      <%= link_icon('home_32.png', 'users', 'home') %>
-      <%= link_icon('edit-charcoal_32.png', 'poems', 'new') if logged_in? %>
-      <%= link_icon('stats_32.png', 'poems') %>
-      <%= link_icon('search_32.png', 'tags') %>
-    </span>
-    <span id="account_links">
-      <% if logged_in? -%>
-        <%= link_icon('lock_24.png', "account", "logout") %>
-        <%= link_icon('mail_24.png', 'users', 'dashboard') unless current_user.pending_friends.empty? %>
-      <% end -%>
-    </span>
+  <div class="center" id="main_container">
+    <div id="left_container">
+      <p>Test</p>
+    </div>
+    <div id="content_container">
+      <div id="nav">
+        <ul id="miniflex">
+          <%= miniflex_tab('Home', 'users', 'home') %>
+          <%= miniflex_tab('Write', 'poems', 'new') if logged_in? %>
+          <%= miniflex_tab('Read', 'poems') %>
+          <%= miniflex_tab('Explore', 'tags') %>
+          <% if logged_in? -%>
+            <%= miniflex_tab('Logout', "account", "logout") %>
+            <%= miniflex_tab('Messages', 'users', 'dashboard') unless current_user.pending_friends.empty? %>
+          <% end -%>
+        </ul>
+      </div>
+      <div id="body_container">
+        <p style="color: green;"><%= image_tag('next-green_24.png', { :style => "vertical-align: middle;" }) unless flash[:notice].nil? %> <%= flash[:notice] %></p>
+        <p style="color: red;"><%= image_tag('next-red_24.png', { :style => "vertical-align: middle;" }) unless flash[:error].nil? %> <%= flash[:error] %></p>
+        <%= yield  %>
+      </div>
+      <div id="footer">
+        <ul id="miniflex">
+          <%= miniflex_tab('About', 'poems', 'about') %>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="center" id="main_container">
-  <hr class="layout_rule" />
-  <p style="color: green;"><%= image_tag('next-green_24.png', { :style => "vertical-align: middle;" }) unless flash[:notice].nil? %> <%= flash[:notice] %></p>
-  <p style="color: red;"><%= image_tag('next-red_24.png', { :style => "vertical-align: middle;" }) unless flash[:error].nil? %> <%= flash[:error] %></p>
-  <%= yield  %>
-  
-  <div id="footer">
-    <ul id="miniflex">
-      <%= miniflex_tab('About', 'poems', 'about') %>
-    </ul>
-  </div>
-</div>
 </body>
 </html>

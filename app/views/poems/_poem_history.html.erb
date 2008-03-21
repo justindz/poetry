@@ -1,13 +1,13 @@
 <div id="poem_history">
-  <h2>Prior Versions</h2>
-  <% form_tag '/poems/compare', :id => 'comparison_form' do %>
-    <% @poem.revisions.each do |rev| -%>
-      <ul>
-        <li><%= check_box_tag "revision[" + rev.id.to_s + "]", rev.id, false, :onclick => 'versions.checked(this);' %> - <%= rev.created_at.to_s(:long) %> - <%= link_to_remote("vs. current", :url => { :controller => 'poems', :action => 'compare', :poem_id => @poem.id, :revision_id => rev.id }) %></li>
-      </ul>
-    <% end -%>
-    <%= submit_to_remote 'submit', 'Compare', :url => { :controller => 'poems', :action => 'compare' }, :html => { :id => 'submit', :disabled => 'true' } %>
-  <% end %>
+  <% if @poem.has_been_revised? -%>
+    <h2>Versions</h2>
+    <% form_tag '/poems/compare', :id => 'comparison_form' do %>
+      <% @poem.revisions.each do |rev| -%>
+        <ul id="revisions_list">
+          <li><%= check_box_tag "revision[" + rev.id.to_s + "]", rev.id, false, :onclick => 'versions.checked(this);' %> - <%= rev.created_at.to_s(:long) %> - <%= link_to_remote("vs. current", :url => { :controller => 'poems', :action => 'compare', :poem_id => @poem.id, :revision_id => rev.id }) %></li>
+        </ul>
+      <% end -%>
+      <%= submit_to_remote 'submit', 'Compare', :url => { :controller => 'poems', :action => 'compare' }, :html => { :id => 'submit', :disabled => 'true' } %>
+    <% end %>
+  <% end -%>
 </div>
-
-<!-- change this so the form only occurs if there is more than one revision -->

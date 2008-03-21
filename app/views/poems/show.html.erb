@@ -1,4 +1,4 @@
-<div id="poem_left_column" style="float: left; width: 30em; margin-right: 4em;">
+<div id="poem_left_column">
   <%= render :partial => 'poem', :locals => { :poem => @poem } -%>
   <%= render :partial => 'edit_poem', :locals => { :poem => @poem } -%>
   <div id="comparison"></div>
@@ -10,7 +10,7 @@
   </div>
   <% if logged_in? -%>
     <% form_remote_tag(:url => { :controller => 'comments', :action => 'create' }) do -%>
-      <%= text_area :comment, :body %>
+      <%= text_area :comment, :body, :rows => '6' %>
       <%= hidden_field :comment, :user_id, :value => current_user.id %>
       <%= hidden_field :comment, :poem_id, :value => @poem.id %>
       <%= hidden_field :comment, :is_private, :value => 'false' %>
@@ -18,7 +18,7 @@
     <% end -%>
   <% end -%>
 </div>
-<div id="poem_actions" style="float: left; width: 15em;">
+<div id="poem_actions">
   <p>
     <b>Viewed</b> <%= pluralize @poem.views, 'time' %> <%= "(not counting you)" if current_user == @poem.user %>.
   </p>
@@ -34,9 +34,7 @@
       end 
     %>
   </p>
-  <% if @poem.has_been_revised? -%>
-    <%= render :partial => "poem_history", :object => @poem %>
-  <% end -%>
+  <%= render :partial => "poem_history", :object => @poem %>
   <%= render :partial => 'tag_list', :locals => { :poem => @poem } -%>
   <p>
     <% if logged_in? -%>
