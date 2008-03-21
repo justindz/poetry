@@ -18,15 +18,21 @@ class AccountController < ApplicationController
   end
 
   def signup
-    @user = User.new(params[:user])
+    @user = User.new(params[:user])   
     return unless request.post?
-    @user.save!
-    self.current_user = @user
-    redirect_back_or_default(:controller => 'users', :action => 'home')
-    flash[:notice] = "Thanks for signing up!"
+    if captcha_valid?(params[:my_super_model][:captcha_id], params[:my_super_model][:captcha_validation])
+      @user.save!
+      self.current_user = @user
+      redirect_back_or_default(:controller => 'users', :action => 'home')
+      flash[:notice] = "Thanks for signing up!"
+    else
+      flash[:error] = "Please try the challenge question again."
+      render :action => 'signup'
+    end
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
   end
+    
   
   def logout
     self.current_user.forget_me if logged_in?

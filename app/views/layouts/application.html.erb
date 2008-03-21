@@ -12,7 +12,9 @@
 <body>
   <div class="center" id="main_container">
     <div id="left_container">
-      <p>Test</p>
+      <p>Logo</p>
+      <p>Search</p>
+      <p>News</p>
     </div>
     <div id="content_container">
       <div id="nav">
@@ -22,8 +24,8 @@
           <%= miniflex_tab('Read', 'poems') %>
           <%= miniflex_tab('Explore', 'tags') %>
           <% if logged_in? -%>
-            <%= miniflex_tab('Logout', "account", "logout") %>
             <%= miniflex_tab('Messages', 'users', 'dashboard') unless current_user.pending_friends.empty? %>
+            <%= miniflex_tab('Logout', "account", "logout") %>
           <% end -%>
         </ul>
       </div>

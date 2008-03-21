@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+  margin-top: 10px;
   padding: 0;
 }
 
@@ -27,8 +28,13 @@ a:hover {
   text-decoration: none;
 }
 
-input {
+input, select, option {
   font-size: 85%;
+}
+
+input[type="submit"], input[type="button"] {
+  color: white;
+  background-color: #336699;
 }
 
 hr {
@@ -39,6 +45,10 @@ hr {
 
 h1, h2, h3, h4 {
   color: #333333;
+}
+
+h2 {
+  font-size: medium;
 }
 
 /* Layout */
@@ -127,28 +137,28 @@ input.new_poem {
   margin: 2px;
   border: 1px solid #aaaadd;
   text-decoration: none;
-  color: #000099;
+  color: #6699CC;
 }
 
 .pagination a:hover, .pagination a:active {
   border: 1px solid #000099;
-  color: #000;
+  color: white;
 }
 
 .pagination span.current {
   padding: 2px 5px 2px 5px;
   margin: 2px;
-  border: 1px solid #000099;
+  border: 1px solid #6699CC;
   font-weight: bold;
-  background-color: #000099;
+  background-color: #6699CC;
   color: #FFF;
 }
 
 .pagination span.disabled {
   padding: 2px 5px 2px 5px;
   margin: 2px;
-  border: 1px solid #eee;
-  color: #ddd;
+  border: 1px solid #ccc;
+  color: #ccc;
 }
 
 /* Miniflex Nav Link Tabs from SimpleBits.com */

@@ -1,0 +1,66 @@
+--- 
+
+# Web server must be restarted for changes to take effect!
+
+#Time to live, in seconds
+default_ttl: 1200
+
+#Where to store the PStore file
+store: db/captcha/captchas.pstore
+
+#The validation will by default always pass when in
+#test mode. Change this to true if you want to test
+#it yourself.
+i_will_test_validation_myself_thank_you_very_much: false
+
+#You can set a default message to be displayed
+#when the validation does not pass.
+default_message: "Your response was not correct.  Please try again."
+
+
+
+#Image challenge specific options
+
+#Change to true to disable image recognition challenges
+#RMagick will not be loaded if set to true
+#Be aware that you will get errors if you have previously
+#used image challenges that are still in the storage
+disable_image_challenges: true
+
+#Where to store images, relative to public/images
+default_dir: captcha
+
+#Which file type (extension) to give generated files
+default_filetype: jpg
+
+#Default font to use. Can be a font name or the full
+#path to a font file. If not specified, RMagick will
+#choose one for you.
+font: null
+
+#Words to use when generating images. Case doesn't matter when matching.
+words: 
+  - hugh grant
+  - superman
+  - darth vader
+  - loose fit
+  - whale blubber
+  - et cetera
+
+
+
+#Question challenge specific options
+
+#Questions and their answers to be used with the question challenge.
+#Each pair is an array with the question as the first element
+#and its answer as the second. The question is always a string,
+#but the answer can be a single string, a regular expression
+#or an array of mixed strings and regexes if there is more than one
+#right answer.
+#  - ['Which metal has the atomic symbol Al?', !ruby/regexp '/alumini?um/']
+
+questions:
+  - ['How many lines are in a typical Haiku of the form 5/7/5?', ['3', 'three']]
+  - ['The poet Sylvia Plath committed suicide by sticking her head in an oven.  What did she stick her head in?', ['oven', 'an oven', 'the oven']]
+  - ['A sestina has six stanzas of six lines each followed by a three line tercet.  How many lines does a sestina have?', ['39', 'thirty nine']]
+  - ['How many lines are there in a four line poem?', ['4', 'four']]
