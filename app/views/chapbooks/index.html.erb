@@ -1,0 +1,28 @@
+<h1>Listing chapbooks</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+    <th>Title</th>
+    <th>Introduction</th>
+  </tr>
+
+<% for chapbook in @chapbooks %>
+  <tr>
+    <td><%=h chapbook.user_id %></td>
+    <td><%=h chapbook.created_at %></td>
+    <td><%=h chapbook.updated_at %></td>
+    <td><%=h chapbook.title %></td>
+    <td><%=h chapbook.introduction %></td>
+    <td><%= link_to 'Show', chapbook %></td>
+    <td><%= link_to 'Edit', edit_chapbook_path(chapbook) %></td>
+    <td><%= link_to 'Destroy', chapbook, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New chapbook', new_chapbook_path %>

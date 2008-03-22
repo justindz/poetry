@@ -1,0 +1,28 @@
+<p>
+  <b>User:</b>
+  <%=h @chapbook.user_id %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @chapbook.created_at %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%=h @chapbook.updated_at %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @chapbook.title %>
+</p>
+
+<p>
+  <b>Introduction:</b>
+  <%=h @chapbook.introduction %>
+</p>
+
+
+<%= link_to 'Edit', edit_chapbook_path(@chapbook) %> |
+<%= link_to 'Back', chapbooks_path %>

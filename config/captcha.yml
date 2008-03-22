@@ -64,3 +64,4 @@ questions:
   - ['The poet Sylvia Plath committed suicide by sticking her head in an oven.  What did she stick her head in?', ['oven', 'an oven', 'the oven']]
   - ['A sestina has six stanzas of six lines each followed by a three line tercet.  How many lines does a sestina have?', ['39', 'thirty nine']]
   - ['How many lines are there in a four line poem?', ['4', 'four']]
+  - ["What was the poet Robert Frost's first or, given name?", 'Robert']

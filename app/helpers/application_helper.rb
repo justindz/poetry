@@ -2,7 +2,15 @@
 module ApplicationHelper
   include TagsHelper
   
-  def miniflex_tab (name, controller, view = nil, id = nil)
+  def tab(name, controller, view = nil, id = nil)
     "<li>#{ link_to(name, :controller => controller, :action => view, :id => id) }</li>"
+  end
+  
+  def link_to_user(user, id = nil)
+    if logged_in?
+      (id == current_user.id) ? link_to('Me', {:controller => 'users', :action => 'home'}) : link_to(user, {:controller => 'users', :action => 'show', :id => id})
+    else
+      link_to(user, {:controller => 'users', :action => 'show', :id => id})
+    end
   end
 end

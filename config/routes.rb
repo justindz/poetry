@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :chapbooks
+
   map.connect 'users/home', :controller => 'users', :action => 'home' #convert to named route
   map.connect 'users/dashboard', :controller => 'users', :action => 'dashboard' #convert to named route
   map.connect 'poems/about', :controller => 'poems', :action => 'about' #convert to named route

@@ -1,11 +1,46 @@
 <h1>Welcome home, <%= @user.name %>.</h1>
 
-<ul>
-  <li><%= link_to 'Message Dashboard', { :controller => 'users', :action => 'dashboard' } %></li>
-  <li>My Recent Poems</li>
-  <li>My Friends' Recent Poems</li>
-  <li><%= link_to 'All Recent Poems', { :controller => 'poems', :action => 'index' } %></li>
-  <li><%= link_to 'Write a New Poem', new_poem_path() %></li>
-</ul>
+<div id="my_recent_poems">
+  <h2>Your Poems</h2>
+  <% @my_recent_poems.each do |r| -%>
+    <div class="recent_poem"><%= link_to(r.title, { :controller => 'poems', :action => 'show', :id => r.id }) %></div>
+  <% end -%>
+</div>
+
+<div id="recent_poems">
+  <h2>Everyone's Poems</h2>
+  <% @recent_poems.each do |r| -%>
+    <div class="recent_poem"><%= link_to(r.title, { :controller => 'poems', :action => 'show', :id => r.id }) %><br />by <%= r.user.name %></div>
+  <% end -%>
+</div>
+
+<div id="friend_updates">
+  <hr />
+  <% unless @user.pending_friends_for_me.empty? -%>
+    <h2>These People Want to Be Your Friend:</h2>
+    <ul id="pending_friends">
+      <% @user.pending_friends_for_me.each do |p| -%>
+        <li id="pending_request<%= p.id %>"><%= link_to p.name, { :controller => 'users', :action => 'show', :id => p } %>: <%= link_to_remote 'approve', :url => { :controller => 'users', :action => 'approve_friend_request', :id => p.id } %> | <%= link_to_remote 'reject', :url => { :controller => 'users', :action => 'cancel_friend_request', :id => p.id } %></li>
+      <% end -%>
+    </ul>
+  <% end -%>
+  <% unless @user.pending_friends_by_me.empty? -%>
+    <h2>You've Requested Friendship:</h2>
+    <ul id="requested_friends">
+      <% @user.pending_friends_by_me.each do |p| -%>
+        <li id="pending_request<%= p.id %>"><%= link_to p.name, { :controller => 'users', :action => 'show', :id => p } %>: <%= link_to_remote 'X', :url => { :controller => 'users', :action => 'cancel_friend_request', :id => p.id } %></li>
+      <% end -%>
+    </ul>
+  <% end -%>
+  <% unless @user.friends.empty? -%>
+    <h2>Your Friends</h2>
+    <ul id="friends">
+      <% @user.friends.each do |f| -%>
+        <li id="friend<%= f.id %>"><%= link_to f.name, { :controller => 'users', :action => 'show', :id => f } %>: <%= link_to_remote 'axe', :url => { :controller => 'users', :action => 'remove_friendship', :id => f.id } %>
+      <% end -%>
+    </ul>
+  <% end -%>
+  <hr />
+</div>
 
 <%= link_to 'Edit My Profile', edit_user_path(@user) %>

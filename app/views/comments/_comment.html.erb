@@ -1,5 +1,5 @@
 <div class="comment">
-  <p><%= link_to(comment.user.name, { :controller => 'users', :action => 'show', :id => comment.user.id }) %> said (on <%= comment.created_at.to_s(:long) %>):</p>
+  <p><%= link_to_user(comment.user.name, comment.user.id) %> said (on <%= comment.created_at.to_s(:long) %>):</p>
   <p><%= comment.body %></p>
   <hr class="layout_rule" />
 </div>

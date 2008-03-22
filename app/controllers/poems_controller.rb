@@ -7,7 +7,7 @@ class PoemsController < ApplicationController
   # GET /poems
   # GET /poems.xml
   def index
-    @poems = Poem.paginate :page => params[:page], :per_page => 5, :order => "created_at DESC"
+    @poems = Poem.paginate :page => params[:page], :per_page => 10, :order => "created_at DESC"
 
     respond_to do |format|
       format.html # index.html.erb

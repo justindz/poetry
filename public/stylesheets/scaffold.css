@@ -125,6 +125,38 @@ input.new_poem {
   padding-bottom: .2em;
 }
 
+/* User Home */
+
+div#recent_poems {
+  padding-top: .5em;
+  clear: both;
+}
+
+.recent_poem {
+  border-right: thin solid #ccc;
+  padding-right: .5em;
+  padding-top: .5em;
+  margin-right: .5em;
+  float: left;
+  display: inline;
+}
+
+div#friend_updates {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  clear: both;
+}
+
+#friends, #pending_friends, #requested_friends {
+  margin: 0;
+  padding: 0;
+}
+
+#friends li, #pending_friends li, #requested_friends li {
+  list-style: none;
+  padding-bottom: .2em;
+}
+
 /* Pagination */
 
 .pagination {

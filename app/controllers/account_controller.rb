@@ -18,7 +18,7 @@ class AccountController < ApplicationController
   end
 
   def signup
-    @user = User.new(params[:user])   
+    @user = User.new(params[:user])
     return unless request.post?
     if captcha_valid?(params[:my_super_model][:captcha_id], params[:my_super_model][:captcha_validation])
       @user.save!

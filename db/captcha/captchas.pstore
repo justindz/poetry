@@ -1,28 +1,14 @@
-{:captchas[o:+FleskPlugins::CaptchaQuestionChallenge
-:@created_atu:	Time¶
-€ψϊϊ:@answer["3"
-three:	@ttli°:@question"=How many lines are in a typical Haiku of the form 5/7/5?:@id"-98f9c582924413952fce723ce77c4c1211c1b8b6o;
-;	["39"thirty nine;u;¶
-€φc0 ;
-i°;"vA sestina has six stanzas of six lines each followed by a three line tercet.  How many lines does a sestina have?;"-ed5ce5b39ac40a7ba832e61218c159602f5b4ff0o;
-;u;¶
-€Ζαγ ;	["3"
-three;
-i°;"=How many lines are in a typical Haiku of the form 5/7/5?;"-23cfb4cba7b4b17664f34bfce4ca72160cbe5567o;
-;	["3"
-three;u;¶
-€λ³6!;
-i°;"=How many lines are in a typical Haiku of the form 5/7/5?;"-81b928e7f5ed56727f2273a0ea2712a3b554a745o;
-;	["	oven"an oven"the oven;u;¶
-€"
-Κ1;
-i°;"nThe poet Sylvia Plath committed suicide by sticking her head in an oven.  What did she stick her head in?;"-b44fba5294fde04df6cbb916d2a481004fc4d791o;
-;	["	oven"an oven"the oven;u;¶
-€πLm5;
-i°;"nThe poet Sylvia Plath committed suicide by sticking her head in an oven.  What did she stick her head in?;"-5234889247aaee9db252a6cf8b89ccb1c914796eo;
-;u;¶
-€Ϊt$7;	["39"thirty nine;
-i°;"vA sestina has six stanzas of six lines each followed by a three line tercet.  How many lines does a sestina have?;"-916328bc547387e44978ae943235bf3a0c0dd86ao;
-;	["4"	four;u;¶
-€&ΰΝ8;
-i°;"2How many lines are there in a four line poem?;"-e6467c8697380158752a2b49ce154354b66904de
+{:captchas[	o:+FleskPlugins::CaptchaQuestionChallenge
+:@answer["3"
+three:@created_atu:	Time·
+€1EΥ:	@ttli°:@question"=How many lines are in a typical Haiku of the form 5/7/5?:@id"-a708b652d2d6ede2bb10e4fb8b9bf6970a27397ao;
+;["39"thirty nine;u;	·
+€JhΦ;
+i°;"vA sestina has six stanzas of six lines each followed by a three line tercet.  How many lines does a sestina have?;"-1bda68dea701a48c69e18d4f7e36a09b512f5cedo;
+;["3"
+three;u;	·
+€­γ§Ψ;
+i°;"=How many lines are in a typical Haiku of the form 5/7/5?;"-f9faeb8bee7864d05fd8f0672e524053704e80ceo;
+;["	oven"an oven"the oven;u;	·
+€L’κΨ;
+i°;"nThe poet Sylvia Plath committed suicide by sticking her head in an oven.  What did she stick her head in?;"-126f96bf0a54d42a0233a76bcb4b2fcb231a827b

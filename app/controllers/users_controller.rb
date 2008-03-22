@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   # GET /users/home.xml
   def home
     @user = current_user
-    @tags = @user.poems.tag_counts
+    @my_recent_poems = Poem.find(:all, :order => 'created_at desc', :limit => 5, :conditions => ["user_id = ?", @user.id])
+    @recent_poems = Poem.find(:all, :order => 'created_at desc', :limit => 5)
     
     respond_to do |format|
       format.html # show.html.erb
@@ -22,12 +23,6 @@ class UsersController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @user }
     end
-  end
-  
-  # GET /users/dashboard
-  # GET /users/dashboard.xml
-  def dashboard
-    @user = current_user
   end
    
   def favorite
