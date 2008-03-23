@@ -1,16 +1,16 @@
-<h1>Welcome home, <%= @user.name %>.</h1>
+<h1>Welcome home, <%= @user.name %> <%= avatar(@user) %></h1>
 
 <div id="my_recent_poems">
   <h2>Your Poems</h2>
-  <% @my_recent_poems.each do |r| -%>
-    <div class="recent_poem"><%= link_to(r.title, { :controller => 'poems', :action => 'show', :id => r.id }) %></div>
+  <% @my_recent_poems.each do |poem| -%>
+    <%= render :partial => 'poems/recent_poem', :locals => { :poem => poem } %>
   <% end -%>
 </div>
 
 <div id="recent_poems">
   <h2>Everyone's Poems</h2>
-  <% @recent_poems.each do |r| -%>
-    <div class="recent_poem"><%= link_to(r.title, { :controller => 'poems', :action => 'show', :id => r.id }) %><br />by <%= r.user.name %></div>
+  <% @recent_poems.each do |poem| -%>
+    <%= render :partial => 'poems/recent_poem', :locals => { :poem => poem } %>
   <% end -%>
 </div>
 
@@ -28,7 +28,7 @@
     <h2>You've Requested Friendship:</h2>
     <ul id="requested_friends">
       <% @user.pending_friends_by_me.each do |p| -%>
-        <li id="pending_request<%= p.id %>"><%= link_to p.name, { :controller => 'users', :action => 'show', :id => p } %>: <%= link_to_remote 'X', :url => { :controller => 'users', :action => 'cancel_friend_request', :id => p.id } %></li>
+        <li id="pending_request<%= p.id %>"><%= link_to p.name, { :controller => 'users', :action => 'show', :id => p } %>: <%= link_to_remote 'cancel', :url => { :controller => 'users', :action => 'cancel_friend_request', :id => p.id } %></li>
       <% end -%>
     </ul>
   <% end -%>
@@ -36,7 +36,7 @@
     <h2>Your Friends</h2>
     <ul id="friends">
       <% @user.friends.each do |f| -%>
-        <li id="friend<%= f.id %>"><%= link_to f.name, { :controller => 'users', :action => 'show', :id => f } %>: <%= link_to_remote 'axe', :url => { :controller => 'users', :action => 'remove_friendship', :id => f.id } %>
+        <li id="friend<%= f.id %>"><%= link_to f.name, { :controller => 'users', :action => 'show', :id => f } %>: <%= link_to_remote 'delete', :url => { :controller => 'users', :action => 'remove_friendship', :id => f.id } %>
       <% end -%>
     </ul>
   <% end -%>

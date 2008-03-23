@@ -13,15 +13,24 @@
   <div class="center" id="main_container">
     <div id="left_container">
       <%= image_tag('chapbook.png') %>
-      <p>Search</p>
-      <p>News</p>
+      <div id="search">
+        <%= text_field_tag '', 'does nothing yet', :size => 18 %><%= image_tag('search_24.png', :style => 'vertical-align: middle;') %>
+      </div>
+      <p>
+        <% if logged_in? -%>
+          <%= image_tag('mail_16.png') unless current_user.pending_friends.empty? %>
+        <% end -%>
+      </p>
+      <hr />
+      <h3>News</h3>
+      <p style="color: #333333;">Beta users will soon be needed to beat away at chapbook and identify bugs, security holes, usability issues, etc.  Please drop me a note if you're interested.</p>
     </div>
     <div id="content_container">
       <div id="nav">
         <ul id="miniflex">
-          <%= logged_in? ? tab((current_user.pending_friends.empty? ? 'Home' : 'Home (!)'), 'users', 'home') : tab('Home', 'users', 'home') %>
-          <%= tab('Write', 'poems', 'new') if logged_in? %>
-          <%= tab('Read', 'poems') %>
+          <%= tab('Home', 'users', 'home') if logged_in? %>
+          <%= tab('Write a Poem', 'poems', 'new') if logged_in? %>
+          <%= tab('Recent Poems', 'poems') %>
           <%= tab('Explore', 'tags') %>
           <% if logged_in? -%>
             <%= tab('Logout', "account", "logout") %>

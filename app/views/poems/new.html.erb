@@ -13,7 +13,7 @@
   </p>
   
   <p>
-    by <%= current_user.name %><br />
+    by <%= current_user.name %> <%= avatar(current_user) %><br />
     <input type="hidden" id="poem_user_id" name="poem[user_id]" value="<%= current_user.id -%>" />
   </p>
 

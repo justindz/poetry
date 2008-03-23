@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def home
     @user = current_user
     @my_recent_poems = Poem.find(:all, :order => 'created_at desc', :limit => 5, :conditions => ["user_id = ?", @user.id])
-    @recent_poems = Poem.find(:all, :order => 'created_at desc', :limit => 5)
+    @recent_poems = Poem.find(:all, :order => 'created_at desc', :limit => 5, :conditions => ["user_id != ?", @user.id])
     
     respond_to do |format|
       format.html # show.html.erb
@@ -134,6 +134,21 @@ class UsersController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+  
+  def upload_avatar
+    @user = User.find(params[:user][:id])
+    @avatar = Avatar.new(params[:avatar])
+    @avatar.save
+    @user.avatar = @avatar
+    
+    if @user.save
+      flash[:notice] = "Avatar added."
+      render :action => "edit"
+    else
+      flash[:error] = "Avatar upload failed."
+      render :action => "edit"
     end
   end
  

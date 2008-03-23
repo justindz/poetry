@@ -7,7 +7,7 @@ body {
 }
 
 body, p, ol, ul, td {
-  font-family: helvetica, verdana, arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 85%;
 }
 
@@ -32,7 +32,7 @@ input, select, option {
   font-size: 85%;
 }
 
-input[type="submit"], input[type="button"] {
+input[type="submit"]:enabled, input[type="button"]:enabled {
   color: white;
   background-color: #336699;
 }
@@ -62,12 +62,19 @@ div#left_container {
   float: left;
   width: 12em;
   background-color: #6699CC;
+  padding-top: .5em;
+  padding-left: .3em;
+  padding-right: .2em;
+}
+
+div#search {
+  margin-top: 1em;
 }
 
 div#content_container {
   float: left;
   width: 50em;
-  border: thin solid #6699CC;
+  border: medium solid #6699CC;
   border-top: none;
 }
 
@@ -82,7 +89,7 @@ div#body_container {
 div#footer {
   padding-top: .2em;
   background-color: #6699CC;
-  clear: both;
+  clear: left;
 }
 
 /* Poem */
@@ -108,7 +115,7 @@ input.new_poem {
   width: 60em;
 }
 
-#revisions_list, #tags_list {
+#revisions_list, #tags {
   margin: 0;
   padding: 0;
 }
@@ -119,7 +126,7 @@ input.new_poem {
   padding-bottom: .2em;
 }
 
-#tags_list li {
+#tags li {
   list-style: none;
   margin-left: 0px;
   padding-bottom: .2em;
@@ -139,6 +146,7 @@ div#recent_poems {
   margin-right: .5em;
   float: left;
   display: inline;
+  text-align: center;
 }
 
 div#friend_updates {
@@ -198,7 +206,7 @@ div#friend_updates {
 #miniflex {
   width: 100%;
   float: left;
-  padding: 0;
+  padding: 0pt 0pt 0.2em;
   margin: 0;
   background-color: #6699CC;
   }
@@ -208,6 +216,7 @@ div#friend_updates {
   margin: 0; 
   padding-left: .2em;
   padding-top: .2em;
+  padding-bottom: .2em;
   display: inline;
   list-style: none;
   }
@@ -220,8 +229,7 @@ div#friend_updates {
   text-decoration: none;
   color: white;
   background-color: #6699CC;
-  padding: .3em;
-  padding-bottom: 0;
+  padding: .2em;
   }
 
 #miniflex a.active:link, #miniflex a.active:visited, #miniflex a:hover {

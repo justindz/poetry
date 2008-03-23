@@ -1,3 +1,4 @@
+<h1><%= @user.name %> <%= avatar(@user) %></h1>
 <p>
   <% if logged_in? and current_user != @user -%>
     <%= link_to_remote 'Request Friendship', :url => { :controller => 'users', :action => 'request_friend', :id => @user.id }, :html => { :id => 'request_friend' } unless current_user.is_friends_or_pending_with?(@user) %>
@@ -9,33 +10,16 @@
   <% end -%>
 </p>
 <p>
-  <b>Name:</b>
-  <%=h @user.name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%=h @user.password %>
-</p>
-
-<p>
   <b>Member since:</b>
   <%= @user.created_at.to_s(:long) %>
 </p>
-
-<h2>My Favorite Poems:</h2>
+<h2>Favorite Poems:</h2>
 <ul>
 <% @user.favorites.each do |favorite| %>
   <li><%= link_to(favorite.poem.title, { :controller => 'poems', :action => 'show', :id => favorite.poem.id }) %></li>
 <% end %>
 </ul>
-
-<h2>My Tag Cloud:</h2>
+<h2>Tag Cloud:</h2>
 <div id="tag_cloud">
   <% tag_cloud @tags, %w(smaller small medium large) do |tag, css_class| %>
     <%= link_to tag.name, { :controller => 'tags', :action => 'show', :id => tag.name }, :class => css_class %>

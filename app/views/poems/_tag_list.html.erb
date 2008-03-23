@@ -1,6 +1,8 @@
-<h2>Tags</h2>
-<ul id="tags_list">
-  <% @poem.tag_list.each do |tag| %>
-    <li><%= link_to(tag, { :controller => 'tags', :action => 'show', :id => tag }) %></li>
-  <% end %>
-</ul>
+<div id="tag_list">
+  <h2>Tags</h2>
+  <ul id="tags">
+    <% @poem.tag_list.each do |tag| %>
+      <li><%= link_to(tag, { :controller => 'tags', :action => 'show', :id => tag }) %></li>
+    <% end %>
+  </ul>
+</div>

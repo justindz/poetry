@@ -1,4 +1,4 @@
-<h1>Editing user</h1>
+<h1>Edit Your Profile</h1>
 
 <%= error_messages_for :user %>
 
@@ -7,30 +7,35 @@
     <b>Name</b><br />
     <%= f.text_field :name %>
   </p>
-
   <p>
     <b>Email</b><br />
     <%= f.text_field :email %>
   </p>
-
   <p>
     <b>Password</b><br />
     <%= f.text_field :password %>
   </p>
-
   <p>
     <b>Created at</b><br />
     <%= f.date_select :created_at %>
   </p>
-
   <p>
     <b>Updated at</b><br />
     <%= f.date_select :updated_at %>
   </p>
-
   <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
 
-<%= link_to 'Cancel', @user %>
+<div id="profile_image"><%= avatar(@user) %></div>
+
+<% form_tag({ :controller => "users", :action => "upload_avatar" }, :multipart => true ) do -%>
+  <label for="image">Upload an avatar (48px x 48px):</label><br /><br />
+  <%= hidden_field 'user', 'id', :value => @user.id %>
+  <%= file_field 'avatar', 'uploaded_data' %>
+  <%= submit_tag 'Upload' %>
+<% end -%>
+<p>
+  <%= link_to 'Cancel', @user %>
+</p>

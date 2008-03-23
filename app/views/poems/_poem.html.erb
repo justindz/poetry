@@ -10,7 +10,7 @@
     <%= @poem.body %>
   </p>
   <p style="padding-top: 2em; border-top: medium solid #888; font-size: 85%;">
-    by <%= link_to_user(@poem.user.name, @poem.user.id) %>
+    by <%= link_to_user(@poem.user.name, @poem.user.id) %> <%= avatar(current_user) %>
   </p>
   <p style="font-size: 85%;">
     Published <%= @poem.created_at.to_s(:long) %>, revised <%= @poem.updated_at.to_s(:long) %>
