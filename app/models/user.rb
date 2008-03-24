@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :poems
   has_many :comments
   has_many :favorites
+  has_many :chapbooks
   has_one :avatar
   has_many_friends
   

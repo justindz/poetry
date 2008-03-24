@@ -10,7 +10,7 @@ module ApplicationHelper
     if logged_in?
       (id == current_user.id) ? link_to('You', home_path()) : link_to(user, show_user_path(id))
     else
-      link_to(user, show_user_path(id))
+      link_to(user, user_path(id))
     end
   end
   

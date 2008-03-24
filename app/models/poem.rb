@@ -3,6 +3,7 @@ class Poem < ActiveRecord::Base
   acts_as_taggable
   
   belongs_to :user
+  has_and_belongs_to_many :chapbooks
   has_many :comments
   has_many :favorites
   has_many :revisions, :order => 'created_at DESC'

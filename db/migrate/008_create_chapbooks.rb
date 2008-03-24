@@ -9,9 +9,18 @@ class CreateChapbooks < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    create_table :chapbooks_poems do |t|
+      t.integer :chapbook_id
+      t.integer :poem_id
+      t.datetime :created_at
+ 
+      t.timestamps
+    end
   end
 
   def self.down
     drop_table :chapbooks
+    drop_table :chapbooks_poems
   end
 end
