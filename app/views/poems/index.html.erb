@@ -1,11 +1,3 @@
 <h1>Recent Poems</h1>
 
-<% for poem in @poems %>
-<div class="poem">
-  <h2><%= avatar(poem.user) %> <%= link_to_user(poem.user.name, poem.user.id) %>: <%= link_to(poem.title, {:controller => 'poems', :action => 'show', :id => poem.id }) %></h2>
-  <p><%= truncate poem.body_plain, 100, "[more]" %></p>
-  <p>published <%= poem.created_at.to_s(:long) %>, revised <%= poem.updated_at.to_s(:long) %></p>
-  <hr />
-</div>
-<% end %>
-<%= will_paginate @poems %>
+<%= render :partial => "poem_list", :object => @poems %>

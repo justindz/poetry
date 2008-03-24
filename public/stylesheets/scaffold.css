@@ -84,6 +84,7 @@ div#nav {
 
 div#body_container {
   padding: 2em;
+  min-height: 300px;
 }
 
 div#footer {
@@ -202,6 +203,17 @@ div#friend_updates {
 }
 
 /* Miniflex Nav Link Tabs from SimpleBits.com */
+
+#left_container_login {
+  background-color: #6699CC;
+  color: white;
+  font-weight: bold;
+}
+
+#left_container_login:hover {
+  background-color: white;
+  color: #6699CC;
+}
 
 #miniflex {
   width: 100%;

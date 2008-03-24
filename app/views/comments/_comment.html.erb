@@ -1,4 +1,4 @@
 <div class="comment">
-  <p><%= avatar(current_user) %> <%= link_to_user(comment.user.name, comment.user.id) %> said (on <%= comment.created_at.to_s(:long) %>):</p>
+  <p><%= avatar(comment.user) %> <%= link_to_user(comment.user.name, comment.user.id) %> said (on <%= comment.created_at.to_s(:long) %>):</p>
   <p><%= comment.body %></p>
 </div>

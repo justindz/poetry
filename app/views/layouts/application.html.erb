@@ -19,6 +19,8 @@
       <p>
         <% if logged_in? -%>
           <%= image_tag('mail_16.png') unless current_user.pending_friends.empty? %>
+        <% else -%>
+          <%= link_to('Login', { :controller => 'account', :action => 'login' }, :id => "left_container_login") %>
         <% end -%>
       </p>
       <hr />
@@ -44,7 +46,7 @@
       </div>
       <div id="footer">
         <ul id="miniflex">
-          <%= tab('About', 'poems', 'about') %>
+          <%= tab('About', 'about') %>
         </ul>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <div class="recent_poem">
-  <%= link_to(poem.title, { :controller => 'poems', :action => 'show', :id => poem.id }) %><br />
+  <%= link_to(poem.title, poem_path(poem)) %><br />
   <%= mini_avatar(poem.user) %><br />
   by <%= link_to_user(poem.user.name, poem.user.id) %><br />
 </div>

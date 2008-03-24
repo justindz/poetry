@@ -14,7 +14,7 @@ class TagsController < ApplicationController
   
   def show
     @tag = params[:id]
-    @poems = Poem.paginate_tagged_with @tag, :page => params[:page], :per_page => 5, :order => "created_at ASC"
+    @poems = Poem.paginate_tagged_with @tag, :page => params[:page], :per_page => 5, :order => "created_at desc"
  
     respond_to do |format|
       format.html # show.html.erb
