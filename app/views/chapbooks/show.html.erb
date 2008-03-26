@@ -1,28 +1,35 @@
 <p>
-  <b>User:</b>
-  <%=h @chapbook.user_id %>
+  <b>Editor:</b>
+  <%=h @chapbook.user.name %>
 </p>
-
 <p>
   <b>Created at:</b>
   <%=h @chapbook.created_at %>
 </p>
-
 <p>
   <b>Updated at:</b>
   <%=h @chapbook.updated_at %>
 </p>
-
 <p>
   <b>Title:</b>
   <%=h @chapbook.title %>
 </p>
-
 <p>
   <b>Introduction:</b>
   <%=h @chapbook.introduction %>
 </p>
-
-
-<%= link_to 'Edit', edit_chapbook_path(@chapbook) %> |
-<%= link_to 'Back', chapbooks_path %>
+<%= render :partial => 'poems/tag_list', :locals => { :taggable => @chapbook } -%>
+<p>
+  <% if logged_in? -%>
+    <% form_remote_tag(:url => { :action => 'tag' }) do -%>
+      <%= text_field :chapbook, :tags, :value => "", :size => "12" %>
+      <%= hidden_field :chapbook, :id %>
+      <%= submit_tag 'Add Tags' %>
+    <% end -%>
+  <% end -%>
+</p>
+<p>
+  <% if logged_in? -%>
+    <%= link_to 'Edit', edit_chapbook_path(@chapbook) if current_user == @chapbook.user %>
+  <% end -%>
+</p>

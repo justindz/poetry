@@ -1,6 +1,5 @@
 {:captchas[o:+FleskPlugins::CaptchaQuestionChallenge
-:@answer["	oven"an oven"the oven:@created_atu:	Time·
-€L’êØ:	@ttli°:@question"nThe poet Sylvia Plath committed suicide by sticking her head in an oven.  What did she stick her head in?:@id"-126f96bf0a54d42a0233a76bcb4b2fcb231a827bo;
-;u;	â
-€¢Á{;["39"thirty nine;
-i°;"vA sestina has six stanzas of six lines each followed by a three line tercet.  How many lines does a sestina have?;"-2c96be77000b174a74ed15a5ec6fdd993d19474b
+:@answer["39"thirty nine:@created_atu:	Timeâ
+€¢Á{:	@ttli°:@question"vA sestina has six stanzas of six lines each followed by a three line tercet.  How many lines does a sestina have?:@id"-2c96be77000b174a74ed15a5ec6fdd993d19474bo;
+;u;	€õãn;["	oven"an oven"the oven;
+i°;"nThe poet Sylvia Plath committed suicide by sticking her head in an oven.  What did she stick her head in?;"-886dc4224cea3d6076963f9719831d3e8054e904

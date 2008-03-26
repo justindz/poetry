@@ -106,9 +106,9 @@ div#poem_actions {
   width: 10em;
 }
 
-#favorite, #favorited {
-  font-size: large;
-  padding: .2em;
+.favorite_link, .favorite_link:hover {
+  background-color: white;
+  color: white;
 }
 
 input.new_poem {

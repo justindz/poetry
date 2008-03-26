@@ -1,7 +1,7 @@
 <div id="tag_list">
   <h2>Tags</h2>
   <ul id="tags">
-    <% @poem.tag_list.each do |tag| %>
+    <% taggable.tag_list.each do |tag| %>
       <li><%= link_to(tag, tag_path(tag)) %></li>
     <% end %>
   </ul>

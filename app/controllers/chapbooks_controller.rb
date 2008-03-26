@@ -4,7 +4,7 @@ class ChapbooksController < ApplicationController
   # GET /chapbooks
   # GET /chapbooks.xml
   def index
-    @chapbooks = Chapbook.find(:all)
+    @chapbooks = Chapbook.paginate :page => params[:page], :per_page => 10, :order => "created_at DESC"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,15 +38,33 @@ class ChapbooksController < ApplicationController
   def edit
     @chapbook = Chapbook.find(params[:id])
   end
+  
+  # GET /chapbooks/organize/1
+  def organize
+    @chapbook = Chapbook.find(params[:id])
+  end
+  
+  def tag
+    @chapbook = Chapbook.find(params[:chapbook][:id])
+    @chapbook.tag_list.add(params[:chapbook][:tags], :parse => true)
+    
+    if @chapbook.save_tags
+      render :update do |page|
+        page.replace 'tag_list', :partial => 'poems/tag_list', :object => @chapbook
+        page.visual_effect :highlight, 'tag_list', :startcolor => '#3399ff', :restorecolor => '#ffffff'
+      end
+    end
+  end
 
   # POST /chapbooks
   # POST /chapbooks.xml
   def create
     @chapbook = Chapbook.new(params[:chapbook])
+    @chapbook.user = current_user
 
     respond_to do |format|
       if @chapbook.save
-        flash[:notice] = 'Chapbook was successfully created.'
+        flash[:notice] = "Chapbook was successfully created.  Go find some <a href=\"#{url_for(poems_path())}>poems to include</a>.\""
         format.html { redirect_to(@chapbook) }
         format.xml  { render :xml => @chapbook, :status => :created, :location => @chapbook }
       else

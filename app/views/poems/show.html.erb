@@ -1,4 +1,11 @@
 <div id="poem_left_column">
+  <p>
+    <% if logged_in? -%>
+      <span id="favorite" <%= 'style="display: none;"' if current_user.has_favorite?(@poem.id) %>><%= link_to_remote(image_tag('favorite_32.png'), :url => { :controller => 'users', :action => 'favorite', :id => @poem.id }, :html => { :class => 'favorite_link' }) %></span>
+      <span id="favorited" <%= 'style="display: none;"' unless current_user.has_favorite?(@poem.id) %>><%= link_to_remote(image_tag('favorited_32.png'), :url => { :controller => 'users', :action => 'remove_favorite', :id => @poem.id }, :html => { :class => 'favorite_link' }) %></span><br />
+      <span id="add_to_chapbook">Add to chapbook</span>
+    <% end -%>
+  </p>
   <%= render :partial => 'poem', :locals => { :poem => @poem } -%>
   <%= render :partial => 'edit_poem', :locals => { :poem => @poem } -%>
   <div id="comparison"></div>
@@ -35,7 +42,7 @@
     %>
   </p>
   <%= render :partial => "poem_history", :object => @poem %>
-  <%= render :partial => 'tag_list', :locals => { :poem => @poem } -%>
+  <%= render :partial => 'tag_list', :locals => { :taggable => @poem } -%>
   <p>
     <% if logged_in? -%>
       <% form_remote_tag(:url => { :action => 'tag' }) do -%>

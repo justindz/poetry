@@ -32,7 +32,9 @@
         <ul id="miniflex">
           <%= tab('Home', 'users', 'home') if logged_in? %>
           <%= tab('Write a Poem', 'poems', 'new') if logged_in? %>
-          <%= tab('Recent Poems', 'poems') %>
+          <%= tab('Read Poems', 'poems') %>
+          <%= tab('Publish a Chapbook', 'chapbooks', 'new') if logged_in? %>
+          <%= tab('Read Chapbooks', 'chapbooks') %>
           <%= tab('Explore', 'tags') %>
           <% if logged_in? -%>
             <%= tab('Logout', "account", "logout") %>

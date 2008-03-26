@@ -39,6 +39,19 @@ class PoemsController < ApplicationController
     end
   end
   
+  def add_to_chapbook
+    @poem = Poem.find(params[:poem][:id])
+    @chapbook = Chapbook.find(params[:chapbook][:id])
+    @chapbook << @poem
+    
+    if @chapbook.save
+      render :update do |page|
+        page.replace 'add_to_chapbook', :partial => 'poems/chapbook_membership', :object => @poem
+        page.visual_effect :highlight, 'chapbook_membership_list', :startcolor => '#3399ff', :restorecolor => '#ffffff'
+      end
+    end
+  end
+  
   def compare
     if params[:poem_id]
       @poem = Poem.find(params[:poem_id])
