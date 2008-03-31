@@ -24,6 +24,16 @@ class UsersController < ApplicationController
       format.xml  { render :xml => @user }
     end
   end
+  
+  def favorites
+    @user = User.find(params[:user_id])
+    @favorites = @user.favorites
+    
+    respond_to do |format|
+      format.html # favorites.html.erb
+      format.xml { render :xoml => @favorites }
+    end
+  end
    
   def favorite
     @favorite = Favorite.new

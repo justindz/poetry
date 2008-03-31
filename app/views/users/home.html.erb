@@ -14,6 +14,8 @@
   <% end -%>
 </div>
 
+<p><h2><%= link_to('My Favorites', favorites_path(@user)) %></h2></p>
+
 <div id="friend_updates">
   <hr />
   <% unless @user.pending_friends_for_me.empty? -%>

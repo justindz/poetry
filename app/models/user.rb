@@ -28,7 +28,11 @@ class User < ActiveRecord::Base
   def find_favorite (poem_id)
     Favorite.find(:first, :conditions => ["user_id = ? and poem_id = ?", id, poem_id])
   end
- 
+
+  def recent_chapbooks
+    Chapbook.find(:all, :conditions => ["user_id = ?", id], :order => "created_at desc", :limit => 10)
+  end 
+
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(email, password)
     u = find_by_email(email) # need to get the salt

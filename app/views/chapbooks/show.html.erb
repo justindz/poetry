@@ -18,6 +18,12 @@
   <b>Introduction:</b>
   <%=h @chapbook.introduction %>
 </p>
+<p>Poems:</p>
+<ul>
+  <% @chapbook.poems.each do |p| -%>
+    <li><%= p.title %></li>
+  <% end -%>
+</ul>
 <%= render :partial => 'poems/tag_list', :locals => { :taggable => @chapbook } -%>
 <p>
   <% if logged_in? -%>

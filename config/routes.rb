@@ -1,8 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.home 'users/home', :controller => 'users', :action => 'home'
+  map.favorites 'users/favorites/:user_id', :controller => 'users', :action => 'favorites'
   map.about 'about', :controller => 'poems', :action => 'about'
   map.compare 'poems/compare/:poem_id/:revision_id', :controller => 'poems', :action => 'compare'
   map.organize 'chapbooks/organize', :controller => 'chapbooks', :action => 'organize'
+  map.add_to_chapbook 'poems/add_to_chapbook/:poem_id/:chapbook_id', :controller => 'poems', :action => 'add_to_chapbook'
   
   map.resources :chapbooks
   map.resources :tags

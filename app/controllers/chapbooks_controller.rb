@@ -50,7 +50,7 @@ class ChapbooksController < ApplicationController
     
     if @chapbook.save_tags
       render :update do |page|
-        page.replace 'tag_list', :partial => 'poems/tag_list', :object => @chapbook
+        page.replace 'tag_list', :partial => 'poems/tag_list', :locals => { :taggable => @chapbook }
         page.visual_effect :highlight, 'tag_list', :startcolor => '#3399ff', :restorecolor => '#ffffff'
       end
     end
@@ -64,7 +64,7 @@ class ChapbooksController < ApplicationController
 
     respond_to do |format|
       if @chapbook.save
-        flash[:notice] = "Chapbook was successfully created.  Go find some <a href=\"#{url_for(poems_path())}>poems to include</a>.\""
+        flash[:notice] = "Chapbook was successfully created.  Go find some <a href=\"#{url_for(poems_path())}\">poems to include</a>.\""
         format.html { redirect_to(@chapbook) }
         format.xml  { render :xml => @chapbook, :status => :created, :location => @chapbook }
       else

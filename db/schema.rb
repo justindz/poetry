@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 9) do
     t.text     "introduction"
   end
 
-  create_table "chapbooks_poems", :force => true do |t|
+  create_table "chapbooks_poems", :id => false, :force => true do |t|
     t.integer  "chapbook_id"
     t.integer  "poem_id"
     t.datetime "created_at"

@@ -1,0 +1,5 @@
+<% unless @favorites.empty? -%>
+  <% @favorites.each do |f| -%>
+    <p><%= f.poem.name %></p>
+  <% end -%>
+<% end -%>

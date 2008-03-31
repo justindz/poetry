@@ -1,3 +1,10 @@
 <div id="chapbook_membership_list">
-  Published in <%= pluralize('chapbook', @poem.chapbooks) %>: [list]
+  <% unless @poem.chapbooks.empty? -%>
+    <h2>In Chapbooks</h2>
+    <p>
+      <% @poem.chapbooks.each do |c| -%>
+        <%= link_to("#{c.title} by #{c.user.name}", chapbook_path(c)) %> | 
+      <% end -%>
+    </p>
+  <% end -%>
 </div>

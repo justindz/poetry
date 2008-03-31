@@ -9,11 +9,12 @@
   <p>
     <%= @poem.body %>
   </p>
+  <div id="comparison"></div>
   <p style="padding-top: 2em; border-top: medium solid #888; font-size: 85%;">
     by <%= link_to_user(@poem.user.name, @poem.user.id) %> <%= avatar(@poem.user) %>
   </p>
   <p style="font-size: 85%;">
-    Published <%= @poem.created_at.to_s(:long) %>, revised <%= @poem.updated_at.to_s(:long) %>
+    @ <%= @poem.created_at.to_s(:long) %>, revised <%= @poem.updated_at.to_s(:long) %>
   </p>
   <%= button_to_function "Remove Distractions", "poem.removeDistractions();", :id => 'remove_distractions' %>
   <%= button_to_function "Restore Distractions", "poem.restoreDistractions();", :id => 'restore_distractions', :style => 'visibility: hidden;' %>

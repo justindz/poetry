@@ -1,14 +1,23 @@
 <div id="poem_left_column">
   <p>
     <% if logged_in? -%>
-      <span id="favorite" <%= 'style="display: none;"' if current_user.has_favorite?(@poem.id) %>><%= link_to_remote(image_tag('favorite_32.png'), :url => { :controller => 'users', :action => 'favorite', :id => @poem.id }, :html => { :class => 'favorite_link' }) %></span>
-      <span id="favorited" <%= 'style="display: none;"' unless current_user.has_favorite?(@poem.id) %>><%= link_to_remote(image_tag('favorited_32.png'), :url => { :controller => 'users', :action => 'remove_favorite', :id => @poem.id }, :html => { :class => 'favorite_link' }) %></span><br />
-      <span id="add_to_chapbook">Add to chapbook</span>
+      <% unless current_user == @poem.user -%>
+        <span id="favorite" <%= 'style="display: none;"' if current_user.has_favorite?(@poem.id) %>><%= link_to_remote(image_tag('favorite_32.png'), :url => { :controller => 'users', :action => 'favorite', :id => @poem.id }, :html => { :class => 'favorite_link' }) %></span>
+        <span id="favorited" <%= 'style="display: none;"' unless current_user.has_favorite?(@poem.id) %>><%= link_to_remote(image_tag('favorited_32.png'), :url => { :controller => 'users', :action => 'remove_favorite', :id => @poem.id }, :html => { :class => 'favorite_link' }) %></span>
+      <% end -%>
+      <span id="add_to_chapbook"><%= link_to_function("Add to Chapbook", "Element.show('add_to_chapbook_list')") %></span><br />
+      <div id="add_to_chapbook_list" style="display: none;">
+        <ul>
+          <% current_user.recent_chapbooks.each do |c| -%>
+            <%= link_to_remote("<li>#{c.title}</li>", :url => add_to_chapbook_path(:poem_id => @poem.id, :chapbook_id => c.id)) unless c.poems.include?(@poem) %>
+          <% end -%>
+        </ul>
+        <p><%= link_to('Create a new Chapbook', new_chapbook_path()) %></p>
+      </div>
     <% end -%>
   </p>
   <%= render :partial => 'poem', :locals => { :poem => @poem } -%>
   <%= render :partial => 'edit_poem', :locals => { :poem => @poem } -%>
-  <div id="comparison"></div>
   <div id="comments">
     <h2>Comments</h2>
     <% @poem.comments.each do |comment| -%>
@@ -21,7 +30,9 @@
       <%= hidden_field :comment, :user_id, :value => current_user.id %>
       <%= hidden_field :comment, :poem_id, :value => @poem.id %>
       <%= hidden_field :comment, :is_private, :value => 'false' %>
-      <%= submit_tag 'Add Comment' %>
+      <p>
+        <%= submit_tag 'Add Comment' %>
+      </p>
     <% end -%>
   <% end -%>
 </div>
@@ -41,6 +52,7 @@
       end 
     %>
   </p>
+  <%= render :partial => 'chapbook_membership', :locals => { :poem => @poem } -%>
   <%= render :partial => "poem_history", :object => @poem %>
   <%= render :partial => 'tag_list', :locals => { :taggable => @poem } -%>
   <p>

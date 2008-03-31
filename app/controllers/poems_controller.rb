@@ -33,20 +33,20 @@ class PoemsController < ApplicationController
     
     if @poem.save_tags
       render :update do |page|
-        page.replace 'tag_list', :partial => 'tag_list', :object => @poem
+        page.replace 'tag_list', :partial => 'tag_list', :locals => { :taggable => @poem }
         page.visual_effect :highlight, 'tag_list', :startcolor => '#3399ff', :restorecolor => '#ffffff'
       end
     end
   end
   
   def add_to_chapbook
-    @poem = Poem.find(params[:poem][:id])
-    @chapbook = Chapbook.find(params[:chapbook][:id])
-    @chapbook << @poem
+    @poem = Poem.find(params[:poem_id])
+    @chapbook = Chapbook.find(params[:chapbook_id])
     
-    if @chapbook.save
+    if @chapbook.poems.push(@poem)
       render :update do |page|
-        page.replace 'add_to_chapbook', :partial => 'poems/chapbook_membership', :object => @poem
+        page.hide 'add_to_chapbook'
+        page.replace 'chapbook_membership_list', :partial => 'poems/chapbook_membership', :object => @poem
         page.visual_effect :highlight, 'chapbook_membership_list', :startcolor => '#3399ff', :restorecolor => '#ffffff'
       end
     end
