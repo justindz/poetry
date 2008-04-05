@@ -72,6 +72,9 @@ module AuthenticatedSystem
           headers["WWW-Authenticate"] = %(Basic realm="Web Password")
           render :text => "Could't authenticate you", :status => '401 Unauthorized'
         end
+        accepts.js do  
+          render(:update) { |page| page.redirect_to(:controller => '/account', :action => 'login') }  
+        end 
       end
       false
     end  

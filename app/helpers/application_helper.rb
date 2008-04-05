@@ -8,7 +8,7 @@ module ApplicationHelper
   
   def link_to_user(user, id = nil)
     if logged_in?
-      (id == current_user.id) ? link_to('You', home_path()) : link_to(user, show_user_path(id))
+      (id == current_user.id) ? link_to('You', home_path()) : link_to(user, user_path(id))
     else
       link_to(user, user_path(id))
     end

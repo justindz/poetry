@@ -1,5 +1,6 @@
 class PoemsController < ApplicationController
   before_filter :login_required, :except => [:index, :show, :about, :compare]
+  protect_from_forgery :except => :create
   
   def about
   end
@@ -8,6 +9,7 @@ class PoemsController < ApplicationController
   # GET /poems.xml
   def index
     @poems = Poem.paginate :page => params[:page], :per_page => 10, :order => "created_at DESC"
+    @tags = Poem.tag_counts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -100,13 +102,20 @@ class PoemsController < ApplicationController
   # POST /poems
   # POST /poems.xml
   def create
-    @poem = Poem.new(params[:poem])
+    if request.xhr?
+      @poem = Poem.new
+      params[:title].empty? ? @poem.title = 'Untitled' : @poem.title = params[:title]
+      @poem.body = params[:body]
+      @poem.user = current_user
+    else
+      @poem = Poem.new(params[:poem])
+    end
 
     respond_to do |format|
       if @poem.save
         flash[:notice] = 'Poem was successfully created.'
         format.html { redirect_to(@poem) }
-        format.xml  { render :xml => @poem, :status => :created, :location => @poem }
+        format.xml  { render :xml => @poem.to_xml, :status => :created, :location => @poem }
       else
         flash[:error] = "Problem: #{@poem.errors}"
         format.html { render :action => "new" }

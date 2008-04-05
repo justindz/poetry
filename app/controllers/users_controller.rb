@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def show   
     @user = User.find(params[:id])
     @tags = @user.poems.tag_counts
+    @poems = @user.poems
  
     respond_to do |format|
       format.html # show.html.erb

@@ -48,9 +48,14 @@ module AuthenticatedSystem
     #   skip_before_filter :login_required
     #
     def login_required
-      username, passwd = get_auth_data
-      self.current_user ||= User.authenticate(username, passwd) || :false if username && passwd
-      logged_in? && authorized? ? true : access_denied
+      if request.xhr? && (request.request_uri == '/poems/create')
+        self.current_user = authenticate_with_http_basic { |u, p| User.authenticate(u, p) || :false if u && p }
+        logged_in? && authorized? ? true : access_denied
+      else
+        username, passwd = get_auth_data
+        self.current_user ||= User.authenticate(username, passwd) || :false if username && passwd
+        logged_in? && authorized? ? true : access_denied
+      end
     end
     
     # Redirect as appropriate when an access request fails.
@@ -72,6 +77,9 @@ module AuthenticatedSystem
           headers["WWW-Authenticate"] = %(Basic realm="Web Password")
           render :text => "Could't authenticate you", :status => '401 Unauthorized'
         end
+        accepts.js do  
+          render(:update) { |page| page.redirect_to(:controller => '/account', :action => 'login') }  
+        end 
       end
       false
     end  

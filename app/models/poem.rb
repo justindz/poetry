@@ -1,6 +1,7 @@
 class Poem < ActiveRecord::Base
   acts_as_textiled :body
   acts_as_taggable
+  acts_as_ferret :fields => [ :title, :body ]
   
   belongs_to :user
   has_and_belongs_to_many :chapbooks

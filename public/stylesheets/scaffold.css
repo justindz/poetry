@@ -150,6 +150,10 @@ div#recent_poems {
   text-align: center;
 }
 
+p#favorites_link {
+  clear: both;
+}
+
 div#friend_updates {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -251,14 +255,14 @@ div#friend_updates {
   
 /* Diff */
 
-.diffdel, del.diffmod { color: red; }
+.diffdel, del.diffmod { color: grey; }
 .diffins, ins.diffmod { background: #33FF33; }
 
 /* Tag Cloud */
 
 div#tag_cloud {
   text-align: center;
-  margin-top: 3em;
+  border: thin solid #6699CC;
 }
 
 .smaller, .small, .medium, .large {
