@@ -17,7 +17,6 @@
 <% @poems.each do |poem| -%>
   <%= render :partial => 'poems/recent_poem', :locals => { :poem => poem } %>
 <% end -%>
-<%= link_to('Show All', []) %>
 <div style="clear: both; padding-top: 1em;">
   <h2>Favorite Poems</h2>
 </div>

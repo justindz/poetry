@@ -115,7 +115,7 @@ class PoemsController < ApplicationController
       if @poem.save
         flash[:notice] = 'Poem was successfully created.'
         format.html { redirect_to(@poem) }
-        format.xml  { render :xml => @poem.to_xml, :status => :created, :location => @poem }
+        format.xml  { render :text => poem_url(@poem) }
       else
         flash[:error] = "Problem: #{@poem.errors}"
         format.html { render :action => "new" }
