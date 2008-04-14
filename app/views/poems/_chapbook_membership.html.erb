@@ -1,6 +1,6 @@
 <div id="chapbook_membership_list">
   <% unless @poem.chapbooks.empty? -%>
-    <h2>In Chapbooks</h2>
+    <h2>Published In</h2>
     <p>
       <% @poem.chapbooks.each do |c| -%>
         <%= link_to("#{c.title} by #{c.user.name}", chapbook_path(c)) %> | 

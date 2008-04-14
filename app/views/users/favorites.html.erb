@@ -1,7 +1,8 @@
 <% if @favorites.empty? -%>
     <h2>You don't have any favorites.  Why don't you <%= link_to('go find some?', poems_path()) %></a>
 <% else -%>
+  <h2>Your Favorite Poems</h2>
   <% @favorites.each do |f| -%>
-    <p><%= f.poem.title %></p>
+    <p><%= link_to(f.poem.title, poem_path(f.poem)) %></p>
   <% end -%>
 <% end -%>

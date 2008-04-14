@@ -1,4 +1,23 @@
-{:captchas[o:+FleskPlugins::CaptchaQuestionChallenge
-:@answer["4"	four:@created_atu:	Time°Äwvb:	@ttli∞:@id"-bc3ecfc308c6c335711ff39a8c17a168476dd7f2:@question"2How many lines are there in a four line poem?o;
-;["4"	four;u;	∞ÄôKËÄ;
-i∞;"-7a99a0ae8067f463b37b2c0e88658474f9cd6043;"2How many lines are there in a four line poem?
+{:captchas[o:+FleskPlugins::CaptchaQuestionChallenge
+:@answer["3"
+three:@created_atu:	TimeıÄ{x:	@ttli∞:@id"-0e871c8c38e79c7cc15d0fffe976e6f831c31273:@question"=How many lines are in a typical Haiku of the form 5/7/5?o;
+;u;	ıÄŒ⁄y;["39"thirty nine;"-9dcde4184577cd86cc463872c4792094cfbee47a;
+i∞;"vA sestina has six stanzas of six lines each followed by a three line tercet.  How many lines does a sestina have?o;
+;["4"	four;u;	ıÄçÌúz;
+i∞;"-3ececb1baba13d0df7908f692e093823cbb9378e;"2How many lines are there in a four line poem?o;
+;u;	ıÄt◊|;["4"	four;"-e9f6f40a47514ae069b0044a2723aa05589e650c;
+i∞;"2How many lines are there in a four line poem?o;
+;["3"
+three;u;	ıÄ=I};
+i∞;"-40c0596e0451368a297a6c1016096302d6793248;"=How many lines are in a typical Haiku of the form 5/7/5?o;
+;u;	ıÄ≈l@;["	oven"an oven"the oven;"-741e875f9d6549e349418018ac5f58e2d0f4285d;
+i∞;"nThe poet Sylvia Plath committed suicide by sticking her head in an oven.  What did she stick her head in?o;
+;["39"thirty nine;u;	ıÄ’%¶;
+i∞;"-2cb80afe338a36bbefd29527a6a056a498359987;"vA sestina has six stanzas of six lines each followed by a three line tercet.  How many lines does a sestina have?o;
+;u;	ıÄÁ±Ä;["4"	four;"-83de8c749c0ce7281501345acb3a5a58fb6e4a00;
+i∞;"2How many lines are there in a four line poem?o;
+;["3"
+three;u;	ıÄ≤ôåÉ;
+i∞;"-f72ed06ee0efd9f866d5b099affed3bd91e78824;"=How many lines are in a typical Haiku of the form 5/7/5?o;
+;u;	ıÄ07VÖ;["	oven"an oven"the oven;"-bf96eb054213d6e7349f32d323945fbf667dbda0;
+i∞;"nThe poet Sylvia Plath committed suicide by sticking her head in an oven.  What did she stick her head in?

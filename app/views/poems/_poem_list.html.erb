@@ -1,7 +1,7 @@
 <% for poem in @poems -%>
   <div class="poem">
     <h2><%= avatar(poem.user) %> <%= link_to_user(poem.user.name, poem.user.id) %>: <%= link_to(poem.title, poem_path(poem)) %></h2>
-    <p><%= truncate poem.body_plain, 100, "[more]" %></p>
+    <p><%= truncate poem.body_plain, 100, link_to(" [more]", poem_path(poem)) %></p>
     <p>published <%= poem.created_at.to_s(:long) %>, revised <%= poem.updated_at.to_s(:long) %></p>
     <hr />
   </div>
