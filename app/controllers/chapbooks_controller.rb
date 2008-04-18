@@ -22,6 +22,22 @@ class ChapbooksController < ApplicationController
       format.xml  { render :xml => @chapbook }
     end
   end
+  
+  def toc
+    @chapbook = Chapbook.find(params[:id])
+  end
+  
+  def intro
+    @chapbook = Chapbook.find(params[:id])
+  end
+  
+  def page
+    page = Page.find(:first, :conditions => ["sequence = ? AND chapbook_id = ?", params[:sequence], params[:chapbook_id]])
+    @poem = page.poem
+    @last_page = Page.find(:all, :conditions => ["chapbook_id = ?", params[:chapbook_id]]).size
+    @sequence = page.sequence
+    @chapbook = Chapbook.find(params[:chapbook_id])
+  end
 
   # GET /chapbooks/new
   # GET /chapbooks/new.xml
@@ -64,7 +80,7 @@ class ChapbooksController < ApplicationController
 
     respond_to do |format|
       if @chapbook.save
-        flash[:notice] = "Chapbook was successfully created.  Go find some <a href=\"#{url_for(poems_path())}\">poems to include</a>.\""
+        flash[:notice] = "Chapbook was successfully created.  Go find some <a href=\"#{url_for(poems_path())}\">poems to include</a>."
         format.html { redirect_to(@chapbook) }
         format.xml  { render :xml => @chapbook, :status => :created, :location => @chapbook }
       else
@@ -88,6 +104,21 @@ class ChapbooksController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @chapbook.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+  
+  def upload_cover
+    @chapbook = Chapbook.find(params[:chapbook][:id])
+    @cover = Cover.new(params[:cover])
+    @cover.save
+    @chapbook.cover = @cover
+    
+    if @chapbook.save
+      flash[:notice] = "Cover added."
+      render :action => "edit"
+    else
+      flash[:error] = "Cover upload failed."
+      render :action => "edit"
     end
   end
 

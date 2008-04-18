@@ -1,0 +1,12 @@
+<div id="poem">
+  <div id="poem_contents">
+    <h1 id="title"><%= @poem.title %></h1>
+    <p>
+      <%= @poem.body %>
+    </p>
+  </div>
+  <div id="comparison"></div>
+  <p style="padding-top: 10em; font-size: 65%;">
+    <%= link_to('Original', poem_path(@poem)) %> by <%= link_to_user(@poem.user.name, @poem.user.id) %> <%= avatar(@poem.user) %>
+  </p>
+</div>

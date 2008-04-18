@@ -6,6 +6,10 @@ module ApplicationHelper
     "<li>#{ link_to(name, :controller => controller, :action => view, :id => id) }</li>"
   end
   
+  def external_tab(name, link)
+    "<li><a href=\"http://#{link}\">#{name}</a></li>"
+  end
+  
   def link_to_user(user, id = nil)
     if logged_in?
       (id == current_user.id) ? link_to('You', home_path()) : link_to(user, user_path(id))

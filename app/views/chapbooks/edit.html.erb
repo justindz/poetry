@@ -22,4 +22,13 @@
   </p>
 <% end %>
 
+<%= image_tag(@chapbook.cover.public_filename()) unless @chapbook.cover.nil? %>
+
+<% form_tag({ :controller => "chapbooks", :action => "upload_cover" }, :multipart => true ) do -%>
+  <label for="image">Upload a cover for your chapbook (max 2mb, width should be multiple of 6 and height should be multiple of 8 (e.g. 600 x 800 or 300 x 400):</label><br /><br />
+  <%= hidden_field 'chapbook', 'id', :value => @chapbook.id %>
+  <%= file_field 'cover', 'uploaded_data' %>
+  <%= submit_tag 'Upload' %>
+<% end -%>
+
 <%= link_to 'Cancel', @chapbook %>

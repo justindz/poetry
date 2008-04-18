@@ -4,7 +4,9 @@ class Chapbook < ActiveRecord::Base
   acts_as_ferret :fields => [ :title, :introduction ]
   
   belongs_to :user
-  has_and_belongs_to_many :poems
+  has_many :pages
+  has_many :poems, :through => :pages
+  has_one :cover
   
   validates_presence_of :title
 end

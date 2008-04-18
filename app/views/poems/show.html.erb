@@ -5,15 +5,6 @@
         <span id="favorite" <%= 'style="display: none;"' if current_user.has_favorite?(@poem.id) %>><%= link_to_remote(image_tag('favorite_32.png'), :url => { :controller => 'users', :action => 'favorite', :id => @poem.id }, :html => { :class => 'favorite_link' }) %></span>
         <span id="favorited" <%= 'style="display: none;"' unless current_user.has_favorite?(@poem.id) %>><%= link_to_remote(image_tag('favorited_32.png'), :url => { :controller => 'users', :action => 'remove_favorite', :id => @poem.id }, :html => { :class => 'favorite_link' }) %></span>
       <% end -%>
-      <span id="add_to_chapbook"><%= link_to_function("Add to Chapbook", "Element.show('add_to_chapbook_list')") %></span><br />
-      <div id="add_to_chapbook_list" style="display: none;">
-        <ul>
-          <% current_user.recent_chapbooks.each do |c| -%>
-            <%= link_to_remote("<li>#{c.title}</li>", :url => add_to_chapbook_path(:poem_id => @poem.id, :chapbook_id => c.id)) unless c.poems.include?(@poem) %>
-          <% end -%>
-        </ul>
-        <p><%= link_to('Create a new Chapbook', new_chapbook_path()) %></p>
-      </div>
     <% end -%>
   </p>
   <%= render :partial => 'poem', :locals => { :poem => @poem } -%>

@@ -1,0 +1,5 @@
+<p style="margin-top: 4em;">
+  Page <%= @sequence %>:
+  <%= link_to('&laquo; Prev', page_path(:chapbook_id => @chapbook, :sequence => @sequence - 1)) unless @sequence == 1 %>
+  <%= link_to('Next &raquo;', page_path(:chapbook_id => @chapbook, :sequence => @sequence +1)) unless @sequence == @last_page %>
+</p>

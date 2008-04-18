@@ -4,7 +4,7 @@
 poem = {
   removeDistractions: function()
   {
-    document.body.setAttribute('style', 'visibility: hidden;');
+    document.body.setAttribute('style', 'visibility: hidden; background-color: #FFFFFF;');
     $('poem').setAttribute('style', 'visibility: visible;');
     $('restore_distractions').setAttribute('style', 'visibility: visible;');
     $('remove_distractions').setAttribute('style', 'visibility: hidden;');
@@ -12,7 +12,7 @@ poem = {
   
   restoreDistractions: function()
   {
-    document.body.setAttribute('style', 'visibility: visible;');
+    document.body.setAttribute('style', 'visibility: visible; background-color: #DDDDDD;');
     $('restore_distractions').setAttribute('style', 'visibility: hidden;');
     $('remove_distractions').setAttribute('style', 'visibility: visible;');
   }

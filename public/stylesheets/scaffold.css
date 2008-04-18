@@ -4,11 +4,13 @@ body {
   margin: 0;
   margin-top: 10px;
   padding: 0;
+  background-color: #DDDDDD;
+  font-family: Arial, sans-serif;
+  font-size: 70%;
 }
 
-body, p, ol, ul, td {
-  font-family: Arial, sans-serif;
-  font-size: 85%;
+input, select, option {
+  font-size: 70%;
 }
 
 pre {
@@ -28,17 +30,13 @@ a:hover {
   text-decoration: none;
 }
 
-input, select, option {
-  font-size: 85%;
-}
-
 input[type="submit"]:enabled, input[type="button"]:enabled {
   color: white;
   background-color: #336699;
 }
 
 hr {
-  border: thin solid #ddd;
+  border: thin solid #dddddd;
   margin: 0;
   padding: 0;
 }
@@ -48,34 +46,14 @@ h1, h2, h3, h4 {
 }
 
 h2 {
-  font-size: medium;
 }
 
 /* Layout */
 
 div#main_container {
   margin: 0 auto;
-  width: 63em;
-}
-
-div#left_container {
-  float: left;
-  width: 12em;
-  background-color: #6699CC;
-  padding-top: .5em;
-  padding-left: .2em;
-  padding-right: .2em;
-}
-
-div#search {
-  margin-top: 1em;
-}
-
-div#content_container {
-  float: left;
-  width: 50em;
-  border: medium solid #6699CC;
-  border-top: none;
+  width: 85%;
+  background-color: #FFFFFF;
 }
 
 div#nav {
@@ -83,27 +61,32 @@ div#nav {
 }
 
 div#body_container {
-  padding: 2em;
-  min-height: 300px;
+  padding: 1em;
+  padding-top: 2em;
 }
 
 div#footer {
-  padding-top: .2em;
   background-color: #6699CC;
   clear: left;
 }
 
 /* Poem */
 
+div#poem {
+}
+
+div#poem_contents {
+}
+
 div#poem_left_column {
   float: left;
-  width: 30em;
-  margin-right: 2em;
+  width: 78%;
+  border-right: medium solid #DDDDDD;
 }
 
 div#poem_actions {
-  float: left;
-  width: 10em;
+  float: right;
+  width: 20%;
 }
 
 .favorite_link, .favorite_link:hover {
@@ -131,6 +114,12 @@ input.new_poem {
   list-style: none;
   margin-left: 0px;
   padding-bottom: .2em;
+}
+
+/* Chapbook */
+
+div#chapbook_header {
+  text-align: right;
 }
 
 /* User Home */
@@ -231,8 +220,6 @@ div#friend_updates {
   float: left;
   margin: 0; 
   padding-left: .2em;
-  padding-top: .2em;
-  padding-bottom: .2em;
   display: inline;
   list-style: none;
   }
@@ -241,17 +228,14 @@ div#friend_updates {
   float: left;
   line-height: 1em;
   font-weight: bold;
-  margin: 0 .5em 0 .5em;
+  margin: .4em .5em 0 .5em;
   text-decoration: none;
   color: white;
   background-color: #6699CC;
   padding: .2em;
   }
 
-#miniflex a.active:link, #miniflex a.active:visited, #miniflex a:hover {
-  color: #6699CC;
-  background-color: white;
-  }
+
   
 /* Diff */
 

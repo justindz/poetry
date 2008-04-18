@@ -4,7 +4,8 @@ class Poem < ActiveRecord::Base
   acts_as_ferret :fields => [ :title, :body ]
   
   belongs_to :user
-  has_and_belongs_to_many :chapbooks
+  has_many :pages
+  has_many :chapbooks, :through => :pages
   has_many :comments
   has_many :favorites
   has_many :revisions, :order => 'created_at DESC'

@@ -1,39 +1,8 @@
-<p>
-  <b>Editor:</b>
-  <%=h @chapbook.user.name %>
-</p>
-<p>
-  <b>Created at:</b>
-  <%=h @chapbook.created_at %>
-</p>
-<p>
-  <b>Updated at:</b>
-  <%=h @chapbook.updated_at %>
-</p>
-<p>
-  <b>Title:</b>
-  <%=h @chapbook.title %>
-</p>
-<p>
-  <b>Introduction:</b>
-  <%=h @chapbook.introduction %>
-</p>
-<p>Poems:</p>
-<ul>
-  <% @chapbook.poems.each do |p| -%>
-    <li><%= p.title %></li>
-  <% end -%>
-</ul>
-<%= render :partial => 'poems/tag_list', :locals => { :taggable => @chapbook } -%>
-<p>
-  <% if logged_in? -%>
-    <% form_remote_tag(:url => { :action => 'tag' }) do -%>
-      <%= text_field :chapbook, :tags, :value => "", :size => "12" %>
-      <%= hidden_field :chapbook, :id %>
-      <%= submit_tag 'Add Tags' %>
-    <% end -%>
-  <% end -%>
-</p>
+<% if @chapbook.cover.nil? -%>
+  <h1 style="text-align: center"><%= link_to(@chapbook.title, toc_path(@chapbook)) %></h1>
+<% else -%>
+  <%= link_to(image_tag(@chapbook.cover.public_filename()), toc_path(@chapbook)) %>
+<% end -%>
 <p>
   <% if logged_in? -%>
     <%= link_to 'Edit', edit_chapbook_path(@chapbook) if current_user == @chapbook.user %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "user_id"
@@ -32,19 +32,25 @@ ActiveRecord::Schema.define(:version => 9) do
     t.text     "introduction"
   end
 
-  create_table "chapbooks_poems", :id => false, :force => true do |t|
-    t.integer  "chapbook_id"
-    t.integer  "poem_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "poem_id"
     t.datetime "created_at"
     t.text     "body"
     t.boolean  "is_private"
+    t.datetime "updated_at"
+  end
+
+  create_table "covers", :force => true do |t|
+    t.integer  "chapbook_id"
+    t.integer  "parent_id"
+    t.string   "content_type"
+    t.string   "filename"
+    t.string   "thumbnail"
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
     t.datetime "updated_at"
   end
 
@@ -60,6 +66,14 @@ ActiveRecord::Schema.define(:version => 9) do
     t.integer  "friend_id",   :null => false
     t.datetime "created_at"
     t.datetime "accepted_at"
+  end
+
+  create_table "pages", :force => true do |t|
+    t.integer  "chapbook_id"
+    t.integer  "poem_id"
+    t.integer  "sequence"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "poems", :force => true do |t|

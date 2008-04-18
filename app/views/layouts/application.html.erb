@@ -11,45 +11,29 @@
 </head>
 <body>
   <div class="center" id="main_container">
-    <div id="left_container">
-      <%= image_tag('chapbook.png') %>
-      <div id="search">
-        <%= text_field_tag '', 'does nothing yet', :size => 18 %><%= image_tag('search_24.png', :style => 'vertical-align: middle;') %>
-      </div>
-      <p>
+    <div id="nav">
+      <ul id="miniflex">
+        <li><%= image_tag('chapbook.png') %></li>
+        <%= tab('Home', 'users', 'home') if logged_in? %>
+        <%= tab('Write a Poem', 'poems', 'new') if logged_in? %>
+        <%= tab('Read Poems', 'poems') %>
+        <%= tab('Publish a Chapbook', 'chapbooks', 'new') if logged_in? %>
+        <%= tab('Read Chapbooks', 'chapbooks') %>
         <% if logged_in? -%>
-          <%= image_tag('mail_16.png') unless current_user.pending_friends.empty? %>
-        <% else -%>
-          <%= link_to('Login', { :controller => 'account', :action => 'login' }, :id => "left_container_login") %>
+          <%= tab('Logout', "account", "logout") %>
         <% end -%>
-      </p>
-      <hr />
-      <h3>News</h3>
-      <p style="color: #333333;">Beta users will soon be needed to beat away at chapbook and identify bugs, security holes, usability issues, etc.  Please drop me a note if you're interested.</p>
+      </ul>
     </div>
-    <div id="content_container">
-      <div id="nav">
-        <ul id="miniflex">
-          <%= tab('Home', 'users', 'home') if logged_in? %>
-          <%= tab('Write a Poem', 'poems', 'new') if logged_in? %>
-          <%= tab('Read Poems', 'poems') %>
-          <%= tab('Publish a Chapbook', 'chapbooks', 'new') if logged_in? %>
-          <%= tab('Read Chapbooks', 'chapbooks') %>
-          <% if logged_in? -%>
-            <%= tab('Logout', "account", "logout") %>
-          <% end -%>
-        </ul>
-      </div>
-      <div id="body_container">
-        <p style="color: green;"><%= image_tag('next-green_24.png', { :style => "vertical-align: middle;" }) unless flash[:notice].nil? %> <%= flash[:notice] %></p>
-        <p style="color: red;"><%= image_tag('next-red_24.png', { :style => "vertical-align: middle;" }) unless flash[:error].nil? %> <%= flash[:error] %></p>
-        <%= yield  %>
-      </div>
-      <div id="footer">
-        <ul id="miniflex">
-          <%= tab('About', 'about') %>
-        </ul>
-      </div>
+    <div id="body_container">
+      <p style="color: green;"><%= image_tag('next-green_24.png', { :style => "vertical-align: middle;" }) unless flash[:notice].nil? %> <%= flash[:notice] %></p>
+      <p style="color: red;"><%= image_tag('next-red_24.png', { :style => "vertical-align: middle;" }) unless flash[:error].nil? %> <%= flash[:error] %></p>
+      <%= yield  %>
+    </div>
+    <div id="footer">
+      <ul id="miniflex">
+        <%= tab('About', 'about') %>
+        <%= external_tab('Blog', 'chapbook.tumblr.com') %>
+      </ul>
     </div>
   </div>
   <script type="text/javascript">
