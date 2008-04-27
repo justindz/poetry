@@ -1,22 +1,22 @@
+<% @page_title = "Publish a New Poem @ Chapbook" %>
 <h1>New Poem</h1>
 
 <%= error_messages_for :poem %>
 
 <% form_for(@poem) do |f| %>
   <p>
-    <b>Title</b>: <%= f.text_field :title %>
+    <h1><%= text_field :poem, :title, :style => 'border: none;', :value => 'Untitled' %></h1>
   </p>
-
   <p>
-    <%= textile_editor :poem, :body -%>
+    <%= textile_editor :poem, :body, :cols => '60', :style => 'border: none;' -%>
     <%= textile_editor_initialize -%>
+    <br />
+    <%= link_to_function('expand ->', "$('poem_body').setAttribute('cols', '80');") %>
   </p>
-  
   <p>
     by <%= current_user.name %> <%= avatar(current_user) %><br />
     <input type="hidden" id="poem_user_id" name="poem[user_id]" value="<%= current_user.id -%>" />
   </p>
-
   <p>
     <%= f.submit "Publish" %>
   </p>

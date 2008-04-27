@@ -2,13 +2,8 @@
   <div id="poem_contents">
     <h1 id="title"><%= @poem.title %></h1>
     <p>
-      <%= @poem.body %>
+      <%= simple_format(@poem.body) %>
     </p>
   </div>
   <div id="comparison"></div>
 </div>
-<hr />
-<p>
-  by <%= link_to_user(@poem.user.name, @poem.user.id) %> <%= mini_avatar(@poem.user) %> on <%= @poem.created_at.to_s(:long) %>
-</p>
-<%= render :partial => 'distractions' %>

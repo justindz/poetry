@@ -75,7 +75,10 @@ div#footer {
 div#poem {
 }
 
-div#poem_contents {
+div#poem_contents, div#comparison {
+  font-size: 160%;
+  margin-bottom: 5em;
+  margin-left: 2em;
 }
 
 div#poem_left_column {

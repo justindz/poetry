@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show, :favorites]
 
   # GET /users/home
   # GET /users/home.xml
@@ -22,16 +22,19 @@ class UsersController < ApplicationController
  
     respond_to do |format|
       format.html # show.html.erb
+      format.rss { render :layout => false } # show.rss.builder
+      format.rdf { render :layout => false } # show.rdf.builder
       format.xml  { render :xml => @user }
     end
   end
   
   def favorites
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     @favorites = @user.favorites
     
     respond_to do |format|
       format.html # favorites.html.erb
+      format.rss { render :layout => false } # favorites.rss.builder
       format.xml { render :xoml => @favorites }
     end
   end
@@ -79,8 +82,7 @@ class UsersController < ApplicationController
     if current_user.accept_friendship_with(@friend)
       render :update do |page|
         page.visual_effect(:BlindUp, "pending_request" + @friend.id.to_s)
-        page.insert_html(:bottom, 'friends', '<li id="friend' + @friend.id.to_s + '" style="display: none;">' + link_to(@friend.name, user_path(@friend)) + '</li>')
-        page.visual_effect(:BlindDown, "friend" + @friend.id.to_s)
+        page.insert_html(:bottom, 'friends', '<li id="friend' + @friend.id.to_s + '">' + link_to(@friend.name, user_path(@friend)) + '</li>')
       end
     end
   end

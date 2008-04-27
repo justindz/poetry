@@ -1,3 +1,6 @@
+<% @rss = auto_discovery_link_tag(:rss, formatted_user_url(@user, :rss), { :title => "Chapbook Poems by #{@user.name}" }) %>
+<% @foaf = auto_discovery_link_tag(:rdf, foaf_url(@user, :rdf), { :title => "FOAF" }) %>
+<% @page_title = "#{@user.name} @ Chapbook" %>
 <h1><%= @user.name %> <%= avatar(@user) %></h1>
 <p>
   <% if logged_in? and current_user != @user -%>

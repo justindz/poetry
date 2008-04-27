@@ -1,3 +1,6 @@
+<% @rss = auto_discovery_link_tag(:rss, formatted_user_url(@user, :rss), { :title => "Chapbook Poems by #{@user.name}" }) %>
+<% @foaf = auto_discovery_link_tag(:rdf, foaf_url(@user, :rdf), { :title => "FOAF" }) %>
+<% @page_title = "Your Home @ Chapbook" %>
 <div id="my_recent_poems">
   <h2>Your Poems</h2>
   <% @my_recent_poems.each do |poem| -%>
@@ -20,7 +23,7 @@
     <h2>These People Want to Be Your Friend</h2>
     <ul id="pending_friends">
       <% @user.pending_friends_for_me.each do |p| -%>
-        <li id="pending_request<%= p.id %>"><%= link_to p.name, show_user_path(p) %>: <%= link_to_remote 'approve', :url => { :controller => 'users', :action => 'approve_friend_request', :id => p.id } %> | <%= link_to_remote 'reject', :url => { :controller => 'users', :action => 'cancel_friend_request', :id => p.id } %></li>
+        <li id="pending_request<%= p.id %>"><%= link_to p.name, user_path(p) %>: <%= link_to_remote 'approve', :url => { :controller => 'users', :action => 'approve_friend_request', :id => p.id } %> | <%= link_to_remote 'reject', :url => { :controller => 'users', :action => 'cancel_friend_request', :id => p.id } %></li>
       <% end -%>
     </ul>
   <% end -%>

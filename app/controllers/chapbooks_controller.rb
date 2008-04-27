@@ -8,6 +8,7 @@ class ChapbooksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.rss { render :layout => false } # index.rss.builder
       format.xml  { render :xml => @chapbooks }
     end
   end
@@ -19,6 +20,7 @@ class ChapbooksController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.rss { render :layout => false } # show.rss.builder
       format.xml  { render :xml => @chapbook }
     end
   end

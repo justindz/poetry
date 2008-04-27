@@ -1,7 +1,8 @@
+<% @page_title = "Edit Your Chapbook" %>
 <h1>Edit Your Chapbook</h1>
 
 <p>
-  <%= link_to('Or, organize poems you added.', { :controller => 'chapbooks', :action => 'organize', :id => @chapbook }) %>
+  <%= link_to('Or, organize poems you added.', organize_path(@chapbook)) %>
 </p>
 
 <%= error_messages_for :chapbook %>

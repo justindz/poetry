@@ -1,3 +1,5 @@
+<% @rss = auto_discovery_link_tag(:rss, formatted_chapbook_url(@chapbook, :rss), { :title => "Poems in the chapbook '#{@chapbook.title}'" }) %>
+<% @page_title = "'#{@chapbook.title}' @ Chapbook" %>
 <% if @chapbook.cover.nil? -%>
   <h1 style="text-align: center"><%= link_to(@chapbook.title, toc_path(@chapbook)) %></h1>
 <% else -%>

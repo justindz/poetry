@@ -18,6 +18,7 @@ class TagsController < ApplicationController
  
     respond_to do |format|
       format.html # show.html.erb
+      format.rss { render :layout => false } # show.rss.builder
       format.xml  { render :xml => @poems }
     end
   end

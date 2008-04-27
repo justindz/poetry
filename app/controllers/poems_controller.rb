@@ -13,6 +13,7 @@ class PoemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.rss { render :layout => false } # index.rss.builder
       format.xml  { render :xml => @poems }
     end
   end

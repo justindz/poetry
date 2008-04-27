@@ -1,3 +1,4 @@
+<% @page_title = "'#{@poem.title}' @ Chapbook" %>
 <div id="poem_left_column">
   <p>
     <% if logged_in? -%>
@@ -8,24 +9,13 @@
     <% end -%>
   </p>
   <%= render :partial => 'poem', :locals => { :poem => @poem } -%>
+  <%= render :partial => 'distractions' %>
   <%= render :partial => 'edit_poem', :locals => { :poem => @poem } -%>
-  <div id="comments">
-    <h2>Comments</h2>
-    <% @poem.comments.each do |comment| -%>
-      <%= render :partial => "comments/comment", :object => comment %>
-    <% end -%>
-  </div>
-  <% if logged_in? -%>
-    <% form_remote_tag(:url => { :controller => 'comments', :action => 'create' }) do -%>
-      <%= text_area :comment, :body, :rows => '6' %>
-      <%= hidden_field :comment, :user_id, :value => current_user.id %>
-      <%= hidden_field :comment, :poem_id, :value => @poem.id %>
-      <%= hidden_field :comment, :is_private, :value => 'false' %>
-      <p>
-        <%= submit_tag 'Add Comment' %>
-      </p>
-    <% end -%>
-  <% end -%>
+  <hr />
+  <p>
+    by <%= link_to_user(@poem.user.name, @poem.user.id) %> <%= mini_avatar(@poem.user) %> on <%= @poem.created_at.to_s(:long) %>
+  </p>
+  <div id="disqus_thread" style="margin-top: 3em;"></div><script type="text/javascript" src="http://disqus.com/forums/chapbook/embed.js"></script><noscript><a href="http://chapbook.disqus.com/?url=ref">View the forum thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">poem comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 <div id="poem_actions">
   <p>
