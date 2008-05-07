@@ -82,7 +82,7 @@ class UsersController < ApplicationController
     if current_user.accept_friendship_with(@friend)
       render :update do |page|
         page.visual_effect(:BlindUp, "pending_request" + @friend.id.to_s)
-        page.insert_html(:bottom, 'friends', '<li id="friend' + @friend.id.to_s + '">' + link_to(@friend.name, user_path(@friend)) + '</li>')
+        page.insert_html(:bottom, 'friends', '<li id="friend' + @friend.id.to_s + '">' + mini_avatar(@friend) + link_to(@friend.name, user_path(@friend)) + '</li>')
       end
     end
   end

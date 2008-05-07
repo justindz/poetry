@@ -23,7 +23,7 @@
     <h2>These People Want to Be Your Friend</h2>
     <ul id="pending_friends">
       <% @user.pending_friends_for_me.each do |p| -%>
-        <li id="pending_request<%= p.id %>"><%= link_to p.name, user_path(p) %>: <%= link_to_remote 'approve', :url => { :controller => 'users', :action => 'approve_friend_request', :id => p.id } %> | <%= link_to_remote 'reject', :url => { :controller => 'users', :action => 'cancel_friend_request', :id => p.id } %></li>
+        <li id="pending_request<%= p.id %>"><%= mini_avatar(p) %><%= link_to p.name, user_path(p) %>: <%= link_to_remote 'approve', :url => { :controller => 'users', :action => 'approve_friend_request', :id => p.id } %> | <%= link_to_remote 'reject', :url => { :controller => 'users', :action => 'cancel_friend_request', :id => p.id } %></li>
       <% end -%>
     </ul>
   <% end -%>
@@ -31,7 +31,7 @@
     <h2>You've Requested Friendship With</h2>
     <ul id="requested_friends">
       <% @user.pending_friends_by_me.each do |p| -%>
-        <li id="pending_request<%= p.id %>"><%= link_to p.name, user_path(p) %>: <%= link_to_remote 'cancel', :url => { :controller => 'users', :action => 'cancel_friend_request', :id => p.id } %></li>
+        <li id="pending_request<%= p.id %>"><%= mini_avatar(p) %><%= link_to p.name, user_path(p) %>: <%= link_to_remote 'cancel', :url => { :controller => 'users', :action => 'cancel_friend_request', :id => p.id } %></li>
       <% end -%>
     </ul>
   <% end -%>
@@ -39,7 +39,7 @@
     <h2>Your Friends</h2>
     <ul id="friends">
       <% @user.friends.each do |f| -%>
-        <li id="friend<%= f.id %>"><%= link_to f.name, user_path(f) %>: <%= link_to_remote 'delete', :url => { :controller => 'users', :action => 'remove_friendship', :id => f.id } %>
+        <li id="friend<%= f.id %>"><%= mini_avatar(f) %><%= link_to f.name, user_path(f) %>: <%= link_to_remote 'delete', :url => { :controller => 'users', :action => 'remove_friendship', :id => f.id } %>
       <% end -%>
     </ul>
   <% end -%>
