@@ -1,4 +1,5 @@
 <% @page_title = "'#{@poem.title}' @ Chapbook" %>
+<% @rss = auto_discovery_link_tag(:rss, formatted_revisions_url(@poem, :rss), { :title => "Prior Versions of #{@poem.title} @ Chapbook" }) %>
 <div id="poem_left_column">
   <p>
     <% if logged_in? -%>

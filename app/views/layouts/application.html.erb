@@ -21,6 +21,7 @@
         <%= tab('Read Poems', 'poems') %>
         <%= tab('Publish a Chapbook', 'chapbooks', 'new') if logged_in? %>
         <%= tab('Read Chapbooks', 'chapbooks') %>
+        <% #= render :partial => "poems/search_form" %>
         <% if logged_in? -%>
           <%= tab('Logout', "account", "logout") %>
         <% end -%>

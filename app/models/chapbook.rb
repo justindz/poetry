@@ -1,7 +1,7 @@
 class Chapbook < ActiveRecord::Base
   acts_as_taggable
   acts_as_textiled :introduction
-  acts_as_ferret :fields => [ :title, :introduction ]
+  acts_as_ferret :fields => [ :title, :introduction ], :remote => true
   
   belongs_to :user
   has_many :pages

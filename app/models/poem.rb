@@ -1,7 +1,7 @@
 class Poem < ActiveRecord::Base
   acts_as_textiled :body
   acts_as_taggable
-  acts_as_ferret :fields => [ :title, :body ]
+  acts_as_ferret :fields => [ :title, :body ], :remote => true
   
   belongs_to :user
   has_many :pages

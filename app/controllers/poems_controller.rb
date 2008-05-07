@@ -23,10 +23,31 @@ class PoemsController < ApplicationController
   def show
     @poem = Poem.find(params[:id])
     Poem.viewed(current_user, @poem)
+    @revisions = Revision.find_all_by_poem_id(@poem.id)
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @poem }
+    end
+  end
+  
+  def revisions
+    @poem = Poem.find(params[:id])
+    @revisions = Revision.find_all_by_poem_id(@poem.id)
+    
+    respond_to do |format|
+      format.rss { render :layout => false } # revisions.rss.builder
+    end
+  end
+  
+  def search
+    @terms = params[:terms]
+    @poems = Poem.find_with_ferret(@terms, :options => {:page => params[:page], :per_page => 10})
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.rss { render :layout => false } # search.rss.builder
+      format.xml { render :xml => @poems }
     end
   end
   

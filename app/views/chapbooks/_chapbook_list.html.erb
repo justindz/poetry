@@ -2,7 +2,7 @@
   <div class="poem">
     <h1><%= image_tag(chapbook.cover.public_filename(), :width => 120, :height => 160, :style => 'vertical-align: middle') unless chapbook.cover.nil? %> <%= link_to(chapbook.title, chapbook_path(chapbook)) %></h1>
     <p>Edited by <%= link_to_user(chapbook.user.name, chapbook.user.id) %> <%= mini_avatar(chapbook.user) %>, featuring <strong><%= pluralize(chapbook.poems.size, 'poem') %></strong>, published <%= chapbook.created_at.to_s(:long) %></p>
-    <p><%= truncate chapbook.introduction_plain, 100, link_to(" [more]", chapbook_path(chapbook)) %></p>
+    <p id="chapbook_excerpt"><%= truncate chapbook.introduction_plain, 100, link_to(" [more]", chapbook_path(chapbook)) %></p>
     <hr />
   </div>
 <% end -%>

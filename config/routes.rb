@@ -9,6 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   map.toc 'chapbooks/toc/:id', :controller => 'chapbooks', :action => 'toc'
   map.intro 'chapbooks/intro/:id', :controller => 'chapbooks', :action => 'intro'
   map.page 'chapbooks/:chapbook_id/page/:sequence', :controller => 'chapbooks', :action => 'page'
+  map.search 'search/:terms/:page', :controller => 'poems', :action => 'search', :defaults => { :page => '1' }
+  map.formatted_search 'search/:terms.:format', :controller => 'poems', :action => 'search'
   
   map.resources :chapbooks
   map.resources :tags
@@ -17,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   
   map.foaf 'users/show/:id.:format', :controller => 'users', :action => 'show'
+  map.formatted_revisions 'poems/revisions/:id.:format', :controller => 'poems', :action => 'revisions'
   
   map.root :controller => "account", :action => "login"
 

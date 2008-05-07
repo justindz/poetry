@@ -125,6 +125,12 @@ div#chapbook_header {
   text-align: right;
 }
 
+/* Searching */
+
+p#poem_excerpt, p#chapbook_excerpt {
+  font-size: 140%;
+}
+
 /* User Home */
 
 div#recent_poems {
