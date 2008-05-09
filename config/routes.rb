@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.page 'chapbooks/:chapbook_id/page/:sequence', :controller => 'chapbooks', :action => 'page'
   map.search 'search/:terms/:page', :controller => 'poems', :action => 'search', :defaults => { :page => '1' }
   map.formatted_search 'search/:terms.:format', :controller => 'poems', :action => 'search'
+  map.open_id_complete 'accounts/login', :controller => "accounts", :action => "login", :requirements => { :method => :get }
   
   map.resources :chapbooks
   map.resources :tags

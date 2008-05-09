@@ -6,19 +6,34 @@ class User < ActiveRecord::Base
   has_many :chapbooks
   has_one :avatar
   has_many_friends
+  has_many :urls
   
   # Virtual attribute for the unencrypted password
   attr_accessor :password
+  
+  attr_accessible :name, :email, :identity_url
  
   validates_presence_of     :name
-  validates_presence_of     :email
-  validates_presence_of     :password,                   :if => :password_required?
-  validates_presence_of     :password_confirmation,      :if => :password_required?
-  validates_length_of       :password, :within => 4..40, :if => :password_required?
-  validates_confirmation_of :password,                   :if => :password_required?
-  validates_length_of       :email,    :within => 3..100
-  validates_uniqueness_of   :email, :case_sensitive => false
+  validates_presence_of     :password,                     :if => :password_required?
+  validates_presence_of     :password_confirmation,        :if => :password_required?
+  validates_length_of       :password, :within => 4..40,   :if => :password_required?
+  validates_confirmation_of :password,                     :if => :password_required?
+  validates_length_of       :email,    :within => 3..100,  :if => :email_required?
+  validates_uniqueness_of   :email, :case_sensitive => false, :allow_blank => true
   before_save :encrypt_password
+  
+  def self.find_or_initialize_by_url(openid_url)
+    u = Url.find_by_url(openid_url)
+    if u.nil?
+      user = User.new
+      user.instance_variable_set("@new_record", true) # ugly-ass hack for unknown reason
+      return user
+    else
+      user = u.user
+      user.instance_variable_set("@new_record", false) # ugly-ass hack for unknown reason #2
+      return user
+    end
+  end
   
   def has_favorite? (poem_id)
     f = find_favorite(poem_id)
@@ -79,6 +94,19 @@ class User < ActiveRecord::Base
     end
     
     def password_required?
+      if self.has_identity_url?
+        return false
+      end
       crypted_password.blank? || !password.blank?
+    end
+    
+    def email_required?
+      if self.has_identity_url?
+        return false
+      end
+    end
+    
+    def has_identity_url?
+      !self.identity_url.nil?
     end
 end

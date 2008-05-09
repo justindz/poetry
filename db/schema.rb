@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 11) do
+ActiveRecord::Schema.define(:version => 13) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "user_id"
@@ -68,6 +68,21 @@ ActiveRecord::Schema.define(:version => 11) do
     t.datetime "accepted_at"
   end
 
+  create_table "open_id_authentication_associations", :force => true do |t|
+    t.integer "issued"
+    t.integer "lifetime"
+    t.string  "handle"
+    t.string  "assoc_type"
+    t.binary  "server_url"
+    t.binary  "secret"
+  end
+
+  create_table "open_id_authentication_nonces", :force => true do |t|
+    t.integer "timestamp",  :null => false
+    t.string  "server_url"
+    t.string  "salt",       :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.integer  "chapbook_id"
     t.integer  "poem_id"
@@ -105,6 +120,13 @@ ActiveRecord::Schema.define(:version => 11) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "urls", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

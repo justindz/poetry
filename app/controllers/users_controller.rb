@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :require_name_for_user, :only => [:edit, :update]
   before_filter :login_required, :except => [:index, :show, :favorites]
 
   # GET /users/home
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
  
   # GET /users/1
   # GET /users/1.xml
-  def show   
+  def show
     @user = User.find(params[:id])
     @tags = @user.poems.tag_counts
     @poems = @user.poems
@@ -141,13 +142,26 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         flash[:notice] = 'User was successfully updated.'
-        format.html { redirect_to(@user) }
+        format.html { redirect_to(home_url()) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def add_openid
+    @user = User.find(params[:id])
+    @oid = Url.new
+    @oid.url = params[:url]
+    @oid.user = @user
+    if @oid.save
+      flash[:notice] = "New OpenID URL added."
+    else
+      flash[:error] = "OpenID authentication failed.  Verify the URL and ensure the provider is available, then try again."
+    end
+    render :action => "edit"
   end
   
   def upload_avatar

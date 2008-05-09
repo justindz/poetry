@@ -10,7 +10,7 @@ body {
 }
 
 input, select, option {
-  font-size: 70%;
+  /* font-size: 70%; */
 }
 
 pre {
@@ -150,6 +150,7 @@ div#recent_poems {
 
 p#favorites_link {
   clear: both;
+  padding-top: .5em;
 }
 
 div#friend_updates {
