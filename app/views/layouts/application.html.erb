@@ -21,11 +21,18 @@
         <%= tab('Read Poems', 'poems') %>
         <%= tab('Publish a Chapbook', 'chapbooks', 'new') if logged_in? %>
         <%= tab('Read Chapbooks', 'chapbooks') %>
-        <% #= render :partial => "poems/search_form" %>
+        <%= script_tab('Search', "$('search_form').show();") %>
         <% if logged_in? -%>
           <%= tab('Logout', "account", "logout") %>
+        <% else -%>
+          <%= tab('Login', "account", "login") %>
         <% end -%>
       </ul>
+    </div>
+    <div id="search_form" style="display: none;">
+      <br style="margin-top: 1em;" />
+      <input type="text" id="terms" />
+      <%= button_to_function("Search", "window.location = '/search/' + $('terms').value;") %>
     </div>
     <div id="body_container">
       <p style="color: green;"><%= image_tag('next-green_24.png', { :style => "vertical-align: middle;" }) unless flash[:notice].nil? %> <%= flash[:notice] %></p>

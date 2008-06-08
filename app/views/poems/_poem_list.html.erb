@@ -1,7 +1,13 @@
 <% for poem in @poems -%>
   <div class="poem">
     <h2><%= avatar(poem.user) %> <%= link_to_user(poem.user.name, poem.user.id) %>: <%= link_to(poem.title, poem_path(poem)) %></h2>
-    <p id="poem_excerpt"><%= truncate poem.body_plain, 100, link_to(" [more]", poem_path(poem)) %></p>
+    <p id="poem_excerpt">
+      <% if @terms -%>
+        <%= search_highlight(search_excerpt(poem.body_plain, @terms.split(' ')[0], 100, link_to(" [more]", poem_path(poem))), @terms.split(' ')) %>
+      <% else -%>
+        <%= truncate poem.body_plain, 100, link_to(" [more]", poem_path(poem)) %>
+      <% end -%>
+    </p>
     <p>published <%= poem.created_at.to_s(:long) %>, revised <%= poem.updated_at.to_s(:long) %></p>
     <% if poem.ferret_score -%>
       <p><em>Search rank: <%= poem.ferret_score %></em></p>

@@ -25,12 +25,16 @@ class User < ActiveRecord::Base
   def self.find_or_initialize_by_url(openid_url)
     u = Url.find_by_url(openid_url)
     if u.nil?
-      user = User.new
-      user.instance_variable_set("@new_record", true) # ugly-ass hack for unknown reason
-      return user
+      openid_url =~ /\/$/
+      u = Url.find_by_url($`) # if the url is not found, try stripping off a trailing slash and matching again - needed for LiveJournal OpenID
+      if u.nil?
+        user = User.new
+        user.instance_variable_set("@new_record", true) # ugly hack to account for the new record responding nil to .new_record?
+        return user
+      end
     else
       user = u.user
-      user.instance_variable_set("@new_record", false) # ugly-ass hack for unknown reason #2
+      user.instance_variable_set("@new_record", false) # ugly hack to account for the non-new record responding nil to .new_record?
       return user
     end
   end
@@ -75,7 +79,7 @@ class User < ActiveRecord::Base
   # These create and unset the fields required for remembering users between browser closes
   def remember_me
     self.remember_token_expires_at = 2.weeks.from_now.utc
-    self.remember_token            = encrypt("#{email}--#{remember_token_expires_at}")
+    self.remember_token            = encrypt("#{name}--#{remember_token_expires_at}")
     save(false)
   end
  
@@ -96,17 +100,16 @@ class User < ActiveRecord::Base
     def password_required?
       if self.has_identity_url?
         return false
+      else
+        crypted_password.blank? || !password.blank?
       end
-      crypted_password.blank? || !password.blank?
     end
     
     def email_required?
-      if self.has_identity_url?
-        return false
-      end
+      !self.has_identity_url?
     end
     
     def has_identity_url?
-      !self.identity_url.nil?
+      Url.find_by_user_id(self.id).nil? ? false : true
     end
 end

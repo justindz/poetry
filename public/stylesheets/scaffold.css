@@ -56,6 +56,12 @@ div#main_container {
   background-color: #FFFFFF;
 }
 
+div#search_form {
+  background-color: #CCC266;
+  margin-left: 20em;
+  padding: 1em;
+}
+
 div#nav {
   background-color: #6699CC;
 }
@@ -117,6 +123,13 @@ input.new_poem {
   list-style: none;
   margin-left: 0px;
   padding-bottom: .2em;
+}
+
+/* Favorites */
+
+div#favorites {
+  margin-bottom: 2em;
+  padding-bottom: 2em;
 }
 
 /* Chapbook */
@@ -242,7 +255,7 @@ div#friend_updates {
   text-decoration: none;
   color: white;
   background-color: #6699CC;
-  padding: .2em;
+  padding: .6em;
   }
 
 

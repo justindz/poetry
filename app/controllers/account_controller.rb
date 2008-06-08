@@ -3,18 +3,19 @@ class AccountController < ApplicationController
   skip_before_filter :require_name_for_user
   
   def login
-    if using_open_id?
-      open_id_authentication(params[:openid_url])
+    if logged_in?
+      successful_login
     else
-      if logged_in?
-        successful_login
-      end
-      return unless request.post?
-      self.current_user = User.authenticate(params[:email], params[:password])
-      if logged_in?
-        successful_login
+      if using_open_id?
+        open_id_authentication(params[:openid_url])
       else
-        failed_login
+        return unless request.post?
+        self.current_user = User.authenticate(params[:email], params[:password])
+        if logged_in?
+          successful_login
+        else
+          failed_login
+        end
       end
     end
   end
@@ -26,8 +27,11 @@ class AccountController < ApplicationController
         if @user.new_record?
           @user.name = registration['nickname']
           @user.email = registration['email']
-          # Skip validation - require_name_for_user filter will catch the name and re-direct to profile edit
-          @user.save(false)
+          @user.save(false) # Skip validation - require_name_for_user filter will catch the name and re-direct to profile edit
+          u = Url.new
+          u.url = identity_url
+          u.user = @user
+          u.save
         end
         self.current_user = @user
         successful_login

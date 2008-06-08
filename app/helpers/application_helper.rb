@@ -6,6 +6,10 @@ module ApplicationHelper
     "<li>#{ link_to(name, :controller => controller, :action => view, :id => id) }</li>"
   end
   
+  def script_tab(name, script)
+    "<li>#{ link_to_function(name, script) }</li>"
+  end
+  
   def external_tab(name, link)
     "<li><a href=\"http://#{link}\">#{name}</a></li>"
   end

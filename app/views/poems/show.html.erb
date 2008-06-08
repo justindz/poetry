@@ -47,3 +47,14 @@
     <% end -%>
   </p>
 </div>
+<script>
+  // Auto-discovery link for Disqus comments feed - hacksy!
+  var exp = /href="(\S+)">This thread/;
+  var res = exp.exec(document.body.innerHTML)[1];
+  var feed = document.createElement('link');
+  feed.setAttribute('rel', 'alternate');
+  feed.setAttribute('href', res);
+  feed.setAttribute('type', 'application/rss+xml');
+  feed.setAttribute('title', 'Comments on <%= @poem.title %> @ Chapbook');
+  document.getElementsByTagName('head')[0].appendChild(feed);
+</script>

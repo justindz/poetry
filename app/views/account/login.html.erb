@@ -1,0 +1,40 @@
+<% @page_title = "Login @ Chapbook" %>
+
+<% form_tag do -%>
+  <div id="openid_login" style="float: left; width: 20em; padding-bottom: 2em;">
+    <h1 style="vertical-align: middle;">OpenID</h1>
+    <p>
+      <%= image_tag('openid_small_logo.png') %><%= text_field_tag("openid_url") %>
+    </p>
+    <!-- <p><label for="remember_me">Remember me:</label>
+    <%= check_box_tag 'remember_me' %></p> -->
+    <p><%= submit_tag 'Log in' %></p>
+    <h1>Or...</h1>
+    <style> @import 'http://www.clickpass.com/stylesheets/container.css'; </style>
+    <div id="clickpass_button" style="width: 176px; height: 28px; position: relative; z-index : 9999 ;">
+      <iframe src="http://www.clickpass.com/embedded_buttons/login-standard/4qPh6INkB6" width="176" height="28" frameborder="0" allowtransparency="true" scrolling="no" style="z-index:9999;position: absolute; top: 0; left: 0;"></iframe> 
+    </div>
+    <script type="text/javascript" src="http://www.clickpass.com/javascripts/ClickpassPanel.class.external.js?v1"></script>
+    <script type="text/javascript">  
+      var clickpassPanel = new ClickpassPanel('clickpass_button');
+    </script>
+  </div>
+  <div id="login_separator" style="float: left; width: 20em; padding-top: 5em; padding-bottom: 2em; text-align: center;">
+    <span style="font-size: xx-large;">Or...</span>
+  </div>
+  <div id="traditional_login" style="float: left; width: 20em; padding-bottom: 2em;">
+    <h1>Old School</h1>
+    <p>If your OpenID providers are down (requires email and password):</p>
+    <p><label for="email">Email</label><br/>
+    <%= text_field_tag 'email' %></p>
+    <p><label for="password">Password</label><br/>
+    <%= password_field_tag 'password' %></p>
+    <p><%= submit_tag 'Log in' %></p>
+  </div>
+<% end -%>
+<hr / style="clear: both;">
+<%= link_to_function("What is Chapbook?", "$('chapbook_explanation').setAttribute('style', 'display: inherit;'); $('openid_explanation').setAttribute('style', 'display: none;');") %> | <%= link_to_function("What is OpenID?", "$('chapbook_explanation').setAttribute('style', 'display: none;'); $('openid_explanation').setAttribute('style', 'display: inherit;');") %>
+<%= render :partial => 'openid_explanation' %>
+<%= render :partial => 'chapbook_explanation' %>
+
+<!-- <h2 style="clear: both; padding-top: 2em;">or <%= link_to 'Sign up', { :controller => 'account', :action => 'signup' }%></h2> -->

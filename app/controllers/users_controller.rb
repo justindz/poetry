@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_name_for_user, :only => [:edit, :update]
+  skip_before_filter :require_name_for_user, :only => [:edit, :update, :add_openid]
   before_filter :login_required, :except => [:index, :show, :favorites]
 
   # GET /users/home
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @recent_poems = Poem.find(:all, :order => 'created_at desc', :limit => 5, :conditions => ["user_id != ?", @user.id])
     
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # home.html.erb
     end
   end
  
@@ -19,13 +19,23 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tags = @user.poems.tag_counts
-    @poems = @user.poems
+    @poems = Poem.find(:all, :order => 'created_at desc', :limit => 5, :conditions => ["user_id = ?", @user.id])
  
     respond_to do |format|
       format.html # show.html.erb
       format.rss { render :layout => false } # show.rss.builder
       format.rdf { render :layout => false } # show.rdf.builder
       format.xml  { render :xml => @user }
+    end
+  end
+  
+  # GET /users/1/all
+  def all
+    @user = User.find(params[:id])
+    @poems = @user.poems.paginate(:page => params[:page], :per_page => 10)
+    
+    respond_to do |format|
+      format.html # all.html.erb
     end
   end
   
