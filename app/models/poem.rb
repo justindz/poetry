@@ -7,6 +7,7 @@ class Poem < ActiveRecord::Base
   has_many :comments
   has_many :favorites
   has_many :revisions, :order => 'created_at DESC'
+  belongs_to :license
   
   validates_presence_of :body
   

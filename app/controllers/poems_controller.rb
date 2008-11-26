@@ -116,6 +116,7 @@ class PoemsController < ApplicationController
       params[:title].empty? ? @poem.title = 'Untitled' : @poem.title = params[:title]
       @poem.body = params[:body]
       @poem.user = current_user
+      @poem.license = License.find(1)
     else
       @poem = Poem.new(params[:poem])
     end

@@ -1,0 +1,14 @@
+<h2>Choose a license for this poem:</h2>
+<p>
+  <h3>Allow remixes</h3>
+  <input type="radio" id="poem_license_id_by_nc_sa" name="poem[license_id]" value="2" checked="true" /><%= image_tag 'http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png' %>
+  <input type="radio" id="poem_license_id_by_nc" name="poem[license_id]" value="3" /><%= image_tag 'http://i.creativecommons.org/l/by-nc/3.0/88x31.png' %>
+  <input type="radio" id="poem_license_id_by_sa" name="poem[license_id]" value="5" /><%= image_tag 'http://i.creativecommons.org/l/by-sa/3.0/88x31.png' %>
+  <input type="radio" id="poem_license_id_by" name="poem[license_id]" value="6" /><%= image_tag 'http://i.creativecommons.org/l/by/3.0/88x31.png' %>
+</p>
+<p>
+  <h3>Don't allow remixes</h3>
+  <input type="radio" id="poem_license_id_by_nc_nd" name="poem[license_id]" value="1" /><%= image_tag 'http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png' %>
+  <input type="radio" id="poem_license_id_by_nd" name="poem[license_id]" value="4" /><%= image_tag 'http://i.creativecommons.org/l/by-nd/3.0/88x31.png' %>
+</p>
+<p><%= link_to 'An explanation of the licenses.', 'http://creativecommons.org/about/licenses/meet-the-licenses', :popup => true %></p>

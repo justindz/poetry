@@ -1,9 +1,7 @@
 <div id="poem">
   <div id="poem_contents">
     <h1 id="title"><%= @poem.title %></h1>
-    <p>
-      <%= simple_format(@poem.body) %>
-    </p>
+    <%= @poem.body %>
   </div>
   <div id="comparison"></div>
 </div>
