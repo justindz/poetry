@@ -1,9 +1,0 @@
-<% @rss = auto_discovery_link_tag(:rss, formatted_chapbook_url(@chapbook, :rss), { :title => "Poems in the chapbook '#{@chapbook.title}'" }) %>
-<% @page_title = "Page #{@sequence} of '#{@chapbook.title}' @ Chapbook" %>
-<div>
-  <%= render :partial => 'header', :locals => { :chapbook => @chapbook } %>
-  <%= render :partial => 'poem', :locals => { :poem => @poem } %>
-  <%= render :partial => 'nav', :locals => { :last_page => @last_page, :chapbook => @chapbook, :sequence => @sequence } %>
-</div>
-<%= render :partial => 'poems/distractions' %>
-<%= render :partial => 'header', :locals => { :chapbook => @chapbook } %>

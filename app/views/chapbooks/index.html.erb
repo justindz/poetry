@@ -1,4 +1,0 @@
-<% @page_title = "Recent Chapbooks" %>
-<% @rss = auto_discovery_link_tag(:rss, formatted_chapbooks_url(:rss), { :title => @page_title }) %>
-<h1>Recent Chapbooks</h1>
-<%= render :partial => "chapbook_list", :object => @chapbooks %>

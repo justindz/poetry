@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= @page_title or "Chapbook - Write and Share Poetry" %></title>
+  <title><%= @page_title or "Chapbook - Write, Remix and Share Poetry" %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= javascript_include_tag :defaults %>
   <%= @rss %>
@@ -19,8 +19,6 @@
         <%= tab('Home', 'users', 'home') if logged_in? %>
         <%= tab('Write a Poem', 'poems', 'new') if logged_in? %>
         <%= tab('Read Poems', 'poems') %>
-        <%= tab('Publish a Chapbook', 'chapbooks', 'new') if logged_in? %>
-        <%= tab('Read Chapbooks', 'chapbooks') %>
         <%= script_tab('Search', "$('search_form').show();") %>
         <% if logged_in? -%>
           <%= tab('Logout', "account", "logout") %>

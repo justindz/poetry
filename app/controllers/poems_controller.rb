@@ -63,23 +63,6 @@ class PoemsController < ApplicationController
     end
   end
   
-  def add_to_chapbook
-    @poem = Poem.find(params[:poem_id])
-    @chapbook = Chapbook.find(params[:chapbook_id])
-    @page = Page.new
-    @page.poem = @poem
-    @page.chapbook = @chapbook
-    @page.sequence = @chapbook.pages.empty? ? 1 : Page.find(:first, :order => 'sequence DESC', :conditions => ["chapbook_id = ?", @chapbook.id]).sequence + 1
-    
-    if @page.save
-      render :update do |page|
-        page.hide 'add_to_chapbook'
-        page.replace 'chapbook_membership_list', :partial => 'poems/chapbook_membership', :object => @poem
-        page.visual_effect :highlight, 'chapbook_membership_list', :startcolor => '#3399ff', :restorecolor => '#ffffff'
-      end
-    end
-  end
-  
   def compare
     if params[:poem_id]
       @poem = Poem.find(params[:poem_id])

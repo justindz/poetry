@@ -34,7 +34,6 @@
       end 
     %>
   </p>
-  <%= render :partial => 'chapbook_membership', :locals => { :poem => @poem } -%>
   <%= render :partial => "poem_history", :object => @poem %>
   <%= render :partial => 'tag_list', :locals => { :taggable => @poem } -%>
   <p>

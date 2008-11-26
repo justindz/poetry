@@ -5,7 +5,6 @@ ActionController::Routing::Routes.draw do |map|
   map.all 'users/:id/all', :controller => 'users', :action => 'all'
   map.about 'about', :controller => 'poems', :action => 'about'
   map.compare 'poems/compare/:poem_id/:revision_id', :controller => 'poems', :action => 'compare'
-  map.organize 'chapbooks/organize', :controller => 'chapbooks', :action => 'organize'
   map.add_to_chapbook 'poems/add_to_chapbook/:poem_id/:chapbook_id', :controller => 'poems', :action => 'add_to_chapbook'
   map.toc 'chapbooks/toc/:id', :controller => 'chapbooks', :action => 'toc'
   map.intro 'chapbooks/intro/:id', :controller => 'chapbooks', :action => 'intro'
