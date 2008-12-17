@@ -9,6 +9,9 @@ class Poem < ActiveRecord::Base
   has_many :revisions, :order => 'created_at DESC'
   belongs_to :license
   
+  has_many :remixes, :class_name => "Poem", :foreign_key => "original_id"
+  belongs_to :original, :class_name => "Poem"
+  
   validates_presence_of :body
   
   def Poem.viewed(user, poem)
@@ -31,5 +34,9 @@ class Poem < ActiveRecord::Base
     r.attributes = attributes
     r.poem_id = id
     r.save
+  end
+  
+  def remixable?
+    [2, 3, 5, 6].include?(license_id)
   end
 end

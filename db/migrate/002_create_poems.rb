@@ -8,6 +8,7 @@ class CreatePoems < ActiveRecord::Migration
       t.text :body
       t.integer :views, :default => 0
       t.integer :license_id
+      t.integer :original_id
 
       t.timestamps
     end

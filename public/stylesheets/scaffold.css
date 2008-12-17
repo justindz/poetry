@@ -57,7 +57,7 @@ div#main_container {
 }
 
 div#search_form {
-  background-color: #CCC266;
+  background-color: #99cc66;
   margin-left: 20em;
   padding: 1em;
 }
@@ -82,7 +82,7 @@ div#poem {
 }
 
 div#poem_contents, div#comparison {
-  font-size: 160%;
+  font-size: 140%;
   margin-bottom: 5em;
   margin-left: 2em;
 }
@@ -103,9 +103,10 @@ div#poem_actions {
   color: white;
 }
 
-input.new_poem {
-  height: 50em;
+textarea#poem_body {
   width: 60em;
+  border: none;
+  border-right: medium solid #DDDDDD;
 }
 
 #revisions_list, #tags {
@@ -340,4 +341,69 @@ div.progressBar div.background {
   background-color: #333;
   height: 1.4em;
   width: 0%;
+}
+
+/*-----------------------------TIPJOY WIDGET -----------------*/
+.tjbody{  /* this is the container around the entire widget */
+	background:none;
+	display:block;
+}
+
+.tjContent { /* this is the container just inside tjbody, contains all content */
+	margin:5px auto;
+	text-align:left;
+	display:block;
+}
+
+.block1{ /* this is the 'give' block */
+	display:block;
+	margin-bottom:7px;
+}
+
+.block2{ /* this is the giver list block */
+	margin-top:10px;
+	display:block;
+}
+   
+.tjp{ /*this is our paragraph tag */
+	margin-top:2px;
+	display:block;
+	font-size:80%;
+	font-weight:normal;
+}
+
+.tjemphasis{ /* used to give various elements emphasis */
+	font-weight:bold;
+}
+
+.tjtitle{  /* the title field is for your custom message.*/
+	margin: 5px 0;
+	font-size:110%;
+	font-weight:bold;
+}
+
+.tjsubtitle{ /* the subtitle field is for the 'recent givers' and 'most generous' headers */
+	font-size:100%;
+	font-weight:bold;
+}
+
+.tjgivebtn{ /* this styles the 'give' button.*/
+	vertical-align:middle;
+}
+
+/*-----------------------------TIPJOY WIDGET: GIVER LISTS -----------------*/
+
+.tjgiventry{  /* this gives extra style to the paragraphs which list the giver and their message if applicable */
+	margin:5px 0 10px 0;
+	padding-left:4px;
+	border-left:1px solid #ccc;  
+	display:block;
+}
+
+.tjtime{ /* the time indicator on each giver paragraph */
+	font-style:italic;
+}
+
+.tjmymsgs{ /* the giver's message row(s)*/
+	display:block;
 }

@@ -2,6 +2,8 @@ begin
   require 'rdig'
 rescue LoadError
 end
+require 'digest/md5'
+
 module ActsAsFerret
 
   # The RdigAdapter is automatically included into your model if you specify
@@ -15,6 +17,7 @@ module ActsAsFerret
       def self.included(target)
         target.extend ClassMethods
         target.send :include, InstanceMethods
+        target.alias_method_chain :ferret_key, :md5
       end
 
       # Indexer class to replace RDig's original indexer
@@ -57,8 +60,9 @@ module ActsAsFerret
         def records_for_rebuild(batch_size = 1000, &block)
           indexer = Indexer.new(batch_size, self, &block)
           configure_rdig do
-            crawler = RDig::Crawler.new RDig.configuration, logger
+            crawler = RDig::Crawler.new RDig.configuration, ActsAsFerret::logger
             crawler.instance_variable_set '@indexer', indexer
+            ActsAsFerret::logger.debug "now crawling..."
             crawler.crawl
           end
         rescue => e
@@ -78,7 +82,9 @@ module ActsAsFerret
         # used everywhere in RDig
         def configure_rdig
           # back up original config
+          old_logger = RDig.logger
           old_cfg = RDig.configuration.dup
+          RDig.logger = ActsAsFerret.logger
           rdig_configuration[:crawler].each { |k,v| RDig.configuration.crawler.send :"#{k}=", v } if rdig_configuration[:crawler]
           if ce_config = rdig_configuration[:content_extraction]
             RDig.configuration.content_extraction = OpenStruct.new( :hpricot => OpenStruct.new( ce_config ) )
@@ -88,6 +94,7 @@ module ActsAsFerret
           # restore original config
           RDig.configuration.crawler = old_cfg.crawler
           RDig.configuration.content_extraction = old_cfg.content_extraction
+          RDig.logger = old_logger
         end
 
         # overriding aaf to enforce loading page title and content from the
@@ -127,6 +134,10 @@ module ActsAsFerret
           @id
         end
 
+        def ferret_key_with_md5
+          Digest::MD5.hexdigest(ferret_key_without_md5)
+        end
+        
         def to_s
           "Page at #{id}, title: #{title}"
         end

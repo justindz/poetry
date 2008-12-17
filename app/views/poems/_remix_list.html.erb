@@ -1,0 +1,6 @@
+<% unless @poem.remixes.empty? -%>
+  <h2>This poem has been remixed:</h2>
+  <% @poem.remixes.each do |remix| -%>
+    by <%= link_to_user(remix.user.name, remix.user.id) %> as "<%= link_to(remix.title, poem_path(remix)) %>"
+  <% end -%>
+<% end -%>

@@ -79,8 +79,7 @@ module ActsAsFerret
             yield rows, offset
           end
         else
-          # sql server adapter won't batch correctly without defined ordering
-          order = "#{primary_key} ASC" if connection.class.name =~ /SQLServer/
+          order = "#{primary_key} ASC" # fixes #212
           0.step(self.count, batch_size) do |offset|
             yield find( :all, :limit => batch_size, :offset => offset, :order => order ), offset
           end
@@ -146,37 +145,14 @@ module ActsAsFerret
     # +page+ and +per_page+ are supposed to work regardless of any 
     # +conitions+ present in +find_options+.
     def find_with_ferret(q, options = {}, find_options = {})
-      if scope(:find, :conditions)
+      if respond_to?(:scope) && scope(:find, :conditions)
         if find_options[:conditions]
           find_options[:conditions] = "(#{find_options[:conditions]}) AND (#{scope(:find, :conditions)})"
         else
           find_options[:conditions] = scope(:find, :conditions)
         end
       end
-
-      if options[:per_page]
-        options[:page] = options[:page] ? options[:page].to_i : 1
-        limit = options[:per_page]
-        offset = (options[:page] - 1) * limit
-        if find_options[:conditions]
-          find_options[:limit] = limit
-          find_options[:offset] = offset
-          options[:limit] = :all
-          options.delete :offset
-        else
-          # do pagination with ferret
-          options[:limit] = limit
-          options[:offset] = offset
-        end
-      elsif find_options[:conditions]
-        find_options[:limit] ||= options.delete(:limit) unless options[:limit] == :all
-        find_options[:offset] ||= options.delete(:offset)
-        options[:limit] = :all
-      end
-
-      total_hits, result = aaf_index.find_records q, options.merge(:models => [self]), find_options
-      logger.debug "Query: #{q}\ntotal hits: #{total_hits}, results delivered: #{result.size}"
-      SearchResults.new(result, total_hits, options[:page], options[:per_page])
+      return ActsAsFerret::find q, self, options, find_options
     end 
 
 

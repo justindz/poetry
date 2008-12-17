@@ -15,7 +15,7 @@
   <% end -%>
 </div>
 
-<p id="favorites_link"><h2><%= link_to('My Favorites', favorites_path(@user)) %></h2></p><br />
+<p id="favorites_link"><h2><%= link_to('My Favorites', favorites_path(@user)) %></h2></p>
 
 <div id="friend_updates">
   <hr />
@@ -43,7 +43,8 @@
       <% end -%>
     </ul>
   <% end -%>
-  <hr />
+  <br />
+  <%= render :partial => 'poems/friend_connect' %>
 </div>
 
 <%= link_to 'Edit My Profile', edit_user_path(@user) %>

@@ -13,7 +13,7 @@
   <%= render :partial => 'distractions' %>
   <%= render :partial => 'edit_poem', :locals => { :poem => @poem } -%>
   <hr />
-  <p>
+  <p id="attribution">
     by <%= link_to_user(@poem.user.name, @poem.user.id) %> <%= mini_avatar(@poem.user) %> on <%= @poem.created_at.to_s(:long) %>
   </p>
   <div id="disqus_thread" style="margin-top: 3em;"></div><script type="text/javascript" src="http://disqus.com/forums/chapbook/embed.js"></script><noscript><a href="http://chapbook.disqus.com/?url=ref">View the forum thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">poem comments powered by <span class="logo-disqus">Disqus</span></a>
@@ -45,7 +45,15 @@
       <% end -%>
     <% end -%>
   </p>
-  <p><%= @poem.license.embed %></p>
+  <% if @poem.original -%>
+    <h2>Based on "<%= link_to(@poem.original.title, poem_path(@poem.original)) %>" by <%= link_to_user(@poem.original.user.name, @poem.original.user.id) %></h2>
+  <% end -%>
+  <p><br /><%= @poem.license.embed %></p>
+  <%= render :partial => "remix_list", :object => @poem %>
+  <% if @poem.remixable? && logged_in? && (current_user != @poem.user) -%>
+    <h2><%= link_to('Remix this!', remix_path(@poem)) %></h2>
+  <% end -%>
+  <%= render :partial => "friend_connect" %>
 </div>
 <script>
   // Auto-discovery link for Disqus comments feed - hacksy!

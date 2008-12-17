@@ -8,7 +8,7 @@ xml.rss :version => "2.0" do
     @poems.each do |p|
       xml.item do
         xml.title p.title
-        xml.description simple_format(p.body)
+        xml.description (p.body)
         xml.pubDate p.created_at
         xml.link poem_url(p)
       end

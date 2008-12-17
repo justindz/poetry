@@ -145,4 +145,24 @@ class PoemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # GET /poems/1/remix
+  def remix
+    original = Poem.find(params[:id])
+    
+    if current_user != original.user
+      @poem = Poem.new
+      @poem.title = original.title
+      @poem.body = original.body_plain
+      @poem.user = current_user
+      @poem.original = original
+
+      @page_title = "Remixing '#{original.title}' by #{original.user.name}"
+      @page_header = @page_title
+      render :action => "new"
+    else
+      flash[:error] = "Sorry, you can't remix your own poems.  Nice try, though."
+      redirect_to(original)
+    end
+  end
 end

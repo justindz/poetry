@@ -6,6 +6,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= @page_title or "Chapbook - Write, Remix and Share Poetry" %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'print', :media => "print" %>
   <%= javascript_include_tag :defaults %>
   <%= @rss %>
   <%= @foaf %>
@@ -40,7 +41,7 @@
     <div id="footer">
       <ul id="miniflex">
         <%= tab('About', 'about') %>
-        <%= external_tab('Blog', 'chapbook.tumblr.com') %>
+        <%= external_tab('Blog', 'justindz.tumblr.com') %>
       </ul>
     </div>
   </div>

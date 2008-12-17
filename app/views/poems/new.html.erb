@@ -1,21 +1,22 @@
-<% @page_title = "Publish a New Poem @ Chapbook" %>
-<h1>New Poem</h1>
+<% @page_title ||= "Publish a New Poem @ Chapbook" %>
+<h1><%= @page_header ||= "New Poem" %></h1>
 
 <%= error_messages_for :poem %>
 
 <% form_for(@poem) do |f| %>
   <p>
-    <h1><%= text_field :poem, :title, :style => 'border: none;', :value => 'Untitled' %></h1>
+    <h1><%= text_field :poem, :title, :style => 'border: none;', :value => (@poem.title ||= 'Untitled') %></h1>
   </p>
   <p>
-    <%= textile_editor :poem, :body, :cols => '60', :style => 'border: none;' -%>
+    <%= textile_editor :poem, :body, :cols => '60' -%>
     <%= textile_editor_initialize -%>
-    <br />
-    <%= link_to_function('expand ->', "$('poem_body').setAttribute('cols', '80');") %>
   </p>
   <p>
     by <%= current_user.name %> <%= avatar(current_user) %><br />
     <input type="hidden" id="poem_user_id" name="poem[user_id]" value="<%= current_user.id -%>" />
+    <% unless @poem.original.nil? -%>
+      <%= hidden_field :poem, :original_id %>
+    <% end -%>
   </p>
   <%= render :partial => "choose_license" %>
   <p>
