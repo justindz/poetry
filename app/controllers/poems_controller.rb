@@ -24,6 +24,9 @@ class PoemsController < ApplicationController
     @poem = Poem.find(params[:id])
     Poem.viewed(current_user, @poem)
     @revisions = Revision.find_all_by_poem_id(@poem.id)
+    unless flash[:remixed].nil?
+      @was_remixed = flash[:remixed]
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -104,6 +107,7 @@ class PoemsController < ApplicationController
         page.visual_effect :highlight, 'poem_history'
         page.replace_html 'revision_count', pluralize(@poem.revisions.count, 'time')
         page.visual_effect :highlight, 'revision_count'
+        page.call 'facebook.loadEditFeed', poem_url(@poem), @poem.title
       end
     end
   end
@@ -124,6 +128,7 @@ class PoemsController < ApplicationController
     respond_to do |format|
       if @poem.save
         flash[:notice] = 'Poem was successfully created.'
+        flash[:remixed] = @poem.original.nil? ? false : true
         format.html { redirect_to(@poem) }
         format.xml  { render :text => poem_url(@poem) }
       else
@@ -138,7 +143,15 @@ class PoemsController < ApplicationController
   # DELETE /poems/1.xml
   def destroy
     @poem = Poem.find(params[:id])
-    @poem.destroy
+    if current_user == @poem.user
+      @poem.destroy
+      # destroy revisions
+      # handle links to remixes
+      # update full text index?
+    else
+      flash[:error] = "You can only delete your own poems.  Nice try, though."
+      redirect_to(@poem)
+    end
 
     respond_to do |format|
       format.html { redirect_to(poems_url) }

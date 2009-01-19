@@ -54,6 +54,11 @@
     <h2><%= link_to('Remix this!', remix_path(@poem)) %></h2>
   <% end -%>
 </div>
+<% unless @was_remixed.nil? -%>
+  <script type="text/javascript">
+    facebook.load<%= @was_remixed ? "Remix" : "New" %>Feed('<%= poem_url(@poem) %>', '<%= @poem.title %>');
+  </script>
+<% end -%>
 <script>
   // Auto-discovery link for Disqus comments feed - hacksy!
   var exp = /href="(\S+)">This thread/;

@@ -66,3 +66,35 @@ versions = {
     checkbox.checked = true;
   }
 }
+
+facebook = {
+  loadEditFeed: function(url, title)
+  {
+    var poem_data = {"site":'http://poetry.herokugarden.com', "url":url, "title":title};
+    FB.Connect.showFeedDialog(61095185662, poem_data, null, null, null, FB.RequireConnect.promptConnect);
+  },
+  
+  loadRemixFeed: function(url, title)
+  {
+    var poem_data = {"site":'http://poetry.herokugarden.com', "url":url, "title":title};
+    FB.Connect.showFeedDialog(61097025662, poem_data, null, null, null, FB.RequireConnect.promptConnect);
+  },
+  
+  loadNewFeed: function(url, title)
+  {
+    var poem_data = {"site":'http://poetry.herokugarden.com', "url":url, "title":title};
+    FB.Connect.showFeedDialog(61096715662, poem_data, null, null, null, FB.RequireConnect.promptConnect);
+  },
+  
+  showStatus: function()
+  {
+    if (FB.Connect.get_status().result == 1)
+    {
+      $('facebook_status').update("<strong>Note: You're connected to Facebook.  Working on a poem will update your feed, if authorized.</strong>");
+    }
+    else
+    {
+      $('facebook_status').update("<strong>Connect to Facebook to update your feed when you work on a poem.</strong>");
+    }
+  }
+}

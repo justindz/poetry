@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+        xmlns:fb="http://www.facebook.com/2008/fbml">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -34,6 +35,10 @@
       <%= button_to_function("Search", "window.location = '/search/' + $('terms').value;") %>
     </div>
     <div id="body_container">
+      <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+      <script type="text/javascript">
+        FB.init("8f7314e5856b1ec5890828524c2b8d60", "/xd_receiver.htm");
+      </script>
       <p style="color: green;"><%= image_tag('next-green_24.png', { :style => "vertical-align: middle;" }) unless flash[:notice].nil? %> <%= flash[:notice] %></p>
       <p style="color: red;"><%= image_tag('next-red_24.png', { :style => "vertical-align: middle;" }) unless flash[:error].nil? %> <%= flash[:error] %></p>
       <%= yield  %>

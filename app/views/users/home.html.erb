@@ -43,6 +43,11 @@
       <% end -%>
     </ul>
   <% end -%>
+  <p>
+    <span id="facebook_status" />
+    <script type="text/javascript">facebook.showStatus();</script>
+    <br /><fb:login-button></fb:login-button>
+  </p>
 </div>
 
 <%= link_to 'Edit My Profile', edit_user_path(@user) %>
