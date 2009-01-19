@@ -3,6 +3,8 @@ class AccountController < ApplicationController
   skip_before_filter :require_name_for_user
   
   def login
+    @recent_poems = Poem.find(:all, :order => 'created_at desc', :limit => 5)
+    
     if logged_in?
       successful_login
     else

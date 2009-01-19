@@ -31,8 +31,10 @@ a:hover {
 }
 
 input[type="submit"]:enabled, input[type="button"]:enabled {
-  color: white;
-  background-color: #336699;
+  color: #6699cc;
+  background-color: #ffffff;
+  border: medium solid #6699cc;
+  font-weight: bold;
 }
 
 hr {
@@ -235,7 +237,8 @@ div#friend_updates {
 #miniflex {
   width: 100%;
   float: left;
-  padding: 0pt 0pt 0.2em;
+  padding: 0;
+  padding-top: .5em;
   margin: 0;
   background-color: #6699CC;
   }
@@ -252,7 +255,7 @@ div#friend_updates {
   float: left;
   line-height: 1em;
   font-weight: bold;
-  margin: .4em .5em 0 .5em;
+  margin: 0em .5em 0 .5em;
   text-decoration: none;
   color: white;
   background-color: #6699CC;
@@ -345,65 +348,68 @@ div.progressBar div.background {
 
 /*-----------------------------TIPJOY WIDGET -----------------*/
 .tjbody{  /* this is the container around the entire widget */
-	background:none;
-	display:block;
+  background:none;
+  display:block;
+  border-top: thin solid #CCCCCC;
+  border-bottom: thin solid #CCCCCC;
+  margin-top: .5em;
 }
 
 .tjContent { /* this is the container just inside tjbody, contains all content */
-	margin:5px auto;
-	text-align:left;
-	display:block;
+  margin:5px auto;
+  text-align:left;
+  display:block;
 }
 
 .block1{ /* this is the 'give' block */
-	display:block;
-	margin-bottom:7px;
+  display:block;
+  margin-bottom:7px;
 }
 
 .block2{ /* this is the giver list block */
-	margin-top:10px;
-	display:block;
+  margin-top:10px;
+  display:block;
 }
    
 .tjp{ /*this is our paragraph tag */
-	margin-top:2px;
-	display:block;
-	font-size:80%;
-	font-weight:normal;
+  margin-top:2px;
+  display:block;
+  font-size:80%;
+  font-weight:normal;
 }
 
 .tjemphasis{ /* used to give various elements emphasis */
-	font-weight:bold;
+  font-weight:bold;
 }
 
 .tjtitle{  /* the title field is for your custom message.*/
-	margin: 5px 0;
-	font-size:110%;
-	font-weight:bold;
+  margin: 5px 0;
+  font-size:110%;
+  font-weight:bold;
 }
 
 .tjsubtitle{ /* the subtitle field is for the 'recent givers' and 'most generous' headers */
-	font-size:100%;
-	font-weight:bold;
+  font-size:100%;
+  font-weight:bold;
 }
 
 .tjgivebtn{ /* this styles the 'give' button.*/
-	vertical-align:middle;
+  vertical-align:middle;
 }
 
 /*-----------------------------TIPJOY WIDGET: GIVER LISTS -----------------*/
 
 .tjgiventry{  /* this gives extra style to the paragraphs which list the giver and their message if applicable */
-	margin:5px 0 10px 0;
-	padding-left:4px;
-	border-left:1px solid #ccc;  
-	display:block;
+  margin:5px 0 10px 0;
+  padding-left:4px;
+  border-left:1px solid #ccc;  
+  display:block;
 }
 
 .tjtime{ /* the time indicator on each giver paragraph */
-	font-style:italic;
+  font-style:italic;
 }
 
 .tjmymsgs{ /* the giver's message row(s)*/
-	display:block;
+  display:block;
 }

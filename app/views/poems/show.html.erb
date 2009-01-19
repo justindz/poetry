@@ -53,7 +53,6 @@
   <% if @poem.remixable? && logged_in? && (current_user != @poem.user) -%>
     <h2><%= link_to('Remix this!', remix_path(@poem)) %></h2>
   <% end -%>
-  <%= render :partial => "friend_connect" %>
 </div>
 <script>
   // Auto-discovery link for Disqus comments feed - hacksy!
