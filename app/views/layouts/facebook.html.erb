@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
         xmlns:fb="http://www.facebook.com/2008/fbml">
-
+ 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -18,34 +18,18 @@
     <div id="nav">
       <ul id="miniflex">
         <li><%= image_tag('chapbook.png') %></li>
-        <%= tab('Home', 'users', 'home') if logged_in? %>
-        <%= tab('Write a Poem', 'poems', 'new') if logged_in? %>
-        <%= tab('Read Poems', 'poems') %>
-        <%= script_tab('Search', "$('search_form').show();") %>
-        <% if logged_in? -%>
-          <%= tab('Logout', "account", "logout") %>
-        <% else -%>
-          <%= tab('Login', "account", "login") %>
-        <% end -%>
       </ul>
-    </div>
-    <div id="search_form" style="display: none;">
-      <br style="margin-top: 1em;" />
-      <input type="text" id="terms" />
-      <%= button_to_function("Search", "window.location = '/search/' + $('terms').value;") %>
     </div>
     <div id="body_container">
       <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
       <script type="text/javascript">
         FB.init("8f7314e5856b1ec5890828524c2b8d60", "/xd_receiver.htm");
       </script>
-      <p style="color: green; font-size: large;"><%= image_tag('next-green_24.png', { :style => "vertical-align: middle;" }) unless flash[:notice].nil? %> <%= flash[:notice] %></p>
-      <p style="color: red; font-size: large;"><%= image_tag('next-red_24.png', { :style => "vertical-align: middle;" }) unless flash[:error].nil? %> <%= flash[:error] %></p>
       <%= yield  %>
     </div>
     <div id="footer">
       <ul id="miniflex">
-        <%= tab('About', 'about') %>
+        <%= external_tab('App Page', 'www.facebook.com/apps/application.php?id=60903950662') %>
         <%= external_tab('Blog', 'justindz.tumblr.com') %>
       </ul>
     </div>

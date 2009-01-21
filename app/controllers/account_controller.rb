@@ -22,6 +22,11 @@ class AccountController < ApplicationController
     end
   end
   
+  def canvas
+    @recent_poems = Poem.find(:all, :order => 'created_at desc', :limit => 4)
+    render :layout => "facebook"
+  end
+  
   def open_id_authentication(openid_url)
     authenticate_with_open_id(openid_url, :required => [:nickname, :email]) do |result, identity_url, registration|
       if result.successful?

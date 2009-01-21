@@ -4,9 +4,9 @@ class Poem < ActiveRecord::Base
   acts_as_ferret :fields => [ :title, :body ], :remote => true
   
   belongs_to :user
-  has_many :comments
-  has_many :favorites
-  has_many :revisions, :order => 'created_at DESC'
+  has_many :comments, :dependent => :destroy
+  has_many :favorites, :dependent => :destroy
+  has_many :revisions, :order => 'created_at DESC', :dependent => :destroy
   belongs_to :license
   
   has_many :remixes, :class_name => "Poem", :foreign_key => "original_id"

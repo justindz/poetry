@@ -1,0 +1,32 @@
+<% @page_title = "Chapbook Canvas" %>
+<style>
+  body
+  {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    font-size: 70%;
+  }
+</style>
+<div id="recent_poems">
+  <h2>Recent Poems</h2>
+  <% @recent_poems.each do |poem| -%>
+    <%= render :partial => 'poems/recent_poem', :locals => { :poem => poem } %>
+  <% end -%>
+</div>
+<hr / style="clear: both;">
+<br /><br />
+<% form_tag '/account/login' do -%>
+  <div id="openid_login" style="float: left; width: 20em; padding-bottom: 2em;">
+    <style> @import 'http://www.clickpass.com/stylesheets/container.css'; </style>
+    <div id="clickpass_button" style="width: 352px; height: 56px; position: relative; z-index : 9999 ;">
+      <iframe src="http://www.clickpass.com/embedded_buttons/login-standard/4qPh6INkB6" width="176" height="28" frameborder="0" allowtransparency="true" scrolling="no" style="z-index:9999;position: absolute; top: 0; left: 0;"></iframe>
+    </div>
+    <script type="text/javascript" src="http://www.clickpass.com/javascripts/ClickpassPanel.class.external.js?v1"></script>
+    <script type="text/javascript">  
+      var clickpassPanel = new ClickpassPanel('clickpass_button');
+    </script>
+  </div>
+<% end -%>
+<p>
+  <strong>Chapbook is an external poetry app integrated with Facebook.  She recommends you either login or <%= link_to('break out of the iframe for the full experience', 'http://poetry.herokugarden.com', :target => 'new') %>.</strong>
+</p>

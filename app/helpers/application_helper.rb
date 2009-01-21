@@ -11,7 +11,7 @@ module ApplicationHelper
   end
   
   def external_tab(name, link)
-    "<li><a href=\"http://#{link}\">#{name}</a></li>"
+    "<li><a href=\"http://#{link}\" target=\"new\">#{name}</a></li>"
   end
   
   def link_to_user(user, id = nil)

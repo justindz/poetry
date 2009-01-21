@@ -32,6 +32,9 @@ class PoemsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @poem }
     end
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = "You requested a non-existent poem.  Either the ID is bad or the author deleted the poem.  Consider browsing one of these other masterpieces?"
+    redirect_to(poems_url)
   end
   
   def revisions
@@ -145,17 +148,11 @@ class PoemsController < ApplicationController
     @poem = Poem.find(params[:id])
     if current_user == @poem.user
       @poem.destroy
-      # destroy revisions
-      # handle links to remixes
-      # update full text index?
+      flash[:notice] = @poem.title + " has been deleted.  The world is a slightly less poetic place."
+      redirect_to(home_url())
     else
       flash[:error] = "You can only delete your own poems.  Nice try, though."
       redirect_to(@poem)
-    end
-
-    respond_to do |format|
-      format.html { redirect_to(poems_url) }
-      format.xml  { head :ok }
     end
   end
   

@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   # GET /users/1/all
   def all
     @user = User.find(params[:id])
-    @poems = @user.poems.paginate(:page => params[:page], :per_page => 10)
+    @poems = @user.poems.paginate(:page => params[:page], :per_page => 10, :order => 'created_at desc')
     
     respond_to do |format|
       format.html # all.html.erb
@@ -193,11 +193,15 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
+    if current_user == @user
+      @user.destroy
  
-    respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
+      respond_to do |format|
+        format.html { redirect_to(users_url) }
+        format.xml  { head :ok }
+      end
+    else
+      flash[:error] = "Naughty naughty.  You can't delete other people."
     end
   end
 end
