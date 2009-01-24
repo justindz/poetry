@@ -188,6 +188,24 @@ class UsersController < ApplicationController
       render :action => "edit"
     end
   end
+  
+  def download
+    require 'zip/zip'
+    
+    filename = File.join RAILS_ROOT, 'public', 'archives', current_user.id.to_s + '.zip'
+    File.delete(filename) if File.file?(filename)
+
+    Zip::ZipOutputStream.open(filename) do |zipfile|
+      current_user.poems.each do |poem|
+        entry = zipfile.put_next_entry(poem.id.to_s + '.txt')
+        zipfile.puts poem.title
+        zipfile.puts '\n'
+        zipfile.puts poem.body
+      end
+    end
+    
+    redirect_to('/archives/' + current_user.id.to_s + '.zip')
+  end
  
   # DELETE /users/1
   # DELETE /users/1.xml

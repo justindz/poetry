@@ -1,4 +1,4 @@
-<% @page_title = "'#{@poem.title}' @ Chapbook" %>
+<% @page_title = "'#{@poem.title}'" %>
 <% @rss = auto_discovery_link_tag(:rss, formatted_revisions_url(@poem, :rss), { :title => "Prior Versions of #{@poem.title} @ Chapbook" }) %>
 <div id="poem_left_column">
   <p>
@@ -35,7 +35,10 @@
     %>
   </p>
   <p>
-    <%= link_to_if((current_user == @poem.user), 'Delete', poem_path(@poem), :method => :delete, :confirm => "Are you sure you want to rob the world of this poem?  This cannot be undone.  Seriously.") %>
+    <%= link_to_if((current_user == @poem.user), 'Delete', poem_path(@poem), :method => :delete, :confirm => "Are you sure you want to rob the world of this poem?  This cannot be undone.  Seriously.") do
+        ''
+      end
+    %>
   </p>
   <%= render :partial => "poem_history", :object => @poem %>
   <%= render :partial => 'tag_list', :locals => { :taggable => @poem } -%>

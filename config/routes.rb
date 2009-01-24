@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.home 'users/home', :controller => 'users', :action => 'home'
+  map.download 'users/download', :controller => 'users', :action => 'download'
   map.favorites 'users/favorites/:id', :controller => 'users', :action => 'favorites'
   map.formatted_favorites 'users/favorites/:id.:format', :controller => 'users', :action => 'favorites'
   map.all 'users/:id/all', :controller => 'users', :action => 'all'

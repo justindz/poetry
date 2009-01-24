@@ -1,4 +1,4 @@
-<% @page_title = "Poems Matching '#{@terms}' @ Chapbook" %>
+<% @page_title = "Poems Matching '#{@terms}'" %>
 <% @rss = auto_discovery_link_tag(:rss, formatted_search_url(@terms, :rss), { :title => @page_title }) %>
 <h1>Poems Matching '<%= @terms %>' - <%= pluralize @poems.total_hits, 'Hit' %></h1>
 <%= render :partial => "poem_list", :object => @poems %>

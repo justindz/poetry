@@ -1,4 +1,4 @@
-<% @page_title = "Recent Poems @ Chapbook" %>
+<% @page_title = "Recent Poems" %>
 <% @rss = auto_discovery_link_tag(:rss, formatted_poems_url(:rss), { :title => @page_title }) %>
 <h1>Explore</h1>
 <%= render :partial => 'tags/cloud', :locals => {:tags => @tags} -%>

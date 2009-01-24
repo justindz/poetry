@@ -1,7 +1,7 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title "Poems Matching '#{@terms}' @ Chapbook"
+    xml.title "Poems Matching '#{@terms}'"
     xml.description "Recent poems containing '#{@terms}' on Chapbook (http://poetry.heroku.com)."
     xml.link search_url(@terms)
     

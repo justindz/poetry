@@ -1,4 +1,4 @@
-<% @page_title = "Login @ Chapbook" %>
+<% @page_title = "Chapbook" %>
 
 <div id="recent_poems">
   <h2>Recent Poems</h2>
@@ -9,8 +9,8 @@
 <hr / style="clear: both;">
 <br />
 <%= link_to_function("What is Chapbook?", "$('chapbook_explanation').setAttribute('style', 'display: inherit;'); $('openid_explanation').setAttribute('style', 'display: none;');") %> | <%= link_to_function("What is OpenID?", "$('chapbook_explanation').setAttribute('style', 'display: none;'); $('openid_explanation').setAttribute('style', 'display: inherit;');") %>
-<%= render :partial => 'openid_explanation' %>
 <%= render :partial => 'chapbook_explanation' %>
+<%= render :partial => 'openid_explanation' %>
 <hr / style="clear: both;">
 
 <% form_tag '/account/login' do -%>

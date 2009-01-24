@@ -1,4 +1,4 @@
-<% @page_title = "Poems Tagged with '#{@tag}' @ Chapbook" %>
+<% @page_title = "Poems Tagged with '#{@tag}'" %>
 <% @rss = auto_discovery_link_tag(:rss, formatted_tag_url(@tag, :rss), { :title => @page_title }) %>
 <h1>Poems Tagged with "<%= @tag %>"</h1>
 <%= render :partial => "poems/poem_list", :object => @poems %>

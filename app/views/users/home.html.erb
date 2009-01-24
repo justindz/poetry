@@ -1,6 +1,6 @@
 <% @rss = auto_discovery_link_tag(:rss, formatted_user_url(@user, :rss), { :title => "Chapbook Poems by #{@user.name}" }) %>
 <% @foaf = auto_discovery_link_tag(:rdf, foaf_url(@user, :rdf), { :title => "FOAF" }) %>
-<% @page_title = "Your Home @ Chapbook" %>
+<% @page_title = "My Chapbook" %>
 <div id="my_recent_poems">
   <h2><%= link_to('Your Poems', all_path(@user)) %></h2>
   <% @my_recent_poems.each do |poem| -%>
@@ -50,4 +50,4 @@
   </p>
 </div>
 
-<%= link_to 'Edit My Profile', edit_user_path(@user) %>
+<%= link_to 'Edit My Profile', edit_user_path(@user) %> | <%= link_to 'Download Poem Archive', download_path %>

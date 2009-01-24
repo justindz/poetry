@@ -1,4 +1,4 @@
 <% @rss = auto_discovery_link_tag(:rss, formatted_user_url(@user, :rss), { :title => "Chapbook Poems by #{@user.name}" }) %>
-<% @page_title = "Recent Poems by #{@user.name} @ Chapbook" %>
+<% @page_title = "Recent Poems by #{@user.name}" %>
 <h1>All Poems by <%= @user.name %></h1>
 <%= render :partial => "poems/poem_list", :object => @poems %>
