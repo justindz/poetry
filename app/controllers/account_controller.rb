@@ -48,6 +48,21 @@ class AccountController < ApplicationController
     end
   end
   
+  def twitter_authorize
+    require 'twitter'
+    
+    current_user.oauth = Twitter::OAuth.new('ZZ1BhoMhjTMoGqOYt9bIQ', 'h9B13H7K4RDgJAsfN4WEmb5jiFssEmHfjsjOC65B0')
+    session['rtoken'] = current_user.oauth.request_token.token
+    session['rsecret'] = current_user.oauth.request_token.secret
+    
+    redirect_to oauth.request_token.authorize_url
+  end
+  
+  def twitter_callback
+    oauth = current_user.oauth
+    oauth.authorize_from_request(session['rtoken'], session['rsecret'])
+  end
+  
   def successful_login
     if params[:remember_me] == "1"
       self.current_user.remember_me

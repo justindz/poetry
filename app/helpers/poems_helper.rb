@@ -24,4 +24,9 @@ module PoemsHelper
       text.gsub(/(\W+#{match}\W+)/i, highlighter)
     end
   end
+  
+  def tweet(poem_id)
+    client = Twitter::Base.new(current_user.oauth)
+    client.update("Worked on #{poem_url(poem_id)} on Chapbook.")
+  end
 end

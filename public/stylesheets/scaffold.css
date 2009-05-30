@@ -154,6 +154,11 @@ div#recent_poems {
   clear: both;
 }
 
+div#recent_comments {
+  width: 30%;
+  margin-top: 2em;
+}
+
 .recent_poem {
   border-right: thin solid #ccc;
   padding-right: .5em;

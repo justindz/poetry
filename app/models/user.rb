@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
   attr_accessor :password
   
+  attr_accessor :oauth
+  
   attr_accessible :name, :email, :identity_url
  
   validates_presence_of     :name
