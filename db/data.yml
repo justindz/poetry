@@ -1,0 +1,1293 @@
+
+--- 
+avatars: 
+  columns: 
+  - id
+  - user_id
+  - parent_id
+  - content_type
+  - filename
+  - thumbnail
+  - size
+  - width
+  - height
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - 
+    - 
+    - image/jpeg
+    - 115616991_b79bc78051.jpg
+    - 
+    - "1851"
+    - "48"
+    - "48"
+    - 2008-04-15 06:37:38.444904
+    - 2008-05-07 11:51:05.370376
+  - - "2"
+    - "1"
+    - 
+    - image/jpeg
+    - justindz_1024.JPG
+    - 
+    - "85016"
+    - "48"
+    - "48"
+    - 2008-05-07 11:51:05.321321
+    - 2008-05-07 11:51:05.376971
+  - - "3"
+    - "4"
+    - 
+    - image/png
+    - justindz_old_48x48.png
+    - 
+    - "4520"
+    - "48"
+    - "48"
+    - 2008-05-07 11:53:06.69324
+    - 2008-05-07 11:53:06.718366
+
+--- 
+chapbooks: 
+  columns: 
+  - id
+  - user_id
+  - created_at
+  - updated_at
+  - title
+  - introduction
+  records: 
+  - - "1"
+    - "1"
+    - 2008-04-15 06:37:58.680398
+    - 2008-04-15 06:38:08.438109
+    - My First Chapbook
+    - Early test poems.
+
+--- 
+comments: 
+  columns: 
+  - id
+  - user_id
+  - poem_id
+  - created_at
+  - body
+  - is_private
+  - updated_at
+  records: 
+  - - "1"
+    - "1"
+    - "2"
+    - 2008-04-15 06:36:48.736831
+    - Pwned.
+    - false
+    - 2008-04-15 06:36:48.736831
+
+--- 
+covers: 
+  columns: 
+  - id
+  - chapbook_id
+  - parent_id
+  - content_type
+  - filename
+  - thumbnail
+  - size
+  - width
+  - height
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - "1"
+    - 
+    - image/png
+    - my_first_chapbook.png
+    - 
+    - "14955"
+    - "600"
+    - "800"
+    - 2008-04-15 06:38:08.359093
+    - 2008-04-15 06:38:08.433331
+
+--- 
+favorites: 
+  columns: 
+  - id
+  - poem_id
+  - user_id
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - "7"
+    - "1"
+    - 2008-05-08 10:51:07.194325
+    - 2008-05-08 10:51:07.194325
+  - - "2"
+    - "8"
+    - "1"
+    - 2008-05-23 16:38:18.900204
+    - 2008-05-23 16:38:18.900204
+
+--- 
+friendships: 
+  columns: 
+  - id
+  - user_id
+  - friend_id
+  - created_at
+  - accepted_at
+  records: 
+  - - "2"
+    - "2"
+    - "1"
+    - 2008-04-26 17:05:14.010789
+    - 2008-04-26 17:05:42.041553
+  - - "6"
+    - "4"
+    - "1"
+    - 2008-05-07 11:56:45.477984
+    - 2008-05-07 11:57:00.523454
+
+--- 
+open_id_authentication_associations: 
+  columns: 
+  - id
+  - issued
+  - lifetime
+  - handle
+  - assoc_type
+  - server_url
+  - secret
+  records: 
+  - - "2"
+    - "1210269327"
+    - "14400"
+    - wwtQ55rdO4uFzMu3T2YzomYoGa6jfn5NjXz95ftDWkYQlMOs76PtGPucNjAU6_4GYg8GrQ3q9uAEZuiOJtk124LwQq4mP2vf9Hr537w12OjlKT2qk2tc3d5RDmkDH7GI
+    - HMAC-SHA1
+    - https://open.login.yahooapis.com/openid/op/auth
+    - NkF\012\243\025\252\\\016\245\256\032i\271\223\3332\023\025\260
+  - - "3"
+    - "1210276559"
+    - "1206242"
+    - 1210276558:TQWipHg8kBHMFBYZ1Dao:d52c310224
+    - HMAC-SHA1
+    - http://www.livejournal.com/openid/server.bml
+    - \022/=0\015^JtN{\225;.9\354\210\304D\214\351
+  - - "7"
+    - "1211498293"
+    - "1209600"
+    - "{HMAC-SHA1}{4835ff35}{wc1rDg==}"
+    - HMAC-SHA1
+    - http://www.myopenid.com/server
+    - \361\366\035\323\315G\027\347\320<U\027\257i\003&\241\341\241J
+  - - "12"
+    - "1212797426"
+    - "120960"
+    - "{HMAC-SHA1}{4849d1f2}{nUiUkA==}"
+    - HMAC-SHA1
+    - http://www.clickpass.com/openid_server
+    - \\\333\211b\002p\220mz\026\000R\211&\222\306!\320\357\265
+
+--- 
+open_id_authentication_nonces: 
+  columns: 
+  - id
+  - timestamp
+  - server_url
+  - salt
+  records: 
+  - - "1"
+    - "1210204951"
+    - ""
+    - RdVMxp
+  - - "2"
+    - "1210205140"
+    - ""
+    - gEDXTh
+  - - "3"
+    - "1210205877"
+    - ""
+    - RxI2sb
+  - - "4"
+    - "1210205996"
+    - ""
+    - 2hegpJ
+  - - "5"
+    - "1210206009"
+    - ""
+    - 8Ygxdt
+  - - "6"
+    - "1210206152"
+    - ""
+    - 7bJEii
+  - - "7"
+    - "1210208707"
+    - ""
+    - w0zbNQ
+  - - "8"
+    - "1210208725"
+    - ""
+    - LfcY3M
+  - - "9"
+    - "1210208869"
+    - ""
+    - oSoTre
+  - - "10"
+    - "1210209555"
+    - ""
+    - 7QUtgk
+  - - "11"
+    - "1210209570"
+    - ""
+    - tyyOVC
+  - - "12"
+    - "1210209890"
+    - ""
+    - rox1s0
+  - - "13"
+    - "1210210020"
+    - ""
+    - lI2zCL
+  - - "14"
+    - "1210210321"
+    - ""
+    - uH13Or
+  - - "15"
+    - "1210211376"
+    - ""
+    - 6cLhtR
+  - - "16"
+    - "1210211647"
+    - ""
+    - 8KsIRm
+  - - "17"
+    - "1210238252"
+    - ""
+    - BEtivx
+  - - "18"
+    - "1210238438"
+    - ""
+    - sgsYG4
+  - - "19"
+    - "1210257222"
+    - ""
+    - PHbaHO
+  - - "20"
+    - "1210258320"
+    - ""
+    - nlg6Dx
+  - - "21"
+    - "1210258334"
+    - ""
+    - YniXRE
+  - - "22"
+    - "1210258461"
+    - ""
+    - MttSsg
+  - - "23"
+    - "1210260190"
+    - ""
+    - c9cD4O
+  - - "24"
+    - "1210260838"
+    - ""
+    - gk0W0y
+  - - "25"
+    - "1210261004"
+    - ""
+    - 2jpKic
+  - - "26"
+    - "1210262106"
+    - ""
+    - 3oK3gX
+  - - "27"
+    - "1210262132"
+    - ""
+    - r97wzM
+  - - "28"
+    - "1210262231"
+    - ""
+    - CMP4Bz
+  - - "29"
+    - "1210263009"
+    - ""
+    - 55f291
+  - - "30"
+    - "1210263217"
+    - ""
+    - 4RR5uh
+  - - "31"
+    - "1210265030"
+    - ""
+    - IJSmK5
+  - - "32"
+    - "1210269033"
+    - ""
+    - e2ruHF
+  - - "33"
+    - "1210269367"
+    - https://open.login.yahooapis.com/openid/op/auth
+    - jpEPw82m8Kl1FScK6ZQ4tfLMoTQCEDiFrg--
+  - - "34"
+    - "1210269506"
+    - https://open.login.yahooapis.com/openid/op/auth
+    - aN9BgsH21amUBF2Mhq_eaiqJ0dt6YeDvFg--
+  - - "35"
+    - "1210275470"
+    - ""
+    - 9LH48q
+  - - "36"
+    - "1210275550"
+    - ""
+    - rJMlh0
+  - - "37"
+    - "1210275573"
+    - https://open.login.yahooapis.com/openid/op/auth
+    - ikxwRkAbNUTNToSSrTOluW5bBqex6XVM0w--
+  - - "38"
+    - "1210277567"
+    - ""
+    - Xkljwq
+  - - "39"
+    - "1210277890"
+    - https://open.login.yahooapis.com/openid/op/auth
+    - QGMlrzFsJ1ZNXEQOO6HdXD3TKXXpy9RlCg--
+  - - "40"
+    - "1210278111"
+    - ""
+    - WK1Gef
+  - - "41"
+    - "1210286101"
+    - ""
+    - jWZfkq
+  - - "42"
+    - "1210286467"
+    - ""
+    - 90qLOL
+  - - "43"
+    - "1210290000"
+    - ""
+    - UhjjW8
+  - - "44"
+    - "1210291727"
+    - ""
+    - OkBjm2
+  - - "45"
+    - "1210291927"
+    - ""
+    - ynLjHs
+  - - "46"
+    - "1210291988"
+    - ""
+    - AOJyYF
+  - - "47"
+    - "1210292202"
+    - ""
+    - vdkyDE
+  - - "48"
+    - "1210292264"
+    - ""
+    - 02LqHw
+  - - "49"
+    - "1210292680"
+    - ""
+    - NvrOmi
+  - - "50"
+    - "1210292753"
+    - ""
+    - 0G0L1u
+  - - "51"
+    - "1210295155"
+    - ""
+    - Af5uFi
+  - - "52"
+    - "1210295374"
+    - ""
+    - TQASFN
+  - - "53"
+    - "1210295715"
+    - ""
+    - wgWrTP
+  - - "54"
+    - "1210296132"
+    - ""
+    - LxtThx
+  - - "55"
+    - "1210296447"
+    - ""
+    - yOcWsP
+  - - "56"
+    - "1210296686"
+    - ""
+    - g9qdMH
+  - - "57"
+    - "1210296827"
+    - ""
+    - 9CiABd
+  - - "58"
+    - "1210297315"
+    - ""
+    - i2VqH3
+  - - "59"
+    - "1210299509"
+    - ""
+    - xlHLmd
+  - - "60"
+    - "1210300320"
+    - ""
+    - YrTupw
+  - - "61"
+    - "1210300444"
+    - ""
+    - 9LXpJ2
+  - - "62"
+    - "1210300690"
+    - ""
+    - neofCw
+  - - "63"
+    - "1210300751"
+    - ""
+    - ag2iye
+  - - "64"
+    - "1210368071"
+    - ""
+    - pp5uIy
+  - - "65"
+    - "1210369200"
+    - ""
+    - ou1eNH
+  - - "66"
+    - "1210380230"
+    - ""
+    - FgEfP5
+  - - "67"
+    - "1210438422"
+    - ""
+    - tuSCSI
+  - - "68"
+    - "1210438493"
+    - ""
+    - jLqDp3
+  - - "69"
+    - "1210439950"
+    - ""
+    - j1Ad29
+  - - "70"
+    - "1210441274"
+    - ""
+    - pPjb4h
+  - - "71"
+    - "1210611971"
+    - ""
+    - 68f66q
+  - - "72"
+    - "1210959059"
+    - ""
+    - cGC8UE
+  - - "73"
+    - "1211498329"
+    - http://www.myopenid.com/server
+    - m4hIfe
+  - - "74"
+    - "1211506906"
+    - ""
+    - SpWmQE
+  - - "75"
+    - "1211585874"
+    - ""
+    - Fvwfdx
+  - - "76"
+    - "1211586819"
+    - ""
+    - Nn1ky3
+  - - "77"
+    - "1211968744"
+    - ""
+    - xxHb5E
+  - - "78"
+    - "1211983797"
+    - ""
+    - OAzCji
+  - - "79"
+    - "1212087357"
+    - ""
+    - dfuHPq
+  - - "80"
+    - "1212087604"
+    - ""
+    - LiPIMB
+  - - "81"
+    - "1212235031"
+    - ""
+    - Cp64Wo
+  - - "82"
+    - "1212464559"
+    - ""
+    - F3axUi
+  - - "83"
+    - "1212464574"
+    - ""
+    - osXtPI
+  - - "84"
+    - "1212525157"
+    - http://www.myopenid.com/server
+    - pm6FTQ
+  - - "85"
+    - "1212660498"
+    - http://www.myopenid.com/server
+    - tGEOC6
+  - - "86"
+    - "1212797426"
+    - ""
+    - tsdtzh
+  - - "87"
+    - "1212798043"
+    - ""
+    - fobumZ
+  - - "88"
+    - "1212798934"
+    - ""
+    - ORz5Li
+
+--- 
+pages: 
+  columns: 
+  - id
+  - chapbook_id
+  - poem_id
+  - sequence
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - "1"
+    - "2"
+    - "1"
+    - 2008-04-15 06:38:22.531058
+    - 2008-04-15 06:38:22.531058
+  - - "2"
+    - "1"
+    - "1"
+    - "2"
+    - 2008-04-15 06:38:30.061698
+    - 2008-04-15 06:38:30.061698
+  - - "3"
+    - "1"
+    - "3"
+    - "3"
+    - 2008-04-19 06:26:08.500929
+    - 2008-04-19 06:26:08.500929
+  - - "4"
+    - "1"
+    - "4"
+    - "4"
+    - 2008-04-21 08:29:52.09129
+    - 2008-04-21 08:29:52.09129
+  - - "5"
+    - "1"
+    - "5"
+    - "5"
+    - 2008-04-21 08:29:59.201593
+    - 2008-04-21 08:29:59.201593
+
+--- 
+poems: 
+  columns: 
+  - id
+  - user_id
+  - created_at
+  - updated_at
+  - title
+  - body
+  - views
+  records: 
+  - - "1"
+    - "1"
+    - 2008-04-15 06:35:46.949016
+    - 2008-06-04 15:53:22.992164
+    - First
+    - |
+      My poem, it has a flavor.  It's srsly cute.
+      Once again.
+      
+      Blah blah.
+
+    - "12"
+  - - "2"
+    - "1"
+    - 2008-04-15 06:35:58.152299
+    - 2008-06-06 07:32:40.266519
+    - Second
+    - |+
+      h1(((((. Dos
+      
+    - "15"
+  - - "3"
+    - "1"
+    - 2008-04-19 06:24:03.056537
+    - 2008-06-04 19:36:59.867196
+    - The Wind is Taken into Consideration
+    - |-
+      The sun is bright outside my office window,
+      reflecting off of the snow huddled around the
+      outside edges of the sparsely populated
+      parking lot between my office and the
+      off-white house-ocean with yards barely
+      wide enough to fit a mower between the
+      fence and the porch.
+      
+      If Hindu scholars hadn't pioneered the use
+      of the number 0, would it be 1 degree
+      Fahrenheit outside, making all the difference
+      between being something and being nothing
+      and even being less than nothing when the
+      wind is taken into consideration.
+      
+      Japanese girls are asleep right now, resting
+      their bloody thumbs from furiously drafting
+      cell phone novels about angst, passion, clothes
+      and infectious disease on the long ride from
+      somewhere to elsewhere on another train in
+      a long line of trains into tunnels in the dark.
+      
+      There are far too many love/sex songs about
+      bedrooms and far too few about the woods and
+      the pool at the bottom of the waterfall where
+      you might interrupt a monk with his beads,
+      working them through his hands as the falling
+      water pushes down on his shoulders leaving
+      thumb prints, without blood and cool but
+      not as cold as the window pane and the
+      plastic hanging blinds next to my desk.
+    - "8"
+  - - "4"
+    - "1"
+    - 2008-04-21 08:28:29.798355
+    - 2008-06-05 01:59:41.474234
+    - The Wedding Photo
+    - "Morgantown went uphill and downhill.\r\n\
+      It never went across level,\r\n\
+      even ground.\r\n\
+      I could jump from my back yard \r\n\
+      and land\r\n\
+      on the neighbor\xE2\x80\x99s roof.  \r\n\
+      Some mornings\r\n\
+      the fog could almost be held.\r\n\
+      Three years passed between the first and\r\n\
+      \r\n\
+      second time we slept together.\r\n\
+      Two students from Pitt drowned\r\n\
+      in the river a year apart.\r\n\
+      Days later they always\r\n\
+      floated up downstream\xE2\x80\x94\r\n\
+      identifiable only\r\n\
+      by their teeth.\r\n\
+      I remember every semester as overcast and\r\n\
+      rainy, like walking across loose bricks;\r\n\
+      dirty water squishing from the gaps,\r\n\
+      leaving grey stains on my\r\n\
+      jeans and socks.\r\n\
+      I study my reflection in the wedding photo\xE2\x80\x94\r\n\
+      in you dancing around with\r\n\
+      a white smile\r\n\
+      and a bridesmaid\xE2\x80\x99s dress\r\n\
+      and all I can picture\r\n\
+      of my former room is a\r\n\
+      bent clothes hangar \r\n\
+      nailed to the wall."
+    - "10"
+  - - "5"
+    - "1"
+    - 2008-04-21 08:29:00.851256
+    - 2008-06-05 08:39:27.579538
+    - Lost Dog
+    - |-
+      I wander into the Lost Dog and smell the blend
+      of dry coffee and dry tea gently diffused through
+      the years from portioned bags lining the brick walls
+      on dull green, dented tin shelves.
+      
+      Somewhere along the way, the days grew shorter
+      and my sentences grew longer and my friends
+      moved closer or farther away as the whine of the
+      espresso machine puts me back in the room.
+      
+      All the while I have been sipping my chai, turning
+      pages, throwing glances sideways as people walk
+      by and I reach the bottom of my cup where all
+      the honey has settled to bitterly coat my tongue.
+      
+      Looking around the tables, couches and chairs I
+      see young kids acting like mature adults
+      and mature adults acting like young kids and
+      me, reading my book, somewhere in between.
+    - "11"
+  - - "6"
+    - "1"
+    - 2008-05-05 15:45:53.63129
+    - 2008-06-05 11:15:28.23918
+    - In Loving Memory of Betty Duewel
+    - |-
+      I helped carry my grandmother's casket
+      to the burial plot on a windy day so windy
+      that memorial flowers careened across the
+      graveyard like tumbleweed.  So windy that
+      mourner's suits caught the wind, billowed
+      out and pushed them closer to the opening
+      in the ground.
+      
+      I was not prepared for how heavy the
+      casket would be, holding my thin grandmother
+      who had been ravaged by dysentery in
+      her early years trying to take polytheism
+      from the Hindus.  Perhaps our spirits make our
+      bodies lighter until they leave, but then
+      I'm just in the kind of mood that takes
+      you sometimes after your distant relative
+      tries to raise your grandma from the dead.
+      
+      I thought about this for a while.  One
+      of the men lowering the casket dropped
+      his notebook and pen and had to climb
+      in to retrieve them.  If she woke and
+      sat up, then the service would have been
+      over before it started, the embalming
+      would have been a bad idea in retrospect
+      and I would have had to start loving others
+      out of fear instead of loving others for the
+      way it makes me feel the world is right.
+      
+      After I got home, I climbed on to the
+      roof of my house and let the sun set
+      behind me while I sat on the shingles and
+      faced the East, following the line
+      described by an angel with a trumpet
+      on the Freemason's meeting house
+      three blocks down the street.  I thought
+      about how relieved I was that I didn't
+      drop the casket and about the nice things
+      people said about my grandmother that
+      I never knew before.
+    - "16"
+  - - "7"
+    - "13"
+    - 2008-05-08 09:09:43.830267
+    - 2008-06-07 20:35:52.223614
+    - Spanky's First Test
+    - Validating OpenURL goodness.
+    - "13"
+  - - "8"
+    - "22"
+    - 2008-05-22 16:21:37.43353
+    - 2008-06-05 10:11:34.516805
+    - Spanky's Second Test
+    - |
+      Oh Woe, so slow
+      why do you tell me no
+      and give me this here ho
+      that doesn't know
+      how to blow
+      
+
+    - "10"
+  - - "9"
+    - "1"
+    - 2008-05-29 11:56:40.853714
+    - 2008-06-04 23:33:10.967852
+    - Spacing Test
+    - |+
+      p((((. Not a very exciting poem at all
+      
+    - "5"
+
+--- 
+revisions: 
+  columns: 
+  - id
+  - poem_id
+  - created_at
+  - title
+  - body
+  - updated_at
+  records: 
+  - - "1"
+    - "2"
+    - 2008-04-15 06:36:05.198786
+    - Second
+    - Ni
+    - 2008-04-15 06:36:05.198786
+  - - "2"
+    - "2"
+    - 2008-04-15 06:36:41.690848
+    - Second
+    - Dos
+    - 2008-04-15 06:36:41.690848
+  - - "3"
+    - "1"
+    - 2008-04-18 17:54:20.885996
+    - First
+    - Uno.
+    - 2008-04-18 17:54:20.885996
+  - - "4"
+    - "1"
+    - 2008-04-18 17:57:01.105391
+    - First
+    - |+
+      My poem, it has a flavor.  It's srsly cute.
+      
+      Once again.
+      
+      p(((. I'm in your English, making dookies.
+      
+    - 2008-04-18 17:57:01.105391
+  - - "5"
+    - "3"
+    - 2008-04-19 06:24:38.365761
+    - The Wind is Taken into Consideration
+    - |-
+      The sun is bright outside my office window,
+      reflecting off of the snow huddled around the
+      outside edges of the sparsely populated
+      parking lot between my office and the
+      off-white house-ocean with yards barely
+      wide enough to fit a mower between the
+      fence and the porch.
+      
+      If Indian scholars hadn't pioneered the use
+      of the number 0, would it be 1 degree
+      Fahrenheit outside, making all the difference
+      between being something and being nothing
+      and even being less than nothing when the
+      wind is taken into consideration.
+      
+      Japanese girls are asleep right now, resting
+      their bloody thumbs from furiously drafting
+      cell phone novels about angst, passion, clothes
+      and infectious disease on the long ride from
+      somewhere to elsewhere on another train in
+      a long line of trains into tunnels in the dark.
+      
+      There are far too many love/sex songs about
+      bedrooms and far too few about the woods and
+      the pool at the bottom of the waterfall where
+      you might interrupt a monk with his beads,
+      working them through his hands as the falling
+      water pushes down on his shoulders leaving
+      thumb prints, without blood and cool but
+      not as cold as the window pane and the
+      plastic hanging blinds next to my desk.
+    - 2008-04-19 06:24:38.365761
+  - - "6"
+    - "3"
+    - 2008-04-19 06:25:25.045015
+    - The Wind is Taken into Consideration
+    - |-
+      The sun is bright outside my office window,
+      reflecting off of the snow huddled around the
+      outside edges of the sparsely populated
+      parking lot between my office and the
+      off-white house-ocean with yards barely
+      wide enough to fit a mower between the
+      fence and the porch.
+      
+      If Indian scholars hadn't pioneered the use
+      of the number 0, would it be 1 degree
+      Fahrenheit outside, making all the difference
+      between being something and being nothing
+      and even being less than nothing when the
+      wind is taken into consideration.
+      
+      Japanese girls are asleep right now, resting
+      their bloody thumbs from furiously drafting
+      cell phone novels about angst, passion, clothes
+      and infectious disease on the long ride from
+      somewhere to elsewhere on another train in
+      a long line of trains into tunnels in the dark.
+      
+      There are far too many love/sex songs about
+      bedrooms and far too few about the woods and
+      the pool at the bottom of the waterfall where
+      you might interrupt a monk with his beads,
+      working them through his hands as the falling
+      water pushes down on his shoulders leaving
+      thumb prints, without blood and cool but
+      not as cold as the window pane and the
+      plastic hanging blinds next to my desk.
+    - 2008-04-19 06:25:25.045015
+  - - "7"
+    - "3"
+    - 2008-04-21 06:48:24.031722
+    - The Wind is Taken into Consideration
+    - |-
+      The sun is bright outside my office window,
+      reflecting off of the snow huddled around the
+      outside edges of the sparsely populated
+      parking lot between my office and the
+      off-white house-ocean with yards barely
+      wide enough to fit a mower between the
+      fence and the porch.
+      
+      If Hindu scholars hadn't pioneered the use
+      of the number 0, would it be 1 degree
+      Fahrenheit outside, making all the difference
+      between being something and being nothing
+      and even being less than nothing when the
+      wind is taken into consideration.
+      
+      Japanese girls are asleep right now, resting
+      their bloody thumbs from furiously drafting
+      cell phone novels about angst, passion, clothes
+      and infectious disease on the long ride from
+      somewhere to elsewhere on another train in
+      a long line of trains into tunnels in the dark.
+      
+      There are far too many love/sex songs about
+      bedrooms and far too few about the woods and
+      the pool at the bottom of the waterfall where
+      you might interrupt a monk with his beads,
+      working them through his hands as the falling
+      water pushes down on his shoulders leaving
+      thumb prints, without blood and cool but
+      not as cold as the window pane and the
+      plastic hanging blinds next to my desk.
+    - 2008-04-21 06:48:24.031722
+  - - "8"
+    - "1"
+    - 2008-04-21 06:56:08.876359
+    - First
+    - |+
+      My poem, it has a flavor.  It's srsly cute.
+      
+      Once again.
+      
+      p(((. I'm in your Engrish, making dookies.
+      
+    - 2008-04-21 06:56:08.876359
+  - - "9"
+    - "1"
+    - 2008-04-21 06:56:21.076
+    - First
+    - |+
+      My poem, it has a flavor.  It's srsly cute.
+      
+      Once again.
+      
+      p(((. I'm in your Engrish, making _*dookies*_.
+      
+    - 2008-04-21 06:56:21.076
+  - - "10"
+    - "6"
+    - 2008-05-05 15:47:56.391035
+    - In Loving Memory of Betty Duewel
+    - |-
+      I helped carry my grandmother's casket
+      to the burial plot on a windy day so windy
+      that memorial flowers careened across the
+      graveyard like tumbleweed.  So windy that
+      mourner's suits caught the wind, billowed
+      out and pushed them closer to the opening
+      in the ground.
+      
+      I was not prepared for how heavy the
+      casket would be, holding my thin grandmother
+      who had been ravaged by dysentery in
+      her early years trying to take polytheism
+      from the Hindus.  Perhaps our spirit makes our
+      bodies lighter until it leaves, but then
+      I'm just in the kind of mood that takes
+      you sometimes after your distant relative
+      tries to raise your grandma from the dead.
+      
+      I thought about this for a while.  One
+      of the men lowering the casket dropped
+      his notebook and pen and had to climb
+      in to retrieve them.  If she woke and
+      sat up, then the service would have been
+      over before it started, the embalming
+      would have been a bad idea in retrospect
+      and I would have had to start loving others
+      out of fear instead of loving others for the
+      way it makes me feel the world is right.
+      
+      After I got home, I climbed on to the
+      roof of my house and let the sun set
+      behind me while I sat on the shingles and
+      faced the East, following the line
+      described by an angel with a trumpet
+      on the Freemason's meeting house
+      three blocks down the street.  I thought
+      about how relieved I was that I didn't
+      drop the casket and about the nice things
+      people said about my grandmother that
+      I never knew before.
+    - 2008-05-05 15:47:56.391035
+  - - "11"
+    - "1"
+    - 2008-05-29 11:58:01.181538
+    - First
+    - |+
+      My poem, it has a flavor.  It's srsly cute.
+      Once again.
+      
+      p(((. I'm in your Engrish, making _*dookies*_.
+      
+    - 2008-05-29 11:58:01.181538
+  - - "12"
+    - "9"
+    - 2008-05-31 05:12:26.950634
+    - blah Blah
+    - |-
+      Write stuff h1(((((. *here*
+      
+      .
+    - 2008-05-31 05:12:26.950634
+  - - "13"
+    - "9"
+    - 2008-05-31 05:12:41.835646
+    - Spacing Test
+    - Not a very exciting poem p(((. at all
+    - 2008-05-31 05:12:41.835646
+  - - "14"
+    - "9"
+    - 2008-05-31 05:12:54.722776
+    - Spacing Test
+    - p(((.Not a very exciting poem at all
+    - 2008-05-31 05:12:54.722776
+
+--- 
+schema_info: 
+  columns: 
+  - version
+  records: 
+  - - "13"
+
+--- 
+taggings: 
+  columns: 
+  - id
+  - tag_id
+  - taggable_id
+  - taggable_type
+  - created_at
+  records: 
+  - - "1"
+    - "1"
+    - "2"
+    - Poem
+    - 2008-04-15 06:36:54.241749
+  - - "2"
+    - "2"
+    - "2"
+    - Poem
+    - 2008-04-15 06:36:59.819758
+  - - "3"
+    - "3"
+    - "2"
+    - Poem
+    - 2008-04-15 06:36:59.825572
+  - - "4"
+    - "1"
+    - "1"
+    - Poem
+    - 2008-04-15 06:37:15.515706
+  - - "5"
+    - "3"
+    - "1"
+    - Poem
+    - 2008-04-15 06:37:15.518858
+  - - "6"
+    - "4"
+    - "3"
+    - Poem
+    - 2008-04-19 06:25:55.587976
+  - - "7"
+    - "5"
+    - "5"
+    - Poem
+    - 2008-05-01 19:26:07.88807
+  - - "8"
+    - "6"
+    - "5"
+    - Poem
+    - 2008-05-01 19:26:07.897772
+  - - "9"
+    - "1"
+    - "8"
+    - Poem
+    - 2008-05-23 16:38:26.847388
+
+--- 
+tags: 
+  columns: 
+  - id
+  - name
+  records: 
+  - - "1"
+    - short
+  - - "2"
+    - sweet
+  - - "3"
+    - numerical
+  - - "4"
+    - work
+  - - "5"
+    - coffee
+  - - "6"
+    - tea
+
+--- 
+urls: 
+  columns: 
+  - id
+  - user_id
+  - url
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - "1"
+    - http://www.clickpass.com/id/st7wunchr3fk
+    - 2008-05-08 12:35:22.5111
+    - 2008-05-08 12:35:50.38506
+  - - "2"
+    - "13"
+    - https://me.yahoo.com/justinduewelzahniser
+    - 2008-05-08 12:36:55.3845
+    - 2008-05-08 12:36:55.3845
+  - - "3"
+    - "14"
+    - http://www.flickr.com/photos/justindz
+    - 2008-05-08 12:37:11.446178
+    - 2008-05-08 12:37:11.446178
+  - - "4"
+    - "1"
+    - http://goza.livejournal.com/
+    - 2008-05-08 16:39:25.06532
+    - 2008-05-08 19:26:49.497534
+  - - "5"
+    - "21"
+    - http://www.clickpass.com/id/0w54tzp9qexf
+    - 2008-05-12 10:06:11.91464
+    - 2008-05-12 10:06:11.91464
+  - - "6"
+    - "22"
+    - http://taco.myopenid.com/
+    - 2008-05-22 16:18:50.703062
+    - 2008-05-22 16:18:50.703062
+  - - "7"
+    - "23"
+    - http://mgraves.myopenid.com/
+    - 2008-06-03 13:32:38.194814
+    - 2008-06-03 13:32:38.194814
+  - - "8"
+    - "24"
+    - http://www.schreiblogade.de/
+    - 2008-06-05 03:08:19.48761
+    - 2008-06-05 03:08:19.48761
+
+--- 
+users: 
+  columns: 
+  - id
+  - name
+  - email
+  - crypted_password
+  - salt
+  - remember_token_expires_at
+  - remember_token
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - Justin D-Z
+    - justindz@gmail.com
+    - b2165216dac767fb44893df2e4012e41c700e9d6
+    - 701078143bec7e2cf078d9672ed17d46508ca2f2
+    - 
+    - false
+    - "2008-04-15"
+    - "2008-05-29"
+  - - "2"
+    - Mr. Test
+    - bademail@mailinator.com
+    - 1a334c6c599ebf6fa196e596751dbee1b211af03
+    - d6de6ff73ec1a791942649c1435bc94d0b88d663
+    - 
+    - false
+    - "2008-04-26"
+    - "2008-04-26"
+  - - "3"
+    - Varth Dader
+    - justindz+test@gmail.com
+    - 45ea97fb42dcb32256668890ee69a2df83e5d6a9
+    - 660e1de354c6498151051fa6fe9fac5ba0b62e76
+    - 
+    - false
+    - "2008-04-26"
+    - "2008-04-26"
+  - - "4"
+    - Mr. Self Destruct
+    - justindz+poem_test_user@gmail.com
+    - a22ff0982873566e5a9da0b80e624ce9eb23f21b
+    - e1286ceda7f4729b87b8380e58a32585039239b7
+    - 
+    - false
+    - "2008-05-07"
+    - "2008-05-07"
+  - - "13"
+    - Spanky Jr.
+    - ""
+    - 
+    - 
+    - 
+    - false
+    - "2008-05-08"
+    - "2008-05-08"
+  - - "14"
+    - Justin Yahoo!
+    - ""
+    - 
+    - 
+    - 
+    - false
+    - "2008-05-08"
+    - "2008-05-08"
+  - - "21"
+    - 
+    - 
+    - 
+    - 
+    - 
+    - false
+    - "2008-05-12"
+    - "2008-06-02"
+  - - "22"
+    - giorgiomoroder
+    - taco.ekkel@gmail.com
+    - 
+    - 
+    - 
+    - false
+    - "2008-05-22"
+    - "2008-05-22"
+  - - "23"
+    - Mike
+    - mgraves@yahoo.com
+    - 
+    - 
+    - 
+    - false
+    - "2008-06-03"
+    - "2008-06-03"
+  - - "24"
+    - 
+    - info@schreiblogade.de
+    - 
+    - 
+    - 
+    - false
+    - "2008-06-05"
+    - "2008-06-05"
