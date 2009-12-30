@@ -1,6 +1,5 @@
 class AccountController < ApplicationController
-  protect_from_forgery :except => [:login, :open_id_authentication]
-  skip_before_filter :require_name_for_user
+  protect_from_forgery :except => [:login]
   
   def login
     @recent_poems = Poem.find(:all, :order => 'created_at desc', :limit => 5)
@@ -23,42 +22,6 @@ class AccountController < ApplicationController
     render :layout => "facebook"
   end
   
-#  def open_id_authentication(openid_url)
-#    authenticate_with_open_id(openid_url, :required => [:nickname, :email]) do |result, identity_url, registration|
-#      if result.successful?
-#        @user = User.find_or_initialize_by_url(identity_url)
-#        if @user.new_record?
-#          @user.name = registration['nickname']
-#          @user.email = registration['email']
-#          @user.save(false) # Skip validation - require_name_for_user filter will catch the name and re-direct to profile edit
-#          u = Url.new
-#          u.url = identity_url
-#          u.user = @user
-#          u.save
-#        end
-#        self.current_user = @user
-#        successful_login
-#      else
-#        failed_login
-#      end
-#    end
-#  end
-  
-  def twitter_authorize
-    require 'twitter'
-    
-    current_user.oauth = Twitter::OAuth.new('ZZ1BhoMhjTMoGqOYt9bIQ', 'h9B13H7K4RDgJAsfN4WEmb5jiFssEmHfjsjOC65B0')
-    session['rtoken'] = current_user.oauth.request_token.token
-    session['rsecret'] = current_user.oauth.request_token.secret
-    
-    redirect_to oauth.request_token.authorize_url
-  end
-  
-  def twitter_callback
-    oauth = current_user.oauth
-    oauth.authorize_from_request(session['rtoken'], session['rsecret'])
-  end
-  
   def successful_login
     if params[:remember_me] == "1"
       self.current_user.remember_me
@@ -79,21 +42,22 @@ class AccountController < ApplicationController
     flash[:notice] = "You have been logged out."
     redirect_back_or_default(:controller => 'account', :action => 'login')
   end
-  
-  private
-    def signup
-    @user = User.new(params[:user])
+
+  def signup
     return unless request.post?
-    if captcha_valid?(params[:my_super_model][:captcha_id], params[:my_super_model][:captcha_validation])
-      @user.save!
-      self.current_user = @user
-      redirect_back_or_default(:controller => 'users', :action => 'home')
-      flash[:notice] = "Thanks for signing up!"
-    else
-      flash[:error] = "Please try the challenge question again."
-      render :action => 'signup'
-    end
+    
+    @user = User.new
+    @user.email = params[:user][:email]
+    @user.name = params[:user][:name]
+    @user.password = params[:user][:password]
+    @user.password_confirmation = params[:user][:password_confirmation]
+    @user.save!
+
+    self.current_user = @user
+    redirect_back_or_default(:controller => 'users', :action => 'home')
+    flash[:notice] = "Thanks for signing up!"
+
     rescue ActiveRecord::RecordInvalid
       render :action => 'signup'
-    end
+  end
 end

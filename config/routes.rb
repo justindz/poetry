@@ -8,8 +8,8 @@ ActionController::Routing::Routes.draw do |map|
   map.compare 'poems/compare/:poem_id/:revision_id', :controller => 'poems', :action => 'compare'
   map.search 'search/:terms/:page', :controller => 'poems', :action => 'search', :defaults => { :page => '1' }
   map.formatted_search 'search/:terms.:format', :controller => 'poems', :action => 'search'
-  map.open_id_complete 'accounts/login', :controller => "accounts", :action => "login", :requirements => { :method => :get }
   map.remix 'poems/:id/remix', :controller => 'poems', :action => 'remix'
+  map.signup 'account/signup', :controller => 'account', :action => 'signup'
   
   map.resources :chapbooks
   map.resources :tags

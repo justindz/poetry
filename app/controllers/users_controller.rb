@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_name_for_user, :only => [:edit, :update, :add_openid]
   before_filter :login_required, :except => [:index, :show, :favorites]
 
   # GET /users/home
@@ -159,19 +158,6 @@ class UsersController < ApplicationController
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
-  end
-  
-  def add_openid
-    @user = User.find(params[:id])
-    @oid = Url.new
-    @oid.url = params[:url]
-    @oid.user = @user
-    if @oid.save
-      flash[:notice] = "New OpenID URL added."
-    else
-      flash[:error] = "OpenID authentication failed.  Verify the URL and ensure the provider is available, then try again."
-    end
-    render :action => "edit"
   end
   
   def upload_avatar

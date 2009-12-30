@@ -10,33 +10,20 @@
   </p>
   <p>
     <b>Email</b><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email %> <strong>*</strong>
   </p>
   <p>
     <b>Password</b><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :password %> <strong>*</strong>
+  </p>
+  <p>
+    <b>Password Confirmation</b><br />
+    <%= f.password_field :password_confirmation %> <strong>*</strong>
   </p>
   <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
-
-<h2>OpenID URLs</h2>
-<p>
-  You may add more than one URL in case your main provider is unavailable.
-</p>
-<ul>
-  <% @user.urls.each do |u| -%>
-    <li><%= u.url %></li>
-  <% end -%>
-</ul>
-<% form_tag({ :controller => "users", :action => "add_openid" }) do -%>
-  <input type="hidden" name="id" value="<%= @user.id %>" />
-  <p>
-    <input type="text" name="url" />
-  </p>
-  <%= submit_tag 'Add OpenID' %>
-<% end -%>
 
 <div id="profile_image"><%= avatar(@user) %></div>
 
@@ -46,30 +33,6 @@
   <%= file_field 'avatar', 'uploaded_data' %>
   <%= submit_tag 'Upload' %>
 <% end -%>
-
-<!--
-<style> @import 'http://www.clickpass.com/stylesheets/container.css'; </style>
-<div id="clickpass_button" style="margin-top: 2em; width: 136px; height: 18px; position: relative; z-index : 9999 ;">
-  <iframe src="http://www.clickpass.com/embedded_buttons/index/4qPh6INkB6?mode=connect" width="136" height="18" frameborder="0" allowtransparency="true" scrolling="no" style="z-index:9999;position: absolute; top: 0; left: 0;"></iframe> 
-</div>
-<script type="text/javascript">
-  window.scriptLoaded = false;
-  window.windowLoaded = false;
-  var initClickpassPanel = function(){
-    if (window.scriptLoaded && window.windowLoaded){
-      
-      var clickpassPanel = new ClickpassPanel('clickpass_button', {clickpass_openid_id : 'clickpass_popup'});
-      
-    }
-  }
-</script>
-
-<script type="text/javascript" src="http://www.clickpass.com/javascripts/ClickpassPanel.class.external.js?v1"></script>
-<script type="text/javascript"> 
-  window.windowLoaded = true;
-  initClickpassPanel();
-</script>
--->
 
 <p>
   <%= link_to 'Cancel', home_path() %>

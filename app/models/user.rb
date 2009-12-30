@@ -9,36 +9,16 @@ class User < ActiveRecord::Base
   
   # Virtual attribute for the unencrypted password
   attr_accessor :password
-  
-  attr_accessor :oauth
-  
-  attr_accessible :name, :email, :identity_url
+  attr_accessible :name, :email
  
   validates_presence_of     :name
-  validates_presence_of     :password,                     :if => :password_required?
-  validates_presence_of     :password_confirmation,        :if => :password_required?
-  validates_length_of       :password, :within => 4..40,   :if => :password_required?
-  validates_confirmation_of :password,                     :if => :password_required?
-  validates_length_of       :email,    :within => 3..100,  :if => :email_required?
+  validates_presence_of     :password
+  validates_presence_of     :password_confirmation
+  validates_length_of       :password, :within => 4..40
+  validates_confirmation_of :password
+  validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :email, :case_sensitive => false, :allow_blank => true
   before_save :encrypt_password
-  
-  def self.find_or_initialize_by_url(openid_url)
-    u = Url.find_by_url(openid_url)
-    if u.nil?
-      openid_url =~ /\/$/
-      u = Url.find_by_url($`) # if the url is not found, try stripping off a trailing slash and matching again - needed for LiveJournal OpenID
-      if u.nil?
-        user = User.new
-        user.instance_variable_set("@new_record", true) # ugly hack to account for the new record responding nil to .new_record?
-        return user
-      end
-    else
-      user = u.user
-      user.instance_variable_set("@new_record", false) # ugly hack to account for the non-new record responding nil to .new_record?
-      return user
-    end
-  end
   
   def has_favorite? (poem_id)
     f = find_favorite(poem_id)
@@ -92,21 +72,5 @@ class User < ActiveRecord::Base
       return if password.blank?
       self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{email}--") if new_record?
       self.crypted_password = encrypt(password)
-    end
-    
-    def password_required?
-      if self.has_identity_url?
-        return false
-      else
-        crypted_password.blank? || !password.blank?
-      end
-    end
-    
-    def email_required?
-      !self.has_identity_url?
-    end
-    
-    def has_identity_url?
-      Url.find_by_user_id(self.id).nil? ? false : true
     end
 end

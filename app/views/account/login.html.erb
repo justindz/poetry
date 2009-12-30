@@ -8,36 +8,22 @@
 </div>
 <hr / style="clear: both;">
 <br />
-<%= link_to_function("What is Chapbook?", "$('chapbook_explanation').setAttribute('style', 'display: inherit;'); $('openid_explanation').setAttribute('style', 'display: none;');") %> | <%= link_to_function("What is OpenID?", "$('chapbook_explanation').setAttribute('style', 'display: none;'); $('openid_explanation').setAttribute('style', 'display: inherit;');") %>
 <%= render :partial => 'chapbook_explanation' %>
-<%= render :partial => 'openid_explanation' %>
 <hr / style="clear: both;">
 
 <% form_tag '/account/login' do -%>
-  <div id="openid_login" style="float: left; width: 20em; padding-bottom: 2em;">
-    <h1>Login!</h1>
-    <style> @import 'http://www.clickpass.com/stylesheets/container.css'; </style>
-    <div id="clickpass_button" style="width: 352px; height: 56px; position: relative; z-index : 9999 ;">
-      <iframe src="http://www.clickpass.com/embedded_buttons/login-standard/4qPh6INkB6" width="176" height="28" frameborder="0" allowtransparency="true" scrolling="no" style="z-index:9999;position: absolute; top: 0; left: 0;"></iframe> 
-    </div>
-    <script type="text/javascript" src="http://www.clickpass.com/javascripts/ClickpassPanel.class.external.js?v1"></script>
-    <script type="text/javascript">  
-      var clickpassPanel = new ClickpassPanel('clickpass_button');
-    </script>
-    <!--<span style="vertical-align: middle;">Or Another OpenID</span>
-    <p>
-      <%= image_tag('openid_small_logo.png') %><%= text_field_tag("openid_url") %><%= submit_tag 'Go' %>
-    </p>-->
-  </div>
-  <div id="login_separator" style="float: left; width: 20em; padding-top: 5em; padding-right: 1em; text-align: center;">
-    <strong>Or if your login providers are down...</strong>
-  </div>
-  <div id="traditional_login" style="float: left; width: 20em; padding-top: 1em; padding-bottom: 2em;">
-    <strong>For existing users:</strong>
+  <div id="login" style="float: left; width: 20em; padding-top: 1em; padding-bottom: 2em;">
+    <strong>Login:</strong>
     <p><label for="email">Email</label><br/>
     <%= text_field_tag 'email' %></p>
     <p><label for="password">Password</label><br/>
     <%= password_field_tag 'password' %></p>
     <p><%= submit_tag 'Log in' %></p>
+  </div>
+  <div id="login_separator" style="float: left; width: 20em; padding-top: 5em; padding-right: 1em; text-align: center;">
+    <strong>Or...</strong>
+  </div>
+  <div id="signup" style="float: left; width: 20em; padding-top: 3em; padding-bottom: 2em;">
+    <h1><%= link_to 'Signup!', signup_path %></h1>
   </div>
 <% end -%>

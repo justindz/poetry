@@ -14,10 +14,5 @@
 <p><label for="password_confirmation">Confirm Password</label><br/>
 <%= f.password_field :password_confirmation %></p>
 
-<% c = prepare_captcha :type => :question -%>
-<%= captcha_hidden_field c, 'my_super_model' %>
-<%= captcha_question_as_label c, 'my_super_model' %>
-<%= captcha_text_field 'my_super_model' %>
-
 <p><%= submit_tag 'Sign up' %></p>
 <% end -%>
