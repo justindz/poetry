@@ -1,1 +1,3 @@
 will_paginate --source http://gemcutter.org
+rubyzip
+RedCloth
