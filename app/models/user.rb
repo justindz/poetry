@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
     save(false)
   end
  
-  protected
+#  protected
     # before filter
     def encrypt_password
       return if password.blank?

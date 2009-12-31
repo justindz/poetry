@@ -1,23 +1,3 @@
---
--- PostgreSQL database dump
---
-
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = off;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET escape_string_warning = off;
-
-SET search_path = public, pg_catalog;
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
---
--- Name: avatars; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
-
 CREATE TABLE avatars (
     id integer NOT NULL,
     user_id integer,
@@ -32,39 +12,15 @@ CREATE TABLE avatars (
     updated_at timestamp without time zone
 );
 
-
-ALTER TABLE public.avatars OWNER TO app5137;
-
---
--- Name: avatars_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
 CREATE SEQUENCE avatars_id_seq
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
 
-
-ALTER TABLE public.avatars_id_seq OWNER TO app5137;
-
---
--- Name: avatars_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
 ALTER SEQUENCE avatars_id_seq OWNED BY avatars.id;
 
-
---
--- Name: avatars_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
 SELECT pg_catalog.setval('avatars_id_seq', 3, true);
-
-
---
--- Name: comments; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
 
 CREATE TABLE comments (
     id integer NOT NULL,
@@ -76,13 +32,6 @@ CREATE TABLE comments (
     updated_at timestamp without time zone
 );
 
-
-ALTER TABLE public.comments OWNER TO app5137;
-
---
--- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
 CREATE SEQUENCE comments_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -90,26 +39,9 @@ CREATE SEQUENCE comments_id_seq
     NO MINVALUE
     CACHE 1;
 
-
-ALTER TABLE public.comments_id_seq OWNER TO app5137;
-
---
--- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
 ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
-
---
--- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
 SELECT pg_catalog.setval('comments_id_seq', 1, false);
-
-
---
--- Name: favorites; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
 
 CREATE TABLE favorites (
     id integer NOT NULL,
@@ -119,39 +51,15 @@ CREATE TABLE favorites (
     updated_at timestamp without time zone
 );
 
-
-ALTER TABLE public.favorites OWNER TO app5137;
-
---
--- Name: favorites_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
 CREATE SEQUENCE favorites_id_seq
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
 
-
-ALTER TABLE public.favorites_id_seq OWNER TO app5137;
-
---
--- Name: favorites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
 ALTER SEQUENCE favorites_id_seq OWNED BY favorites.id;
 
-
---
--- Name: favorites_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
 SELECT pg_catalog.setval('favorites_id_seq', 5, true);
-
-
---
--- Name: friendships; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
 
 CREATE TABLE friendships (
     id integer NOT NULL,
@@ -161,39 +69,15 @@ CREATE TABLE friendships (
     accepted_at timestamp without time zone
 );
 
-
-ALTER TABLE public.friendships OWNER TO app5137;
-
---
--- Name: friendships_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
 CREATE SEQUENCE friendships_id_seq
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
 
-
-ALTER TABLE public.friendships_id_seq OWNER TO app5137;
-
---
--- Name: friendships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
 ALTER SEQUENCE friendships_id_seq OWNED BY friendships.id;
 
-
---
--- Name: friendships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
 SELECT pg_catalog.setval('friendships_id_seq', 2, true);
-
-
---
--- Name: licenses; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
 
 CREATE TABLE licenses (
     id integer NOT NULL,
@@ -203,124 +87,15 @@ CREATE TABLE licenses (
     updated_at timestamp without time zone
 );
 
-
-ALTER TABLE public.licenses OWNER TO app5137;
-
---
--- Name: licenses_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
 CREATE SEQUENCE licenses_id_seq
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
 
-
-ALTER TABLE public.licenses_id_seq OWNER TO app5137;
-
---
--- Name: licenses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
 ALTER SEQUENCE licenses_id_seq OWNED BY licenses.id;
 
-
---
--- Name: licenses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
 SELECT pg_catalog.setval('licenses_id_seq', 6, true);
-
-
---
--- Name: open_id_authentication_associations; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
-
-CREATE TABLE open_id_authentication_associations (
-    id integer NOT NULL,
-    issued integer,
-    lifetime integer,
-    handle character varying(255),
-    assoc_type character varying(255),
-    server_url bytea,
-    secret bytea
-);
-
-
-ALTER TABLE public.open_id_authentication_associations OWNER TO app5137;
-
---
--- Name: open_id_authentication_associations_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
-CREATE SEQUENCE open_id_authentication_associations_id_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.open_id_authentication_associations_id_seq OWNER TO app5137;
-
---
--- Name: open_id_authentication_associations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
-ALTER SEQUENCE open_id_authentication_associations_id_seq OWNED BY open_id_authentication_associations.id;
-
-
---
--- Name: open_id_authentication_associations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
-SELECT pg_catalog.setval('open_id_authentication_associations_id_seq', 5, true);
-
-
---
--- Name: open_id_authentication_nonces; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
-
-CREATE TABLE open_id_authentication_nonces (
-    id integer NOT NULL,
-    "timestamp" integer NOT NULL,
-    server_url character varying(255),
-    salt character varying(255) NOT NULL
-);
-
-
-ALTER TABLE public.open_id_authentication_nonces OWNER TO app5137;
-
---
--- Name: open_id_authentication_nonces_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
-CREATE SEQUENCE open_id_authentication_nonces_id_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.open_id_authentication_nonces_id_seq OWNER TO app5137;
-
---
--- Name: open_id_authentication_nonces_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
-ALTER SEQUENCE open_id_authentication_nonces_id_seq OWNED BY open_id_authentication_nonces.id;
-
-
---
--- Name: open_id_authentication_nonces_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
-SELECT pg_catalog.setval('open_id_authentication_nonces_id_seq', 120, true);
-
-
---
--- Name: poems; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
 
 CREATE TABLE poems (
     id integer NOT NULL,
@@ -334,39 +109,15 @@ CREATE TABLE poems (
     original_id integer
 );
 
-
-ALTER TABLE public.poems OWNER TO app5137;
-
---
--- Name: poems_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
 CREATE SEQUENCE poems_id_seq
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
 
-
-ALTER TABLE public.poems_id_seq OWNER TO app5137;
-
---
--- Name: poems_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
 ALTER SEQUENCE poems_id_seq OWNED BY poems.id;
 
-
---
--- Name: poems_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
 SELECT pg_catalog.setval('poems_id_seq', 62, true);
-
-
---
--- Name: revisions; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
 
 CREATE TABLE revisions (
     id integer NOT NULL,
@@ -377,50 +128,19 @@ CREATE TABLE revisions (
     updated_at timestamp without time zone
 );
 
-
-ALTER TABLE public.revisions OWNER TO app5137;
-
---
--- Name: revisions_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
 CREATE SEQUENCE revisions_id_seq
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
 
-
-ALTER TABLE public.revisions_id_seq OWNER TO app5137;
-
---
--- Name: revisions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
 ALTER SEQUENCE revisions_id_seq OWNED BY revisions.id;
 
-
---
--- Name: revisions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
 SELECT pg_catalog.setval('revisions_id_seq', 80, true);
-
-
---
--- Name: schema_info; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
 
 CREATE TABLE schema_info (
     version integer
 );
-
-
-ALTER TABLE public.schema_info OWNER TO app5137;
-
---
--- Name: taggings; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
 
 CREATE TABLE taggings (
     id integer NOT NULL,
@@ -430,51 +150,20 @@ CREATE TABLE taggings (
     created_at timestamp without time zone
 );
 
-
-ALTER TABLE public.taggings OWNER TO app5137;
-
---
--- Name: taggings_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
 CREATE SEQUENCE taggings_id_seq
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
 
-
-ALTER TABLE public.taggings_id_seq OWNER TO app5137;
-
---
--- Name: taggings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
 ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
 
-
---
--- Name: taggings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
 SELECT pg_catalog.setval('taggings_id_seq', 41, true);
-
-
---
--- Name: tags; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
 
 CREATE TABLE tags (
     id integer NOT NULL,
     name character varying(255)
 );
-
-
-ALTER TABLE public.tags OWNER TO app5137;
-
---
--- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
 
 CREATE SEQUENCE tags_id_seq
     INCREMENT BY 1
@@ -482,68 +171,9 @@ CREATE SEQUENCE tags_id_seq
     NO MINVALUE
     CACHE 1;
 
-
-ALTER TABLE public.tags_id_seq OWNER TO app5137;
-
---
--- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
 ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 
-
---
--- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
 SELECT pg_catalog.setval('tags_id_seq', 27, true);
-
-
---
--- Name: urls; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
-
-CREATE TABLE urls (
-    id integer NOT NULL,
-    user_id integer,
-    url character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
-ALTER TABLE public.urls OWNER TO app5137;
-
---
--- Name: urls_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
-CREATE SEQUENCE urls_id_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.urls_id_seq OWNER TO app5137;
-
---
--- Name: urls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
-ALTER SEQUENCE urls_id_seq OWNED BY urls.id;
-
-
---
--- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
-SELECT pg_catalog.setval('urls_id_seq', 7, true);
-
-
---
--- Name: users; Type: TABLE; Schema: public; Owner: app5137; Tablespace: 
---
 
 CREATE TABLE users (
     id integer NOT NULL,
@@ -557,35 +187,15 @@ CREATE TABLE users (
     updated_at date
 );
 
-
-ALTER TABLE public.users OWNER TO app5137;
-
---
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: app5137
---
-
 CREATE SEQUENCE users_id_seq
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
 
-
-ALTER TABLE public.users_id_seq OWNER TO app5137;
-
---
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: app5137
---
-
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
-
---
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: app5137
---
-
 SELECT pg_catalog.setval('users_id_seq', 5, true);
-
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: app5137
@@ -626,20 +236,6 @@ ALTER TABLE licenses ALTER COLUMN id SET DEFAULT nextval('licenses_id_seq'::regc
 -- Name: id; Type: DEFAULT; Schema: public; Owner: app5137
 --
 
-ALTER TABLE open_id_authentication_associations ALTER COLUMN id SET DEFAULT nextval('open_id_authentication_associations_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: app5137
---
-
-ALTER TABLE open_id_authentication_nonces ALTER COLUMN id SET DEFAULT nextval('open_id_authentication_nonces_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: app5137
---
-
 ALTER TABLE poems ALTER COLUMN id SET DEFAULT nextval('poems_id_seq'::regclass);
 
 
@@ -668,34 +264,7 @@ ALTER TABLE tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
 -- Name: id; Type: DEFAULT; Schema: public; Owner: app5137
 --
 
-ALTER TABLE urls ALTER COLUMN id SET DEFAULT nextval('urls_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: app5137
---
-
 ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
-
-
---
--- Data for Name: avatars; Type: TABLE DATA; Schema: public; Owner: app5137
---
-
-COPY avatars (id, user_id, parent_id, content_type, filename, thumbnail, size, width, height, created_at, updated_at) FROM stdin;
-1	\N	\N	image/jpeg	ac4fb2e7a05fa1e42c7d781454678098.jpeg	\N	2461	48	48	2008-11-26 11:40:20.5456	2008-12-01 10:26:41.470457
-2	1	\N	image/jpeg	ac4fb2e7a05fa1e42c7d781454678098.jpg	\N	2464	48	48	2008-12-01 10:26:39.587716	2008-12-01 10:26:41.785977
-3	2	\N	image/jpeg	ysbw.jpg	\N	1790	48	48	2008-12-03 21:19:19.216674	2008-12-03 21:19:20.746294
-\.
-
-
---
--- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: app5137
---
-
-COPY comments (id, user_id, poem_id, created_at, body, is_private, updated_at) FROM stdin;
-\.
-
 
 --
 -- Data for Name: favorites; Type: TABLE DATA; Schema: public; Owner: app5137
@@ -731,143 +300,6 @@ COPY licenses (id, name, embed, created_at, updated_at) FROM stdin;
 4	by_nd	<a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nd/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/3.0/">Creative Commons Attribution-No Derivative Works 3.0 Unported License</a>.	2008-11-26 11:38:33.74512	2008-11-26 11:38:33.74512
 5	by_sa	<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 Unported License</a>.	2008-11-26 11:38:33.747351	2008-11-26 11:38:33.747351
 6	by	<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.	2008-11-26 11:38:33.749419	2008-11-26 11:38:33.749419
-\.
-
-
---
--- Data for Name: open_id_authentication_associations; Type: TABLE DATA; Schema: public; Owner: app5137
---
-
-COPY open_id_authentication_associations (id, issued, lifetime, handle, assoc_type, server_url, secret) FROM stdin;
-5	1232669392	1209599	{HMAC-SHA1}{49790acf}{Awn4hA==}	HMAC-SHA1	http://www.clickpass.com/openid_server	m*|\\244\\213\\246\\333\\245\\204\\027\\277\\327w\\261l\\264P[c\\227
-\.
-
-
---
--- Data for Name: open_id_authentication_nonces; Type: TABLE DATA; Schema: public; Owner: app5137
---
-
-COPY open_id_authentication_nonces (id, "timestamp", server_url, salt) FROM stdin;
-1	1227728363		Nan1VY
-2	1228155063		KJDcRJ
-3	1228234725		l2HifP
-4	1228359973		sJ1Jq6
-5	1228360532		g1Ex0X
-6	1228363571		GrmxAf
-7	1228398769		7n5Ah0
-8	1228404090		xr9pX5
-9	1228434346		F3um5v
-10	1228522146		xl3PO0
-11	1228523697		LAUDt9
-12	1228569428		GJxrw9
-13	1228573919		0S5zrL
-14	1228574217		RXEugT
-15	1228604094		e1EIn1
-16	1228681681		X7SrMu
-17	1228685215		7dlf07
-18	1228685653		qMspv8
-19	1228700922		fMZd2j
-20	1228792052		va3Npy
-21	1228831845		pIKtpd
-22	1228852592		3WtDwX
-23	1228869955		1hbhid
-24	1228874496		D1BM5t
-25	1228876368		y4UZyP
-26	1228917738		q8M5yK
-27	1228943114		guAFms
-28	1229105794		xOh3fh
-29	1229118974		wq8vTc
-30	1229126829		uMqVJl
-31	1229127797		jK8fUP
-32	1229203748		fJlMt0
-33	1229310269		nKH77W
-34	1229348306		mCHsQc
-35	1229381990		UNlaQ5
-36	1229387180		50L63b
-37	1229437178		QStamu
-38	1229438123		Q4zR4F
-39	1229460537		WNum9W
-40	1229522729		dCP7TB
-41	1229527381		osn1e9
-42	1229527436		8cDdwV
-43	1229527728		haiW7q
-44	1229534302		cHDT07
-45	1229534424		PkWys1
-46	1229563598		wypS3o
-47	1229570051		OjFRpx
-48	1229602223		iEG0Mf
-49	1229641119		XB1uFH
-50	1229657707		kX4pWf
-51	1229736400		3TO21V
-52	1229796044		2dF0nL
-53	1229808996		Rpl0wE
-54	1229965774		IICndo
-55	1230045494		6mZKvS
-56	1230083323		n1xbQD
-57	1230138431		2ZCtJJ
-58	1230138466		wUEgxH
-59	1230176751		pDJGRB
-60	1230190698		KrmCdn
-61	1230268835		iEsdwI
-62	1230393845		66xmtY
-63	1230535075		Un0vTx
-64	1230720819		7t1DKL
-65	1230907600		wfLqYl
-66	1230954952		dYzkwp
-67	1230992865		0Q76SM
-68	1231038268		93McEe
-69	1231085325		zt2mR3
-70	1231104768		PqM50n
-71	1231105034		BykVZq
-72	1231118259		ZhecFf
-73	1231126516		lCxxEx
-74	1231150938		oJgdl0
-75	1231161910		Tgfgqh
-76	1231385377		RfQYX4
-77	1231422867		wFmyTm
-78	1231505738		AIaMxr
-79	1231542102		9XQnU3
-80	1231655670		LY8BzB
-81	1231658674		94VxL2
-82	1231792820		og2aWL
-83	1231824362		FOicv0
-84	1231882716		EnlL9W
-85	1231963519		GIIug2
-86	1232041379		eZxhFR
-87	1232088432		6GBFxc
-88	1232218075		gYpyLU
-89	1232222659		Eh7cP7
-90	1232332141		ccxWvO
-91	1232340310		gWTa8q
-92	1232369277		tfLkLZ
-93	1232370388		LcoRnr
-94	1232376379		lDHN5u
-95	1232396197		GTjEZ3
-96	1232399427		eKH9s4
-97	1232406110		7Byii0
-98	1232406921		mlIDNz
-99	1232409512		wllkOg
-100	1232416683		JlhVhW
-101	1232417541		VdPcng
-102	1232515509		pI18FN
-103	1232515686		yEi8XM
-104	1232581594		qt5CYH
-105	1232669393		wA7bvS
-106	1232670189		tXiSJH
-107	1232674132		kxipei
-108	1232716561		Edtx0N
-109	1232746927		1vQsye
-110	1232752672		SuejkI
-111	1232752812		8bMjYs
-112	1232771596		6OlZPr
-113	1232811287		CViaFY
-114	1232834880		nYNYKl
-115	1232893509		P6pbD3
-116	1232915112		j6eYCK
-117	1232931257		j8T6yb
-118	1232931879		o9rI9h
-119	1232945605		Jkuo99
-120	1233667489		Xqzvl5
 \.
 
 
@@ -1015,9 +447,9 @@ COPY revisions (id, poem_id, created_at, title, body, updated_at) FROM stdin;
 -- Data for Name: schema_info; Type: TABLE DATA; Schema: public; Owner: app5137
 --
 
-COPY schema_info (version) FROM stdin;
-11
-\.
+--COPY schema_info (version) FROM stdin;
+--11
+--\.
 
 
 --
@@ -1104,21 +536,6 @@ COPY tags (id, name) FROM stdin;
 
 
 --
--- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: app5137
---
-
-COPY urls (id, user_id, url, created_at, updated_at) FROM stdin;
-1	1	http://www.clickpass.com/id/st7wunchr3fk	2008-11-26 11:39:27.091131	2008-11-26 11:39:27.091131
-2	1	http://clickpass.com/public/justindz	2008-11-26 11:39:50.654709	2008-11-26 11:39:50.654709
-3	2	http://www.clickpass.com/id/gaywm6bghilp	2008-12-03 19:15:45.949338	2008-12-03 19:15:45.949338
-4	1	http://openid.aol.com/dzjustin	2008-12-17 07:23:30.756388	2008-12-17 07:23:30.756388
-5	3	http://www.clickpass.com/id/gykjjgogimbs	2008-12-20 10:00:46.208452	2008-12-20 10:00:46.208452
-6	4	http://www.clickpass.com/id/gdffuk2ynx7w	2009-01-04 19:35:18.737765	2009-01-04 19:35:18.737765
-7	5	http://www.clickpass.com/id/mhb5v74ocb0y	2009-01-25 16:54:20.790344	2009-01-25 16:54:20.790344
-\.
-
-
---
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: app5137
 --
 
@@ -1172,22 +589,6 @@ ALTER TABLE ONLY licenses
 
 
 --
--- Name: open_id_authentication_associations_pkey; Type: CONSTRAINT; Schema: public; Owner: app5137; Tablespace: 
---
-
-ALTER TABLE ONLY open_id_authentication_associations
-    ADD CONSTRAINT open_id_authentication_associations_pkey PRIMARY KEY (id);
-
-
---
--- Name: open_id_authentication_nonces_pkey; Type: CONSTRAINT; Schema: public; Owner: app5137; Tablespace: 
---
-
-ALTER TABLE ONLY open_id_authentication_nonces
-    ADD CONSTRAINT open_id_authentication_nonces_pkey PRIMARY KEY (id);
-
-
---
 -- Name: poems_pkey; Type: CONSTRAINT; Schema: public; Owner: app5137; Tablespace: 
 --
 
@@ -1217,14 +618,6 @@ ALTER TABLE ONLY taggings
 
 ALTER TABLE ONLY tags
     ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
-
-
---
--- Name: urls_pkey; Type: CONSTRAINT; Schema: public; Owner: app5137; Tablespace: 
---
-
-ALTER TABLE ONLY urls
-    ADD CONSTRAINT urls_pkey PRIMARY KEY (id);
 
 
 --
